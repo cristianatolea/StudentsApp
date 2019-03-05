@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">StudentsApp</string>
+    <string name="alert_no_internet_connection">Ups! Se pare ca nu ai conexiune la internet!</string>
+</resources>

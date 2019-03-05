@@ -1,0 +1,74 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.example.cris.studentsapp"
+        minSdkVersion 15
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        compileOptions.incremental = false
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "BASE_URL", "\"\""
+        }
+        debug {
+            buildConfigField "String", "BASE_URL", "\"\""
+        }
+    }
+}
+
+ext {
+    support_vers = "27.1.1"
+    constraint_layout_vers = "1.1.3"
+    retrofit_vers = "2.3.0"
+    dagger_vers = "2.12"
+    firebase_vers = "11.8.0"
+    retrofit_vers = "2.5.0"
+    retrofit_interceptor_vers = "3.9.0"
+    dagger_vers = "2.16"
+    gson_vers = "2.8.2"
+    rx_java2_vers = "2.1.8"
+    rx_android_vers = "2.1.0"
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "com.android.support:appcompat-v7:$support_vers"
+    implementation "com.android.support.constraint:constraint-layout:$constraint_layout_vers"
+    implementation "com.android.support:support-v4:$support_vers"
+    implementation "com.android.support:design:$support_vers"
+    implementation "com.google.code.gson:gson:$gson_vers"
+    implementation "io.reactivex.rxjava2:rxjava:$rx_java2_vers"
+    implementation "io.reactivex.rxjava2:rxandroid:$rx_android_vers"
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_vers"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_vers"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_vers"
+    implementation "com.squareup.okhttp3:logging-interceptor:$retrofit_interceptor_vers"
+    implementation "com.google.dagger:dagger:$dagger_vers"
+    implementation "com.google.dagger:dagger-android:$dagger_vers"
+    implementation "com.google.dagger:dagger-android-support:$dagger_vers"
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    implementation 'com.android.support:support-v4:27.1.1'
+    annotationProcessor "com.google.dagger:dagger-android-processor:$dagger_vers"
+    annotationProcessor "com.google.dagger:dagger-compiler:$dagger_vers"
+    implementation 'com.google.firebase:firebase-core:16.0.6'
+    implementation 'com.google.firebase:firebase-messaging:17.3.4'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation('com.crashlytics.sdk.android:crashlytics:2.9.5@aar') {
+        transitive = true;
+    }
+    implementation 'com.android.support:cardview-v7:27.1.1'
+    implementation 'me.relex:circleindicator:1.2.2'
+    implementation 'com.buyi.recyclerviewpagerindicator:recycler-viewpager-indicator:1.0'
+    implementation 'com.jakewharton.rxrelay2:rxrelay:2.1.0'
+    implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation 'com.google.android.gms:play-services-location:16.0.0'
+}
