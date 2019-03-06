@@ -31,8 +31,6 @@ public class StudentsApiProvider {
     private StudentsApiProvider() {
     }
 
-    // provide a default OkHttp instance with with timeout for connection, read of response and
-    // write of request
     private static OkHttpClient.Builder getClient(OkHttpClient.Builder builder,
                                                   long timeout,
                                                   TimeUnit timeUnit) {
