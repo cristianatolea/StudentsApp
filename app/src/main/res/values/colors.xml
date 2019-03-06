@@ -1,6 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorPrimary">#000000</color>
+    <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#D81B60</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="grey_action_bar">#909090</color>
+    <color name="white_transparency">#22FFFFFF</color>
+    <color name="white_transparency_2">#AAFFFFFF</color>
+    <color name="white_transparency_3">#FFFFFFFF</color>
+    <color name="green_light">#DCF0C7</color>
+    <color name="green_tab">#29CD84</color>
+    <color name="green_activity">#DCF0C7</color>
+    <color name="green_text_activity">#679A32</color>
+    <color name="green_conform">#75AC35</color>
+    <color name="red_alert_light">#FFCFCF</color>
+    <color name="red_alert_light_2">#FFECEF</color>
+    <color name="red_alert_dark">#FF7171</color>
+    <color name="pink_1">#FE5196</color>
+    <color name="pink_2">#FF4169</color>
+    <color name="orange_1">#F77062</color>
+    <color name="orange_reddish">#F7D7D0</color>
+    <color name="orange_2">#FF4A32</color>
+    <color name="orange_light">#FEF2DE</color>
+    <color name="orange_dark">#F5A623</color>
+    <color name="yellow_light">#FEFADE</color>
+    <color name="yellow_dark">#F3D459</color>
+    <color name="red">#D0021B</color>
+    <color name="blue_light">#D5F0FF</color>
+    <color name="blue_light_transparency">#77D5F0FF</color>
+    <color name="blue_button">#00A3FF</color>
+    <color name="blue_dark_radio">#2C77CE</color>
+    <color name="grey_btn_disabled">#D5D5D5</color>
+    <color name="grey_check">#D0D0D0</color>
+    <color name="grey_bk_light">#F6F6F6</color>
+    <color name="grey_light">#9B9B9B</color>
+    <color name="grey_dark">#4A4A4A</color>
+    <color name="spinner_grey">#E9E9E9</color>
+    <color name="darker_grey">#e7e7e7</color>
+
+    <color name="bg_dashboard">#f6f6f6</color>
+    <color name="blue_progress">#882679d9</color>
+    <color name="info_blue">#f0faff</color>
+    <color name="expired_color">#DB4C44</color>
+    <color name="notif_color">#80ffffff</color>
+    <color name="bg_read_notif">#FCFCFC</color>
+
+
 </resources>

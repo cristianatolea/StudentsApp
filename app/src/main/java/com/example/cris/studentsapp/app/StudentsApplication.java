@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 
-import com.crashlytics.android.Crashlytics;
 import com.example.cris.studentsapp.app.di.DaggerStudentsAppComponent;
 
 import javax.inject.Inject;
@@ -12,7 +11,6 @@ import javax.inject.Inject;
 import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
 import dagger.android.HasActivityInjector;
-import io.fabric.sdk.android.Fabric;
 
 public class StudentsApplication extends Application implements HasActivityInjector {
 
@@ -24,7 +22,7 @@ public class StudentsApplication extends Application implements HasActivityInjec
     @Override
     public void onCreate() {
         super.onCreate();
-        Fabric.with(this, new Crashlytics());
+
         mContext = getApplicationContext();
 
         DaggerStudentsAppComponent.builder()
