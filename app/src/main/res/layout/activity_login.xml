@@ -4,6 +4,111 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/blue_light"
     tools:context=".screen.login.view.activity.LoginActivity">
+
+    <ImageView
+        android:id="@+id/image_logo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="@dimen/margin_8"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="@dimen/margin_8"
+        android:backgroundTint="@color/blue_light"
+        android:src="@drawable/facultatea_automatica"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RelativeLayout
+        android:id="@+id/relative_username"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="@dimen/margin_20"
+        android:layout_marginTop="@dimen/margin_20"
+        android:layout_marginEnd="@dimen/margin_20"
+        android:layout_marginBottom="@dimen/margin_4"
+        android:background="@drawable/shape_rounded_corners_transparecy"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_logo">
+
+        <EditText
+            android:id="@+id/edit_text_username"
+            style="@style/TextInputLoginStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:hint="@string/login_username"
+            android:inputType="textEmailAddress"
+            android:lines="1"
+            android:paddingStart="@dimen/padding_8"
+            android:paddingEnd="@dimen/padding_8"
+            android:singleLine="true" />
+
+        <ImageView
+            android:id="@+id/image_username_validation"
+            android:layout_width="16dp"
+            android:layout_height="14dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="10dp"
+            android:scaleType="fitXY"
+            android:visibility="invisible" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relative_password"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="@dimen/margin_20"
+        android:layout_marginTop="@dimen/margin_4"
+        android:layout_marginEnd="@dimen/margin_20"
+        android:background="@drawable/shape_rounded_corners_transparecy"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relative_username">
+
+        <EditText
+            android:id="@+id/edit_text_password"
+            style="@style/TextInputLoginStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@+id/image_password_validation"
+            android:hint="@string/login_password"
+            android:imeOptions="actionDone"
+            android:inputType="textPassword"
+            android:lines="1"
+            android:paddingStart="@dimen/padding_8"
+            android:paddingEnd="@dimen/padding_8"
+            android:singleLine="true" />
+
+        <ImageView
+            android:id="@+id/image_password_validation"
+            android:layout_width="16dp"
+            android:layout_height="14dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="10dp"
+            android:scaleType="fitXY"
+            android:visibility="invisible" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/text_forgotten_password"
+        style="@style/TextStyle14Blue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_10"
+        android:padding="@dimen/padding_8"
+        android:text="@string/login_forgotten_password"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/relative_password" />
 
 </android.support.constraint.ConstraintLayout>

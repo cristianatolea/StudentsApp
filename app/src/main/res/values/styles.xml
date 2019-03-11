@@ -46,4 +46,19 @@
         <item name="spinBars">true</item>
         <item name="color">@color/grey_action_bar</item>
     </style>
+
+    <style name="TextInputLoginStyle">
+        <item name="android:textSize">@dimen/text_size_14</item>
+        <item name="android:textColor">@color/blue_darker</item>
+        <item name="android:fontFamily">@font/heebo</item>
+        <item name="android:textColorHint">@color/blue_lighter</item>
+        <item name="android:background">@null</item>
+    </style>
+
+    <style name="TextStyle14Blue">
+        <item name="android:textSize">@dimen/text_size_14</item>
+        <item name="android:textColor">@color/blue_darker</item>
+        <item name="android:fontFamily">@font/heebo</item>
+        <item name="android:background">@null</item>
+    </style>
 </resources>

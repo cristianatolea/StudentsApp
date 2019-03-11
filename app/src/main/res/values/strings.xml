@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">StudentsApp</string>
     <string name="alert_no_internet_connection">Ups! Se pare ca nu ai conexiune la internet!</string>
+    <string name="login_username">Username</string>
+    <string name="login_password">Password</string>
+    <string name="login_forgotten_password">Ati uitat numele de utilizator sau parola?</string>
 </resources>
