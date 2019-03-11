@@ -12,6 +12,7 @@ public class LocalSaving {
 
     private static final String SHARED_PREFERENCES_KEY = "seatbelt-key";
     private static final String LS_FIRST_OPEN = "ls-first-open";
+    private static final String LS_IS_LOGGED_IN = "ls-is-logged-in";
     private static final String LS_TOKEN = "ls-token";
     private static final String LS_USER_ID = "ls-user-id";
     private static final String LS_USER = "ls-user";
@@ -32,6 +33,18 @@ public class LocalSaving {
     public static boolean getLsFirstOpen(Context context) {
         return context.getSharedPreferences(SHARED_PREFERENCES_KEY, Context.MODE_PRIVATE)
                 .getBoolean(LS_FIRST_OPEN, false);
+    }
+
+    public static void setLsIsLoggedIn(Context context, boolean opened) {
+        context.getSharedPreferences(SHARED_PREFERENCES_KEY, Context.MODE_PRIVATE)
+                .edit()
+                .putBoolean(LS_IS_LOGGED_IN, opened)
+                .apply();
+    }
+
+    public static boolean getLsIsLoggedIn(Context context) {
+        return context.getSharedPreferences(SHARED_PREFERENCES_KEY, Context.MODE_PRIVATE)
+                .getBoolean(LS_IS_LOGGED_IN, false);
     }
 
 
@@ -59,35 +72,6 @@ public class LocalSaving {
                 .getString(LS_USER_ID, "");
     }
 
-    /* *//*Methods to get/set a list of objects to LS*//*
-    public static void saveUsersList(Context context, List<UserProfileResponse> eventList) {
-        context.getSharedPreferences(SHARED_PREFERENCES_KEY, Context.MODE_PRIVATE)
-                .edit()
-                .putString(LS_REMEMBER_TOKEN, new Gson().toJson(eventList))
-                .apply();
-    }
-
-    public static List<UserProfileResponse> getUsersList(Context context) {
-        return new Gson().fromJson(
-                context.getSharedPreferences(SHARED_PREFERENCES_KEY, Context.MODE_PRIVATE)
-                        .getString(LS_REMEMBER_TOKEN, ""),
-                new TypeToken<List<UserProfileResponse>>() {
-                }
-                        .getType());
-    }*/
-
-    public static int getWorkPoint(Context context) {
-        return context.getSharedPreferences(SHARED_PREFERENCES_KEY, Context.MODE_PRIVATE)
-                .getInt(LS_WORK_POINT, 0);
-    }
-
-    public static void setWorkPoint(Context context, int workPointId) {
-        context.getSharedPreferences(SHARED_PREFERENCES_KEY, Context.MODE_PRIVATE)
-                .edit()
-                .putInt(LS_WORK_POINT, workPointId)
-                .apply();
-    }
-
     public static void clear(Context context) {
         context.getSharedPreferences(SHARED_PREFERENCES_KEY, Context.MODE_PRIVATE)
                 .edit()
@@ -107,27 +91,4 @@ public class LocalSaving {
                 .getString(LS_REMEMBER_TOKEN, "");
     }
 
-    public static boolean getHasSavedAudit(Context context) {
-        return context.getSharedPreferences(SHARED_PREFERENCES_KEY, Context.MODE_PRIVATE)
-                .getBoolean(LS_HAS_SAVED_AUDIT, false);
-    }
-
-    public static void setHasSavedAudit(Context context, boolean hasSaved) {
-        context.getSharedPreferences(SHARED_PREFERENCES_KEY, Context.MODE_PRIVATE)
-                .edit()
-                .putBoolean(LS_HAS_SAVED_AUDIT, hasSaved)
-                .apply();
-    }
-
-    public static boolean getHasEntered(Context context) {
-        return context.getSharedPreferences(SHARED_PREFERENCES_KEY, Context.MODE_PRIVATE)
-                .getBoolean(LS_HAS_ENTERED, false);
-    }
-
-    public static void setHasEntered(Context context, boolean hasEntered) {
-        context.getSharedPreferences(SHARED_PREFERENCES_KEY, Context.MODE_PRIVATE)
-                .edit()
-                .putBoolean(LS_HAS_ENTERED, hasEntered)
-                .apply();
-    }
 }

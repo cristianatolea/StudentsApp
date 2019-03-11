@@ -7,6 +7,7 @@ import android.os.Bundle;
 import com.example.cris.studentsapp.R;
 import com.example.cris.studentsapp.screen.login.view.activity.LoginActivity;
 import com.example.cris.studentsapp.screen.main.view.activity.MainActivity;
+import com.example.cris.studentsapp.screen.welcome.view.activity.WelcomeActivity;
 import com.example.cris.studentsapp.utils.LocalSaving;
 
 public class SplashScreenActivity extends AppCompatActivity {
@@ -24,14 +25,20 @@ public class SplashScreenActivity extends AppCompatActivity {
             public void run() {
                 try {
                     sleep(3000);
-                    if (LocalSaving.getToken(SplashScreenActivity.this).equals("")) {
-                        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                    if (!LocalSaving.getLsIsLoggedIn(getApplicationContext())) {
+                        Intent intent = new Intent(getApplicationContext(), WelcomeActivity.class);
                         finish();
                         startActivity(intent);
-                    } else  {
-                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                        finish();
-                        startActivity(intent);
+                    } else {
+                        if (LocalSaving.getToken(SplashScreenActivity.this).equals("")) {
+                            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                            finish();
+                            startActivity(intent);
+                        } else {
+                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                            finish();
+                            startActivity(intent);
+                        }
                     }
                 } catch (InterruptedException e) {
                     e.printStackTrace();

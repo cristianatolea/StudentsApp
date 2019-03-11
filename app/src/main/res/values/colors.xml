@@ -32,6 +32,7 @@
     <color name="blue_button">#00A3FF</color>
     <color name="blue_darker">#2745B1</color>
     <color name="blue_lighter">#277AB1</color>
+    <color name="blue_lighter_two">#3FBFE6</color>
     <color name="blue_fade">#B900A3FF</color>
     <color name="blue_dark_radio">#2C77CE</color>
     <color name="grey_btn_disabled">#D5D5D5</color>

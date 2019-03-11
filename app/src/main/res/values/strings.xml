@@ -4,4 +4,13 @@
     <string name="login_username">Username</string>
     <string name="login_password">Password</string>
     <string name="login_forgotten_password">Ati uitat numele de utilizator sau parola?</string>
+    <string name="login_autentificare">Autentificare</string>
+    <string name="conturi_acces">Conturi acces 2018-2019</string>
+    <string name="welcome_title">Aplicatia de cursuri</string>
+    <string name="welcome_conturi_access_1">Pentru a afla user-ul de acces la aceasta platforma accesati pagina "Acces site cursuri" de pe platforma http://studenti.pub.ro. Parola initiala pentru anul 1 este student + ultimele 6 cifre din CNP sau pasaport. Va rugam schimbati parola dupa prima autentificare.</string>
+    <string name="acces_email">Acces email</string>
+    <string name="welcome_access_email_1">Fiecare student are un cont de e-mail asociat pe care va trebui sa il foloseasca in comunicarea universitara. E-mail-ul este de forma user_curs@stud.acs.upb.ro si poate fi accesat de la adresa http://outlook.com/upb.ro. Pentru a se activa contul de e-mail, trebuie sa schimbati parola folosind platforma de cursuri (https://acs.curs.pub.ro). Parola va fi aceeasi cu cea a platformei, dupa ce ati schimbat-o. Activarea se va realiza in aproximativ 3 ore dupa schimbarea parolei. Parola NU trebuie sa contina numele sau prenumele dvoastra.</string>
+    <string name="software_gratuit">Software gratuit</string>
+    <string name="welcome_software_gratuit_1">Puteti descarca in mod gratuit produse Microsoft (exceptand suita Microsoft Office) accesand adresa http://msdnaa.pub.ro si folosind ca date de autentificare adresa de e-mail din partea UPB si parola asociata acestuia.  Puteti descarca in mod gratuit suita Microsoft Office accesand adresa http://portal.office.com si folosind ca date de autentificare adresa de e-mail din partea UPB si parola asociata acestuia.</string>
+    <string name="welcome_validare_autentificare">Nu sunteti autentificat</string>
 </resources>
