@@ -24,7 +24,7 @@ public class SplashScreenActivity extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                    sleep(3000);
+                    sleep(2000);
                     if (!LocalSaving.getLsIsLoggedIn(getApplicationContext())) {
                         Intent intent = new Intent(getApplicationContext(), WelcomeActivity.class);
                         finish();

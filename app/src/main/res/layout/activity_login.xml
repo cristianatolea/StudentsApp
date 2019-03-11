@@ -121,7 +121,6 @@
         android:layout_marginTop="@dimen/margin_8"
         android:layout_marginStart="@dimen/margin_20"
         android:layout_marginEnd="@dimen/margin_20"
-
         android:text="@string/login_autentificare"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

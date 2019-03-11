@@ -18,7 +18,7 @@ public class LocalSaving {
     private static final String LS_USER = "ls-user";
     private static final String LS_USERS_LIST = " ls-users-list";
     private static final String LS_WORK_POINT = "ls-work-point";
-    private static final String LS_REMEMBER_TOKEN = " ls-remember-token";
+    private static final String LS_PRIVATE_TOKEN = " ls-private-token";
     private static final String LS_HAS_SAVED_AUDIT = " ls-has-saved-audit";
     private static final String LS_HAS_ENTERED = "ls-has-entered";
 
@@ -79,16 +79,16 @@ public class LocalSaving {
                 .apply();
     }
 
-    public static void setRememberMeToken(Context context, String rememberToken) {
+    public static void setPrivateToken(Context context, String rememberToken) {
         context.getSharedPreferences(SHARED_PREFERENCES_KEY, Context.MODE_PRIVATE)
                 .edit()
-                .putString(LS_REMEMBER_TOKEN, rememberToken)
+                .putString(LS_PRIVATE_TOKEN, rememberToken)
                 .apply();
     }
 
-    public static String getRememberMeToken(Context context) {
+    public static String getPrivateToken(Context context) {
         return context.getSharedPreferences(SHARED_PREFERENCES_KEY, Context.MODE_PRIVATE)
-                .getString(LS_REMEMBER_TOKEN, "");
+                .getString(LS_PRIVATE_TOKEN, "");
     }
 
 }

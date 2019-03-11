@@ -13,4 +13,6 @@
     <string name="software_gratuit">Software gratuit</string>
     <string name="welcome_software_gratuit_1">Puteti descarca in mod gratuit produse Microsoft (exceptand suita Microsoft Office) accesand adresa http://msdnaa.pub.ro si folosind ca date de autentificare adresa de e-mail din partea UPB si parola asociata acestuia.  Puteti descarca in mod gratuit suita Microsoft Office accesand adresa http://portal.office.com si folosind ca date de autentificare adresa de e-mail din partea UPB si parola asociata acestuia.</string>
     <string name="welcome_validare_autentificare">Nu sunteti autentificat</string>
+    <string name="alert_error_occured">Eroare</string>
+    <string name="alert_title">Alerta</string>
 </resources>
