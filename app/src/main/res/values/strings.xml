@@ -15,4 +15,6 @@
     <string name="welcome_validare_autentificare">Nu sunteti autentificat</string>
     <string name="alert_error_occured">Eroare</string>
     <string name="alert_title">Alerta</string>
+    <string name="date_autentificare">Date autentificare</string>
+    <string name="resetare_parola">Resetare parola</string>
 </resources>

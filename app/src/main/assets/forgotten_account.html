@@ -1,0 +1,59 @@
+<html lang="ro"><head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<script type="text/javascript" async="" src="https://www.gstatic.com/recaptcha/api2/v1552285980763/recaptcha__ro.js"></script><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<script src="password_recovery.js"></script>
+	<link rel="stylesheet" type="text/css" href="password_recovery.css">
+	<title>Resetare Parola</title>
+</head>
+
+<body>
+	<div class="container text-justify" style="min-height: 783px;">
+		<h3>Date autentificare</h3>
+		<hr>
+		<p class="info">Vă rugăm să alegeți metoda preferată de resetare a parolei 
+						(UserID, Email personal sau Nr. tel. mobil), apoi 
+						completați câmpul de mai jos. Toate trei provin de pe 
+						platforma <a href="http://studenti.pub.ro">studenti.pub.ro</a>:
+		</p><ul class="list">
+			<li><strong>UserID</strong>: poate fi găsit în pagina 
+				<strong>Acces site cursuri</strong></li>
+			<li><strong>Email personal</strong>: poate fi găsit în pagina 
+				<strong>Date personale</strong>, câmpul <i>E-mail</i></li>
+			<li><strong>Nr. tel. mobil</strong>: poate fi găsit în pagina 
+				<strong>Date personale</strong>, câmpul <i>Telefon mobil</i></li>
+		</ul><p></p>
+		<p class="info">Un cod de verificare va fi trimis către adresa de e-mail 
+						personală cu instrucțiuni de resetare a parolei.</p>
+		<br>
+
+		<form id="authform" role="form" abineguid="8E034777CDE444DE91EF14D01F865160">
+			<div class="form-group">
+				<label for="authmethod">Metoda de autentificare:</label>
+				<br>
+				<select class="form-control" id="authmethod" name="authmethod">
+					<option value="userid">UserID</option><option value="email">Email</option><option disabled="" value="telnum">Nr. tel. mobil (indisponibil)</option>				</select>
+			</div>
+			<div class="form-group">
+				<label for="authdata">Datele de autentificare:</label>
+				<input class="form-control" id="authdata" name="authdata" type="text" placeholder="UserID">
+			</div>
+			<div class="form-group">
+				<p class="authinfo" id="captchainfo"><strong>Sunteți un robot?</strong></p>
+				<div id="recaptcha" class="g-recaptcha" data-sitekey="6LfSkg8TAAAAAJiSt4T2JfAcG5wf2FSrIlYNjkZ9"><div style="width: 304px; height: 78px;"><div><iframe src="https://www.google.com/recaptcha/api2/anchor?ar=1&amp;k=6LfSkg8TAAAAAJiSt4T2JfAcG5wf2FSrIlYNjkZ9&amp;co=aHR0cHM6Ly9jcy5jdXJzLnB1Yi5ybzo0NDM.&amp;hl=ro&amp;v=v1552285980763&amp;size=normal&amp;cb=y02t6rrwo087" width="304" height="78" role="presentation" name="a-r0d93jo72j82" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox"></iframe></div><textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea></div></div>
+				<script type="text/javascript" src="https://www.google.com/recaptcha/api.js?hl=ro" async="" defer="">
+				</script>
+				<noscript class="bg-danger text-danger"><br/><b>Vă rugăm activați javascript 
+							în browser pentru a vă putea reseta parola.</b><br/><br/></noscript>
+			</div>
+			<div class="form-group">
+				<input class="btn btn-default" id="authbuttonreset" type="submit" disabled="" value="Reset">
+			</div>
+		</form>
+
+	</div>
+
+
+<div style="background-color: rgb(255, 255, 255); border: 1px solid rgb(204, 204, 204); box-shadow: rgba(0, 0, 0, 0.2) 2px 2px 3px; position: absolute; transition: visibility 0s linear 0.3s, opacity 0.3s linear 0s; opacity: 0; visibility: hidden; z-index: 2000000000; left: 0px; top: -10000px;"><div style="width: 100%; height: 100%; position: fixed; top: 0px; left: 0px; z-index: 2000000000; background-color: rgb(255, 255, 255); opacity: 0.05;"></div><div class="g-recaptcha-bubble-arrow" style="border: 11px solid transparent; width: 0px; height: 0px; position: absolute; pointer-events: none; margin-top: -11px; z-index: 2000000000;"></div><div class="g-recaptcha-bubble-arrow" style="border: 10px solid transparent; width: 0px; height: 0px; position: absolute; pointer-events: none; margin-top: -10px; z-index: 2000000000;"></div><div style="z-index: 2000000000; position: relative;"><iframe title="testare reCAPTCHA" src="https://www.google.com/recaptcha/api2/bframe?hl=ro&amp;v=v1552285980763&amp;k=6LfSkg8TAAAAAJiSt4T2JfAcG5wf2FSrIlYNjkZ9&amp;cb=9804dvexgdte" name="c-r0d93jo72j82" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox" style="width: 100%; height: 100%;"></iframe></div></div></body><div class="abineContentPanel" style="background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: transparent !important; margin: 0px !important; padding: 0px !important; display: none; opacity: 1 !important; z-index: 2147483647 !important; position: absolute !important; top: 20px !important; right: 20px !important; overflow: hidden !important; border-width: 0px !important; visibility: visible !important;"><iframe class="abineContentFrame" width="310px" allowtransparency="true" frameborder="0" height="0px" scrolling="no" src="chrome-extension://caljgklbbfbcjjanaijlacgncafpegll/html/inlineForm.html?abine38764606doNotRemove" id="abine38764606doNotRemove" style="display:block !important;position:relative !important;background:transparent !important;border-width:0px !important;left:0px !important;top:0px !important;visibility:visible !important;opacity:1 !important;filter:alpha(opacity:100) !important;margin:0 !important;padding:0 !important;height:0px !important;width:310px"></iframe></div></html>

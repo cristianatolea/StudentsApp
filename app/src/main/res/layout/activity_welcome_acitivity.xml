@@ -12,7 +12,7 @@
 
         <TextView
             android:id="@+id/text_title"
-            style="@style/TextStyleTitle"
+            style="@style/TextStyleTitleBlueLighter"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:padding="@dimen/padding_8"
@@ -23,7 +23,7 @@
 
         <TextView
             android:id="@+id/text_conturi_acces"
-            style="@style/TextStyleSubtitle"
+            style="@style/TextStyleSubtitleBlueLighter"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_20"
@@ -53,7 +53,7 @@
 
         <TextView
             android:id="@+id/text_acces_email"
-            style="@style/TextStyleSubtitle"
+            style="@style/TextStyleSubtitleBlueLighter"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_20"
@@ -83,7 +83,7 @@
 
         <TextView
             android:id="@+id/text_software_gratuit"
-            style="@style/TextStyleSubtitle"
+            style="@style/TextStyleSubtitleBlueLighter"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_20"
@@ -113,7 +113,7 @@
 
         <TextView
             android:id="@+id/text_validare_autentificare"
-            style="@style/TextStyleSubtitle"
+            style="@style/TextStyleSubtitleBlueLighter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="@dimen/padding_8"
@@ -124,7 +124,7 @@
 
         <TextView
             android:id="@+id/text_autentificare"
-            style="@style/TextStyleTitleLight"
+            style="@style/TextStyleTitleBlueLight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/login_autentificare"

@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#000000</color>
-    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorPrimary">#22FFFFFF</color>
+    <color name="colorPrimaryDark">#22FFFFFF</color>
     <color name="colorAccent">#D81B60</color>
 
     <color name="white">#FFFFFF</color>
     <color name="grey_action_bar">#909090</color>
+    <color name="grey_darker">#383636</color>
     <color name="white_transparency">#22FFFFFF</color>
     <color name="white_transparency_2">#AAFFFFFF</color>
     <color name="white_transparency_3">#FFFFFFFF</color>
