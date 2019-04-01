@@ -4,4 +4,9 @@ public class Constants {
     public static final String KEY_ADD_TASK = "moodle-add-task";
     public static final String KEY_OPEN_NOTIFICATIONS_SCREEN = "moodle-open-notifications-screen";
     public static final String KEY_OPEN_EQUIPMENTS = "moodle-open-eq";
+    public static final String URL_STUDENTI_PUB = "http://studenti.pub.ro";
+    public static final String URL_OUTLOOK = "http://outlook.com/upb.ro";
+    public static final String URL_ACS= "http://acs.curs.pub.ro";
+    public static final String URL_MICROSOFT = "http://msdnaa.pub.ro";
+    public static final String URL_PORTAL = "http://portal.office.com";
 }

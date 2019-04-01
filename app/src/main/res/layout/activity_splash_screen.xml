@@ -3,15 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blue_light"
+    android:background="@drawable/shape_gradient_background"
     android:fitsSystemWindows="true"
     tools:context=".screen.splashscreen.SplashScreenActivity">
 
     <ImageView
-        android:layout_width="293dp"
-        android:layout_height="130dp"
+        android:layout_width="200dp"
+        android:layout_height="210dp"
         android:layout_gravity="center"
         android:scaleType="fitXY"
-        android:src="@drawable/logo" />
+        android:src="@drawable/acs_logo" />
 
 </FrameLayout>

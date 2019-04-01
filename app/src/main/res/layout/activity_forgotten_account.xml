@@ -49,7 +49,7 @@
 
                 <TextView
                     android:id="@+id/text_screen_title"
-                    style="@style/TextStyleTitleBlueLighter"
+                    style="@style/TextStyleTitle22BlueLighter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="false"

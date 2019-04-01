@@ -98,8 +98,8 @@ public class StudentsApiProvider {
             mOkHttpClient.addInterceptor(getInterceptor());
         }
 
-        mOkHttpClient.authenticator(new RefreshTokenAuthentication(context));
-        mOkHttpClient.addInterceptor(new HeaderTokenInterceptor(context));
+//        mOkHttpClient.authenticator(new RefreshTokenAuthentication(context));
+//        mOkHttpClient.addInterceptor(new HeaderTokenInterceptor(context));
 
         retrofit.client(mOkHttpClient.build());
         return retrofit.build().create(apiClass);

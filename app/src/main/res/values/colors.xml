@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#22FFFFFF</color>
-    <color name="colorPrimaryDark">#22FFFFFF</color>
+    <color name="colorPrimary">#8B8484</color>
+    <color name="colorPrimaryDark">#3A3838</color>
     <color name="colorAccent">#D81B60</color>
 
     <color name="white">#FFFFFF</color>
@@ -31,8 +31,9 @@
     <color name="blue_light">#D5F0FF</color>
     <color name="blue_light_transparency">#77D5F0FF</color>
     <color name="blue_button">#00A3FF</color>
-    <color name="blue_darker">#2745B1</color>
-    <color name="blue_lighter">#277AB1</color>
+    <color name="blue_dark">#0C1E61</color>
+    <color name="blue_lighter_dark">#2745B1</color>
+    <color name="blue_lighter">#9BD1F7</color>
     <color name="blue_lighter_two">#3FBFE6</color>
     <color name="blue_fade">#B900A3FF</color>
     <color name="blue_dark_radio">#2C77CE</color>

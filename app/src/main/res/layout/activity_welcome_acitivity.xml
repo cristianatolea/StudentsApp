@@ -1,142 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/shape_gradient_background"
     tools:context=".screen.welcome.view.activity.WelcomeActivity">
 
-    <android.support.constraint.ConstraintLayout
+    <TextView
+        android:id="@+id/text_title"
+        style="@style/TextStyleTitle22BlueLighter"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_20"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="@dimen/margin_20"
+        android:text="@string/welcome_title"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@id/text_autentificare"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/text_autentificare"
+        style="@style/TextStyleTitle20BlueLight"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_20"
+        android:layout_marginStart="@dimen/margin_20"
+        android:layout_marginEnd="@dimen/margin_20"
+        android:layout_marginBottom="@dimen/margin_10"
+        android:background="@drawable/shape_blue_gradient_background"
+        android:text="@string/login_autentificare"
+        android:textAlignment="center"
+        android:padding="@dimen/padding_4"
+        app:layout_constraintBottom_toTopOf="@+id/guideline3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_title"
+        app:layout_constraintVertical_bias="1.0" />
 
-        <TextView
-            android:id="@+id/text_title"
-            style="@style/TextStyleTitleBlueLighter"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/padding_8"
-            android:text="@string/welcome_title"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <RelativeLayout
+        android:id="@+id/relative_tablayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/margin_20"
+        android:layout_marginTop="@dimen/margin_20"
+        android:layout_marginEnd="@dimen/margin_20"
+        android:layout_marginBottom="@dimen/margin_20"
+        android:background="@drawable/shape_rounded_corners_transparecy"
+        android:focusableInTouchMode="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_autentificare">
 
-        <TextView
-            android:id="@+id/text_conturi_acces"
-            style="@style/TextStyleSubtitleBlueLighter"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_20"
-            android:layout_marginTop="@dimen/margin_20"
-            android:layout_marginEnd="@dimen/margin_20"
-            android:text="@string/conturi_acces"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/text_title" />
-
-        <LinearLayout
-            android:id="@+id/linear_conturi_acces"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/text_conturi_acces">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/padding_8"
-                android:text="@string/welcome_conturi_access_1" />
-
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/text_acces_email"
-            style="@style/TextStyleSubtitleBlueLighter"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_20"
-            android:layout_marginTop="@dimen/margin_20"
-            android:layout_marginEnd="@dimen/margin_20"
-            android:text="@string/acces_email"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/linear_conturi_acces" />
-
-        <LinearLayout
-            android:id="@+id/linear_acces_email"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/text_acces_email">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/padding_8"
-                android:text="@string/welcome_access_email_1" />
-
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/text_software_gratuit"
-            style="@style/TextStyleSubtitleBlueLighter"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_20"
-            android:layout_marginTop="@dimen/margin_20"
-            android:layout_marginEnd="@dimen/margin_20"
-            android:text="@string/software_gratuit"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/linear_acces_email" />
-
-        <LinearLayout
-            android:id="@+id/linear_software_gratuit"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/text_software_gratuit">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/padding_8"
-                android:text="@string/welcome_software_gratuit_1" />
-
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/text_validare_autentificare"
-            style="@style/TextStyleSubtitleBlueLighter"
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tab_dots"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="@dimen/padding_8"
-            android:text="@string/welcome_validare_autentificare"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/linear_software_gratuit" />
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="end"
+            app:tabBackground="@drawable/tab_selector"
+            app:tabGravity="center"
+            app:tabIndicatorHeight="0dp" />
 
-        <TextView
-            android:id="@+id/text_autentificare"
-            style="@style/TextStyleTitleBlueLight"
-            android:layout_width="wrap_content"
+        <android.support.v4.view.ViewPager
+            android:id="@+id/slider_view_pager"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/login_autentificare"
-            android:paddingStart="@dimen/padding_16"
-            android:paddingEnd="@dimen/padding_16"
-            android:layout_marginBottom="@dimen/margin_20"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/text_validare_autentificare"
-            app:layout_constraintVertical_bias="0.0" />
+            android:paddingLeft="@dimen/margin_20"
+            android:paddingTop="@dimen/margin_20"
+            android:paddingRight="@dimen/margin_20" />
+    </RelativeLayout>
 
-    </android.support.constraint.ConstraintLayout>
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
 
-</ScrollView>
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.25" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.9" />
+
+
+</android.support.constraint.ConstraintLayout>
+

@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.cris.studentsapp.R;
 import com.example.cris.studentsapp.base.BaseActivity;
@@ -61,6 +62,9 @@ public class LoginActivity extends BaseActivity implements
     @Override
     public void onError(String errorMessage) {
         AlertUtils.alert(LoginActivity.this, getString(R.string.alert_title), errorMessage);
+        mButtonLogin.setEnabled(true);
+        mEditTextUsername.setEnabled(true);
+        mEditTextPassword.setEnabled(true);
     }
 
     @Override
@@ -84,7 +88,9 @@ public class LoginActivity extends BaseActivity implements
 
     @Override
     public void onLoginFailed(String error) {
-
+        mButtonLogin.setEnabled(true);
+        mEditTextUsername.setEnabled(true);
+        mEditTextPassword.setEnabled(true);
     }
 
     @Override
@@ -94,13 +100,15 @@ public class LoginActivity extends BaseActivity implements
                 startActivity(new Intent(LoginActivity.this, ForgottenAccountActivity.class));
                 break;
             case R.id.button_login:
-                if (!("".equals(mPassword)) && !("".equals(mUsername))) {
+                mUsername = mEditTextUsername.getText().toString();
+                mPassword = mEditTextPassword.getText().toString();
+                if (!("".equals(mPassword) && "".equals(mUsername))) {
                     mButtonLogin.setEnabled(false);
                     mEditTextUsername.setEnabled(false);
                     mEditTextPassword.setEnabled(false);
-                    mUsername = mEditTextUsername.getText().toString();
-                    mPassword = mEditTextPassword.getText().toString();
                     mPresenter.login(mUsername, mPassword);
+                } else {
+                    Toast.makeText(this, "Log err", Toast.LENGTH_SHORT).show();
                 }
                 break;
         }
