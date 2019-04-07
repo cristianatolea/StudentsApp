@@ -20,7 +20,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class StudentsApiProvider {
 
-    private static final long RETROFIT_TIME_OUT = 30;
+    private static final long RETROFIT_TIME_OUT = 300;
 
     private String mBaseUrl;
     private OkHttpClient.Builder mOkHttpClient;

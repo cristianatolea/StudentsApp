@@ -15,6 +15,7 @@ public class LoginModel implements ILoginModel {
 
     @Override
     public Observable<LoginResponseEntity> login(LoginRequestEntity requestEntity) {
-        return mApiInterface.login(requestEntity);
+        return mApiInterface.login(requestEntity.getUsername(),
+                requestEntity.getPassword());
     }
 }

@@ -10,7 +10,7 @@ import com.google.gson.Gson;
 
 public class LocalSaving {
 
-    private static final String SHARED_PREFERENCES_KEY = "seatbelt-key";
+    private static final String SHARED_PREFERENCES_KEY = "moodle-key";
     private static final String LS_FIRST_OPEN = "ls-first-open";
     private static final String LS_IS_LOGGED_IN = "ls-is-logged-in";
     private static final String LS_TOKEN = "ls-token";

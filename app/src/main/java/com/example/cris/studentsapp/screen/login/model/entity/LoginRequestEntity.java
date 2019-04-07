@@ -6,7 +6,7 @@ public class LoginRequestEntity {
 
     @SerializedName("username")
     private String mUsername;
-    @SerializedName("passowrd")
+    @SerializedName("password")
     private String mPassword;
 
     public String getUsername() {

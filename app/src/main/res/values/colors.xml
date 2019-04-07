@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#8B8484</color>
-    <color name="colorPrimaryDark">#3A3838</color>
+    <color name="colorPrimary">#3C3C47</color>
+    <color name="colorPrimaryDark">#2A2A31</color>
     <color name="colorAccent">#D81B60</color>
 
     <color name="white">#FFFFFF</color>
     <color name="grey_action_bar">#909090</color>
     <color name="grey_darker">#383636</color>
+    <color name="grey_dark_background">#2A2A31</color>
     <color name="white_transparency">#22FFFFFF</color>
     <color name="white_transparency_2">#AAFFFFFF</color>
     <color name="white_transparency_3">#FFFFFFFF</color>
@@ -44,6 +45,8 @@
     <color name="grey_dark">#4A4A4A</color>
     <color name="spinner_grey">#E9E9E9</color>
     <color name="darker_grey">#e7e7e7</color>
+    <color name="transparent">#00000000</color>
+    <color name="divider_grey">#3C3C47</color>
 
     <color name="bg_dashboard">#f6f6f6</color>
     <color name="blue_progress">#882679d9</color>

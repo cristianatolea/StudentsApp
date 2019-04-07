@@ -20,6 +20,7 @@ import com.example.cris.studentsapp.screen.login.presenter.ILoginPresenter;
 import com.example.cris.studentsapp.screen.login.view.delegate.ILoginViewDelegate;
 import com.example.cris.studentsapp.screen.main.view.activity.MainActivity;
 import com.example.cris.studentsapp.utils.AlertUtils;
+import com.example.cris.studentsapp.utils.LocalSaving;
 import com.google.firebase.iid.FirebaseInstanceId;
 
 import java.io.IOException;
@@ -106,7 +107,9 @@ public class LoginActivity extends BaseActivity implements
                     mButtonLogin.setEnabled(false);
                     mEditTextUsername.setEnabled(false);
                     mEditTextPassword.setEnabled(false);
-                    mPresenter.login(mUsername, mPassword);
+                    //mPresenter.login(mUsername, mPassword);
+                    LocalSaving.setLsFirstOpen(this, true);
+                    startActivity(new Intent(this, MainActivity.class));
                 } else {
                     Toast.makeText(this, "Log err", Toast.LENGTH_SHORT).show();
                 }
@@ -127,6 +130,9 @@ public class LoginActivity extends BaseActivity implements
 
         mTextForgottenPassword.setOnClickListener(this);
         mButtonLogin.setOnClickListener(this);
+
+        mEditTextUsername.setText("admin");
+        mEditTextPassword.setText("Q1w2e3r4t5.");
 
 //        mEditTextUsername.addTextChangedListener(new TextWatcher() {
 //            @Override
