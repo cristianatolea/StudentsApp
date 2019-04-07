@@ -4,6 +4,8 @@ import com.example.cris.studentsapp.screen.forgottenaccount.di.ForgottenAccountM
 import com.example.cris.studentsapp.screen.forgottenaccount.view.activity.ForgottenAccountActivity;
 import com.example.cris.studentsapp.screen.login.di.LoginModule;
 import com.example.cris.studentsapp.screen.login.view.activity.LoginActivity;
+import com.example.cris.studentsapp.screen.logout.di.LogoutModule;
+import com.example.cris.studentsapp.screen.logout.view.activity.LogoutActivity;
 import com.example.cris.studentsapp.screen.main.di.MainModule;
 import com.example.cris.studentsapp.screen.main.view.activity.MainActivity;
 import com.example.cris.studentsapp.screen.welcome.di.WelcomeModule;
@@ -26,4 +28,7 @@ abstract class ActivityBuilder {
 
     @ContributesAndroidInjector(modules = {WelcomeModule.class})
     abstract WelcomeActivity buildWelcomeActivity();
+
+    @ContributesAndroidInjector(modules = {LogoutModule.class})
+    abstract LogoutActivity buildLogoutActivity();
 }

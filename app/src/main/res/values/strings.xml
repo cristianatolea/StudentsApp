@@ -22,7 +22,12 @@
     <string name="resetare_parola">Resetare parola</string>
     <string name="welcome_conturi_access_1">Pentru a afla user-ul de acces la aceasta platforma accesati pagina "Acces site cursuri" de pe platforma </string>
     <string name="welcome_conturi_access_2">http://studenti.pub.ro</string>
-    <string name="welcome_conturi_access_3" >. Parola initiala pentru anul 1 este student + ultimele 6 cifre din CNP sau pasaport. Va rugam schimbati parola dupa prima autentificare.</string>
+    <string name="welcome_conturi_access_3">. Parola initiala pentru anul 1 este student + ultimele 6 cifre din CNP sau pasaport. Va rugam schimbati parola dupa prima autentificare.</string>
     <string name="dashboard">Dashboard</string>
     <string name="logout">Logout</string>
+    <string name="profile">Profile</string>
+    <string name="settings">Settings</string>
+    <string name="notifications">Notifications</string>
+    <string name="messenger">Messenger</string>
+    <string name="back_click">Double click to close the app</string>
 </resources>

@@ -2,6 +2,7 @@ package com.example.cris.studentsapp.screen.main.view.activity;
 
 import android.animation.ObjectAnimator;
 import android.content.Intent;
+import android.os.Handler;
 import android.support.design.widget.AppBarLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
@@ -19,14 +20,20 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.cris.studentsapp.R;
 import com.example.cris.studentsapp.base.BaseActivity;
 import com.example.cris.studentsapp.screen.dashboard.view.fragment.DashboardFragment;
+import com.example.cris.studentsapp.screen.logout.view.activity.LogoutActivity;
 import com.example.cris.studentsapp.screen.main.model.entity.DrawerItem;
 import com.example.cris.studentsapp.screen.main.presenter.IMainPresenter;
 import com.example.cris.studentsapp.screen.main.view.adapter.NavDrawerListAdapter;
 import com.example.cris.studentsapp.screen.main.view.delegate.IMainViewDelegate;
+import com.example.cris.studentsapp.screen.messages.view.fragment.MessagesFragment;
+import com.example.cris.studentsapp.screen.notifications.view.fragment.NotificationsFragment;
+import com.example.cris.studentsapp.screen.profile.view.fragment.ProfileFragment;
+import com.example.cris.studentsapp.screen.settings.view.fragment.SettingsFragment;
 import com.example.cris.studentsapp.screen.splashscreen.SplashScreenActivity;
 import com.example.cris.studentsapp.utils.Constants;
 import com.example.cris.studentsapp.utils.DrawerToggleAnimatorHelper;
@@ -45,7 +52,7 @@ import static com.example.cris.studentsapp.utils.UIHelper.hideKeyboard;
 public class MainActivity extends BaseActivity implements
         IMainViewDelegate,
         View.OnClickListener,
-        NavDrawerListAdapter.OnMenuItemClickListener{
+        NavDrawerListAdapter.OnMenuItemClickListener {
 
     private boolean mOpenNotifications = false;
     private Bundle mBundle;
@@ -60,6 +67,8 @@ public class MainActivity extends BaseActivity implements
     private NavDrawerListAdapter mBottomAdapter;
     private ImageView mImageButtonDrawer;
     private ProgressBar mProgressBar;
+
+    private boolean doubleBackToExitPressedOnce = false;
 
     @Inject
     IMainPresenter mPresenter;
@@ -117,42 +126,79 @@ public class MainActivity extends BaseActivity implements
     }
 
     @Override
+    public void onBackPressed() {
+        try {
+            if (mDrawerLayout.isDrawerOpen(GravityCompat.START))
+                mDrawerLayout.closeDrawer(GravityCompat.START);
+            else {
+                int backStackCount = getSupportFragmentManager().getBackStackEntryCount();
+                if (backStackCount > 1) {
+                    super.onBackPressed();
+                } else {
+                    if (doubleBackToExitPressedOnce) {
+                        super.onBackPressed();
+                        finish();
+                        return;
+                    }
+
+                    doubleBackToExitPressedOnce = true;
+                    Toast.makeText(MainActivity.this, getString(R.string.back_click), Toast.LENGTH_SHORT).show();
+
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            doubleBackToExitPressedOnce = false;
+                        }
+                    }, 2000);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
     public void onDrawerItemClick(int position) {
         mBottomAdapter.onFocus(-1);
         mTopAdapter.onFocus(position);
         mBottomAdapter.notifyDataSetChanged();
         mTopAdapter.notifyDataSetChanged();
         switch (position) {
-//            case 0:
-//                if (!(lastFragment() instanceof DashboardFragment)) {
-//                    addFragment(new DashboardFragment(), R.id.frame_main_content);
-//                    hideKeyboard(MainActivity.this, mDrawerLayout);
-//                }
-//                setToolbarTitle(R.string.dashboard);
-//                break;
-//            case 1:
-//                if (!(lastFragment() instanceof OrdersFrgament)) {
-//                    addFragment(new OrdersFrgament(), R.id.frame_main_content);
-//                    hideKeyboard(MainActivity.this, mDrawerLayout);
-//                }
-//                setToolbarTitle(R.string.orders);
-//                break;
-//            case 2:
-//                if (!(lastFragment() instanceof RouteListFragment)) {
-//                    addFragment(new RouteListFragment(), R.id.frame_main_content);
-//                    hideKeyboard(MainActivity.this, mDrawerLayout);
-//                }
-//                setToolbarTitle(R.string.routes_list);
-//                break;
-//            case 3:
-//                if (!(lastFragment() instanceof ProfileFragment)) {
-//                    addFragment(new ProfileFragment(), R.id.frame_main_content);
-//                    hideKeyboard(MainActivity.this, mDrawerLayout);
-//                }
-//                setToolbarTitle(R.string.profile);
-//                break;
-//            case 4:
-//                break;
+            case 0:
+                if (!(lastFragment() instanceof DashboardFragment)) {
+                    addFragment(new DashboardFragment(), R.id.frame_main_content);
+                    hideKeyboard(MainActivity.this, mDrawerLayout);
+                }
+                setToolbarTitle(R.string.dashboard);
+                break;
+            case 1:
+                if (!(lastFragment() instanceof ProfileFragment)) {
+                    addFragment(new ProfileFragment(), R.id.frame_main_content);
+                    hideKeyboard(MainActivity.this, mDrawerLayout);
+                }
+                setToolbarTitle(R.string.profile);
+                break;
+            case 2:
+                if (!(lastFragment() instanceof SettingsFragment)) {
+                    addFragment(new SettingsFragment(), R.id.frame_main_content);
+                    hideKeyboard(MainActivity.this, mDrawerLayout);
+                }
+                setToolbarTitle(R.string.settings);
+                break;
+            case 3:
+                if (!(lastFragment() instanceof NotificationsFragment)) {
+                    addFragment(new NotificationsFragment(), R.id.frame_main_content);
+                    hideKeyboard(MainActivity.this, mDrawerLayout);
+                }
+                setToolbarTitle(R.string.notifications);
+                break;
+            case 4:
+                if (!(lastFragment() instanceof MessagesFragment)) {
+                    addFragment(new MessagesFragment(), R.id.frame_main_content);
+                    hideKeyboard(MainActivity.this, mDrawerLayout);
+                }
+                setToolbarTitle(R.string.messenger);
+                break;
         }
         mDrawerLayout.closeDrawer(Gravity.START, true);
     }
@@ -182,24 +228,21 @@ public class MainActivity extends BaseActivity implements
                 R.drawable.ic_dashboard);
         dashboard.setOnFocus(true);
         mTopDrawerItems.add(dashboard);
-//        mTopDrawerItems.add(new DrawerItem(getString(R.string.orders),
-//                R.drawable.ic_orders,
-//                R.drawable.ic_orders_fade));
-//        mTopDrawerItems.add(new DrawerItem(getString(R.string.route_list),
-//                R.drawable.ic_route_list,
-//                R.drawable.ic_route_list_fade));
-//        mTopDrawerItems.add(new DrawerItem(getString(R.string.profile),
-//                R.drawable.ic_profile,
-//                R.drawable.ic_profile_fade));
-//        mTopDrawerItems.add(new DrawerItem(getString(R.string.help),
-//                R.drawable.ic_help,
-//                R.drawable.ic_help_fade));
-//        mBottomDrawerItems.add(new DrawerItem((getString(R.string.language)),
-//                R.drawable.ic_language,
-//                R.drawable.ic_language_fade));
-        mBottomDrawerItems.add(new DrawerItem((getString(R.string.logout)),
-                R.drawable.ic_settings,
+        mTopDrawerItems.add(new DrawerItem(getString(R.string.profile),
+                R.drawable.ic_profile_blue,
+                R.drawable.ic_profile));
+        mTopDrawerItems.add(new DrawerItem(getString(R.string.settings),
+                R.drawable.ic_settings_blue,
                 R.drawable.ic_settings));
+        mTopDrawerItems.add(new DrawerItem(getString(R.string.notifications),
+                R.drawable.ic_notifications_blue,
+                R.drawable.ic_notifications));
+        mTopDrawerItems.add(new DrawerItem(getString(R.string.messenger),
+                R.drawable.ic_message_blue,
+                R.drawable.ic_message));
+        mBottomDrawerItems.add(new DrawerItem((getString(R.string.logout)),
+                R.drawable.ic_logout_blue,
+                R.drawable.ic_logout));
     }
 
     private void populateMenu() {
@@ -220,6 +263,8 @@ public class MainActivity extends BaseActivity implements
                 mBottomAdapter.onFocus(position);
                 mBottomAdapter.notifyDataSetChanged();
                 mTopAdapter.notifyDataSetChanged();
+
+                startActivity(new Intent(MainActivity.this, LogoutActivity.class));
             }
         };
         mBottomAdapter = new NavDrawerListAdapter(this,
