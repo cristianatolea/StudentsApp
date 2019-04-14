@@ -30,4 +30,9 @@
     <string name="notifications">Notifications</string>
     <string name="messenger">Messenger</string>
     <string name="back_click">Double click to close the app</string>
+    <string name="courses">Courses</string>
+    <string name="news">News</string>
+    <string name="discussions">Discussions</string>
+    <string name="schedule">Schedule</string>
+    <string name="deadlines">Deadlines</string>
 </resources>

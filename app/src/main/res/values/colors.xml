@@ -38,6 +38,7 @@
     <color name="blue_lighter_two">#3FBFE6</color>
     <color name="blue_fade">#B900A3FF</color>
     <color name="blue_dark_radio">#2C77CE</color>
+    <color name="blue_light_background">#3F3F92</color>
     <color name="grey_btn_disabled">#D5D5D5</color>
     <color name="grey_check">#D0D0D0</color>
     <color name="grey_bk_light">#F6F6F6</color>
