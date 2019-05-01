@@ -22,4 +22,9 @@ public class SettingsPresenter implements ISettingsPresenter {
         mViewDelegate = viewDelegate;
         mCompositeDisposable = new CompositeDisposable();
     }
+
+    @Override
+    public void changePassword() {
+
+    }
 }

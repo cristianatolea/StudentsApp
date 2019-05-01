@@ -32,8 +32,9 @@
             android:id="@+id/frame_main_content"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/app_bar_layout"
-            android:background="@drawable/shape_gradient_background"/>
+            android:layout_below="@id/app_bar_layout" />
+            <!--android:background="@drawable/shape_gradient_background"-->
+
 
         <ProgressBar
             android:id="@+id/progress_bar"

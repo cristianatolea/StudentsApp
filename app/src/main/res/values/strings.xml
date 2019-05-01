@@ -35,4 +35,21 @@
     <string name="discussions">Discussions</string>
     <string name="schedule">Schedule</string>
     <string name="deadlines">Deadlines</string>
+    <string name="details">Details</string>
+    <string name="email">Email</string>
+    <string name="country">Country</string>
+    <string name="city">City</string>
+    <string name="year">Year</string>
+    <string name="faculty">Faculty</string>
+    <string name="cycle_of_study">Cycle of study</string>
+    <string name="specialization">Specialization</string>
+    <string name="year_of_study">Year of study</string>
+    <string name="group">Group</string>
+    <string name="change_password">Change password</string>
+    <string name="hint_change_password">Parola trebuie să conţină cel puţin 8 caractere, cel puţin 1 cifre, cel puţin 1 litere mici, cel puţin 1 majuscule, cel puţin 1 caractere non-alfanumerice</string>
+    <string name="current_password">Current password</string>
+    <string name="new_password">New password</string>
+    <string name="confirm_password">Confirm new passowrd</string>
+    <string name="logout_everywhere">Logout from every device</string>
+    <string name="cancel">Cancel</string>
 </resources>
