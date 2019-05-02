@@ -4,6 +4,8 @@ import com.example.cris.studentsapp.screen.courses.di.CoursesModule;
 import com.example.cris.studentsapp.screen.courses.view.fragment.CoursesFragment;
 import com.example.cris.studentsapp.screen.dashboard.di.DashboardModule;
 import com.example.cris.studentsapp.screen.dashboard.view.fragment.DashboardFragment;
+import com.example.cris.studentsapp.screen.deadlines.di.DeadlinesModule;
+import com.example.cris.studentsapp.screen.deadlines.view.fragment.DeadlinesFragment;
 import com.example.cris.studentsapp.screen.messages.di.MessagesModule;
 import com.example.cris.studentsapp.screen.messages.view.fragment.MessagesFragment;
 import com.example.cris.studentsapp.screen.notifications.di.NotificationsModule;
@@ -36,4 +38,7 @@ abstract class FragmentBuilder {
 
     @ContributesAndroidInjector(modules = {CoursesModule.class})
     abstract CoursesFragment buildCoursesFragment();
+
+    @ContributesAndroidInjector(modules = {DeadlinesModule.class})
+    abstract DeadlinesFragment buildDeadlinesFragment();
 }

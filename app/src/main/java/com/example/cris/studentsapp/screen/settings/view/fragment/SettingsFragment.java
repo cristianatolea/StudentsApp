@@ -71,7 +71,7 @@ public class SettingsFragment extends BaseFragment implements
     private void initView(View view) {
         mInputCurrentPassword = view.findViewById(R.id.input_current_password);
         mInputNewPassword = view.findViewById(R.id.input_new_password);
-        mInputConfirmPassword = view.findViewById(R.id.text_confirm_password);
+        mInputConfirmPassword = view.findViewById(R.id.input_confirm_password);
         LinearLayout linearCheckbox = view.findViewById(R.id.linear_check_logout);
         mCheckBoxLogout = view.findViewById(R.id.checkbox_logout);
         Button buttonChangePassword = view.findViewById(R.id.button_change);

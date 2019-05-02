@@ -1,5 +1,6 @@
 package com.example.cris.studentsapp.screen.dashboard.view.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -17,6 +18,7 @@ import com.example.cris.studentsapp.screen.dashboard.model.entity.DashboardItem;
 import com.example.cris.studentsapp.screen.dashboard.presenter.IDashboardPresenter;
 import com.example.cris.studentsapp.screen.dashboard.view.adapter.DashboardAdapter;
 import com.example.cris.studentsapp.screen.dashboard.view.delegate.IDashboardViewDelegate;
+import com.example.cris.studentsapp.screen.dashboarditemactivity.DashboardItemActivity;
 
 import java.util.List;
 
@@ -25,6 +27,8 @@ import javax.inject.Inject;
 public class DashboardFragment extends BaseFragment implements
         IDashboardViewDelegate,
         DashboardAdapter.OnDashboardItemClickListener {
+
+    public static final String BUNDLE_FRAGMENT_NO = "bundle-dashboard-item";
 
     private RecyclerView mRvDashboard;
     private DashboardAdapter mAdapter;
@@ -82,22 +86,24 @@ public class DashboardFragment extends BaseFragment implements
 
     @Override
     public void onDashboardItemClick(int position) {
+        Intent intent = new Intent(getActivity(), DashboardItemActivity.class);
         switch (position) {
             case 0:
-                Toast.makeText(getContext(), "0", Toast.LENGTH_SHORT).show();
+                intent.putExtra(BUNDLE_FRAGMENT_NO, 0);
                 break;
             case 1:
-                Toast.makeText(getContext(), "1", Toast.LENGTH_SHORT).show();
+                intent.putExtra(BUNDLE_FRAGMENT_NO, 1);
                 break;
             case 2:
-                Toast.makeText(getContext(), "2", Toast.LENGTH_SHORT).show();
+                intent.putExtra(BUNDLE_FRAGMENT_NO, 2);
                 break;
             case 3:
-                Toast.makeText(getContext(), "3", Toast.LENGTH_SHORT).show();
+                intent.putExtra(BUNDLE_FRAGMENT_NO, 3);
                 break;
             case 4:
-                Toast.makeText(getContext(), "4", Toast.LENGTH_SHORT).show();
+                intent.putExtra(BUNDLE_FRAGMENT_NO, 4);
                 break;
         }
+        startActivity(intent);
     }
 }

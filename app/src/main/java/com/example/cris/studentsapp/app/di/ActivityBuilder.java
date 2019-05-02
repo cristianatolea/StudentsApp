@@ -1,5 +1,6 @@
 package com.example.cris.studentsapp.app.di;
 
+import com.example.cris.studentsapp.screen.dashboarditemactivity.DashboardItemActivity;
 import com.example.cris.studentsapp.screen.forgottenaccount.di.ForgottenAccountModule;
 import com.example.cris.studentsapp.screen.forgottenaccount.view.activity.ForgottenAccountActivity;
 import com.example.cris.studentsapp.screen.login.di.LoginModule;
@@ -31,4 +32,7 @@ abstract class ActivityBuilder {
 
     @ContributesAndroidInjector(modules = {LogoutModule.class})
     abstract LogoutActivity buildLogoutActivity();
+
+    @ContributesAndroidInjector()
+    abstract DashboardItemActivity buildDashboardItemActivity();
 }
