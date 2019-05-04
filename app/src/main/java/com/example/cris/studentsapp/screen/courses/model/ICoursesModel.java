@@ -8,6 +8,5 @@ import io.reactivex.Observable;
 
 public interface ICoursesModel {
 
-    Observable<List<CourseEntity>> getUserCourses(String userToken,
-                                                  String userId);
+    Observable<List<CourseEntity>> getUserCourses();
 }

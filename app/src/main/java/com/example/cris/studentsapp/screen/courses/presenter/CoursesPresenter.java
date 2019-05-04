@@ -37,7 +37,7 @@ public class CoursesPresenter implements ICoursesPresenter {
         if (InternetUtils.hasActiveInternetConnection(mContext)) {
             mViewDelegate.showProgress();
             mCompositeDisposable.add(
-                    mModel.getUserCourses(LocalSaving.getToken(mContext), LocalSaving.getUserId(mContext))
+                    mModel.getUserCourses()
                             .subscribeOn(Schedulers.io())
                             .observeOn(AndroidSchedulers.mainThread())
                             .subscribe(new Consumer<List<CourseEntity>>() {

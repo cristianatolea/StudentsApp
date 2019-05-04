@@ -22,8 +22,8 @@ public class CoursesModule {
     }
 
     @Provides
-    ICoursesModel providesCoursesModel(ApiInterface apiInterface) {
-        return new CoursesModel(apiInterface);
+    ICoursesModel providesCoursesModel(Context context, ApiInterface apiInterface) {
+        return new CoursesModel(context, apiInterface);
     }
 
     @Provides

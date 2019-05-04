@@ -80,9 +80,7 @@ public class CoursesFragment extends BaseFragment implements
 
     @Override
     public void onCourseItemClick(int position) {
-        switch (position) {
-
-        }
+//todo get course details
     }
 
     private void initView(View view) {

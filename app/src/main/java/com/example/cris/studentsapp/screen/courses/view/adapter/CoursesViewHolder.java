@@ -1,9 +1,10 @@
 package com.example.cris.studentsapp.screen.courses.view.adapter;
 
 import android.support.annotation.NonNull;
-import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.cris.studentsapp.R;
 import com.example.cris.studentsapp.screen.courses.model.entity.CourseEntity;
@@ -11,7 +12,8 @@ import com.example.cris.studentsapp.screen.courses.model.entity.CourseEntity;
 public class CoursesViewHolder extends RecyclerView.ViewHolder implements
         View.OnClickListener {
 
-    private ConstraintLayout mConstraintLayout;
+    private LinearLayout mLinearLayout;
+    private TextView mTextTile;
     private OnCourseClickListener mOnCourseClickListener;
 
     public CoursesViewHolder(@NonNull View itemView, OnCourseClickListener onCourseClickListener) {
@@ -19,19 +21,20 @@ public class CoursesViewHolder extends RecyclerView.ViewHolder implements
 
         mOnCourseClickListener = onCourseClickListener;
 
-        mConstraintLayout = itemView.findViewById(R.id.constraint_content);
+        mLinearLayout = itemView.findViewById(R.id.linear_course);
+        mTextTile = itemView.findViewById(R.id.text_course_title);
 
-        mConstraintLayout.setOnClickListener(this);
+        mLinearLayout.setOnClickListener(this);
     }
 
     void bindData(CourseEntity entity) {
-
+        mTextTile.setText(entity.get);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.constraint_content:
+            case R.id.linear_course:
                 mOnCourseClickListener.onCourseClick(getAdapterPosition());
                 break;
         }
