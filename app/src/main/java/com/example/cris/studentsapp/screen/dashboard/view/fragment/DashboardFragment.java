@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.cris.studentsapp.R;
@@ -19,6 +20,7 @@ import com.example.cris.studentsapp.screen.dashboard.presenter.IDashboardPresent
 import com.example.cris.studentsapp.screen.dashboard.view.adapter.DashboardAdapter;
 import com.example.cris.studentsapp.screen.dashboard.view.delegate.IDashboardViewDelegate;
 import com.example.cris.studentsapp.screen.dashboarditemactivity.DashboardItemActivity;
+import com.example.cris.studentsapp.screen.main.view.activity.MainActivity;
 
 import java.util.List;
 
@@ -55,6 +57,9 @@ public class DashboardFragment extends BaseFragment implements
         super.onViewCreated(view, savedInstanceState);
         initView(view);
         mPresenter.populateDashboard(view);
+
+        ((MainActivity) getActivity()).setToolbarTitle(R.string.dashboard);
+        ((MainActivity) getActivity()).changeFocusOnMenu(0, true, false);
     }
 
     @Override
@@ -78,12 +83,6 @@ public class DashboardFragment extends BaseFragment implements
         mRvDashboard.setAdapter(mAdapter);
     }
 
-    private void initView(View view) {
-        mRvDashboard = view.findViewById(R.id.rv_dashboard);
-        mRvDashboard.setLayoutManager(new LinearLayoutManager(getContext()));
-
-    }
-
     @Override
     public void onDashboardItemClick(int position) {
         Intent intent = new Intent(getActivity(), DashboardItemActivity.class);
@@ -105,5 +104,11 @@ public class DashboardFragment extends BaseFragment implements
                 break;
         }
         startActivity(intent);
+    }
+
+    private void initView(View view) {
+        mRvDashboard = view.findViewById(R.id.rv_dashboard);
+        mRvDashboard.setLayoutManager(new LinearLayoutManager(getContext()));
+
     }
 }

@@ -107,9 +107,9 @@ public class LoginActivity extends BaseActivity implements
                     mButtonLogin.setEnabled(false);
                     mEditTextUsername.setEnabled(false);
                     mEditTextPassword.setEnabled(false);
-                    //mPresenter.login(mUsername, mPassword);
-                    LocalSaving.setLsFirstOpen(this, true);
-                    startActivity(new Intent(this, MainActivity.class));
+                    mPresenter.login(mUsername, mPassword);
+//                    LocalSaving.setLsFirstOpen(this, true);
+//                    startActivity(new Intent(this, MainActivity.class));
                 } else {
                     Toast.makeText(this, "Log err", Toast.LENGTH_SHORT).show();
                 }

@@ -28,7 +28,7 @@ public class CoursesViewHolder extends RecyclerView.ViewHolder implements
     }
 
     void bindData(CourseEntity entity) {
-        mTextTile.setText(entity.get);
+        //mTextTile.setText(entity.get);
     }
 
     @Override

@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.example.cris.studentsapp.R;
 import com.example.cris.studentsapp.base.BaseFragment;
+import com.example.cris.studentsapp.screen.main.view.activity.MainActivity;
 import com.example.cris.studentsapp.screen.profile.view.delegate.IProfileViewDelegate;
 
 public class ProfileFragment extends BaseFragment implements
@@ -47,6 +48,9 @@ public class ProfileFragment extends BaseFragment implements
                               @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initView(view);
+
+        ((MainActivity) getActivity()).setToolbarTitle(R.string.profile);
+        ((MainActivity) getActivity()).changeFocusOnMenu(1, true, false);
     }
 
     @Override

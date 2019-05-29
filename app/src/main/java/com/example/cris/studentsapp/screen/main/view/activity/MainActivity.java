@@ -57,7 +57,7 @@ public class MainActivity extends BaseActivity implements
     private boolean mOpenNotifications = false;
     private Bundle mBundle;
     private Toolbar mToolbar;
-    private TextView mToolbarTitle;
+    private static TextView mToolbarTitle;
     private DrawerLayout mDrawerLayout;
     private ListView mNavDrawerMainItemList;
     private ListView mNavDrawerBottomList;
@@ -82,7 +82,7 @@ public class MainActivity extends BaseActivity implements
             mOpenNotifications = mBundle.getBoolean(Constants.KEY_OPEN_NOTIFICATIONS_SCREEN);
         }
 
-        if (!LocalSaving.getLsFirstOpen(this)) {
+        if (!LocalSaving.getLsFirstOpen(this) || "".equals(LocalSaving.getToken(MainActivity.this))) {
             Intent intent = new Intent(MainActivity.this, SplashScreenActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);

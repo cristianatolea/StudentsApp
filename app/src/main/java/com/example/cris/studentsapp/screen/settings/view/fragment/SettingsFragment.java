@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 
 import com.example.cris.studentsapp.R;
 import com.example.cris.studentsapp.base.BaseFragment;
+import com.example.cris.studentsapp.screen.main.view.activity.MainActivity;
 import com.example.cris.studentsapp.screen.settings.view.delegate.ISettingsViewDelegate;
 
 public class SettingsFragment extends BaseFragment implements
@@ -39,6 +40,9 @@ public class SettingsFragment extends BaseFragment implements
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initView(view);
+
+        ((MainActivity) getActivity()).setToolbarTitle(R.string.settings);
+        ((MainActivity) getActivity()).changeFocusOnMenu(2, true, false);
     }
 
     @Override

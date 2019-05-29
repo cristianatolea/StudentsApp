@@ -17,8 +17,8 @@ import dagger.Provides;
 public class MainModule {
 
     @Provides
-    IMainModel provideMainModel(ApiInterface apiInterface) {
-        return new MainModel(apiInterface);
+    IMainModel provideMainModel(Context context, ApiInterface apiInterface) {
+        return new MainModel(context, apiInterface);
     }
 
     @Provides
