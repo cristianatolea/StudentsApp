@@ -48,7 +48,8 @@
             android:name=".screen.dashboarditemactivity.DashboardItemActivity"
             android:theme="@style/AppTheme.Main"
             android:windowSoftInputMode="adjustUnspecified|adjustPan" />
-        <activity android:name=".screen.logout.view.activity.LogoutActivity" />
+        <activity android:name=".screen.logout.view.activity.LogoutActivity"
+            android:theme="@style/Theme.Transparent"/>
     </application>
 
 </manifest>

@@ -262,7 +262,7 @@ public class MainActivity extends BaseActivity implements
             @Override
             public void onDrawerItemClick(int position) {
                 mTopAdapter.onFocus(-1);
-                mBottomAdapter.onFocus(position);
+                mBottomAdapter.onFocus(-1);
                 mBottomAdapter.notifyDataSetChanged();
                 mTopAdapter.notifyDataSetChanged();
 
