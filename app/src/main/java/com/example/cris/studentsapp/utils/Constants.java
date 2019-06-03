@@ -9,4 +9,5 @@ public class Constants {
     public static final String URL_ACS= "http://acs.curs.pub.ro";
     public static final String URL_MICROSOFT = "http://msdnaa.pub.ro";
     public static final String URL_PORTAL = "http://portal.office.com";
+    public static final String COURSE_ID = "course id";
 }

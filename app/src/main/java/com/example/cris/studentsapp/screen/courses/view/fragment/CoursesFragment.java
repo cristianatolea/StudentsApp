@@ -12,6 +12,7 @@ import android.widget.ProgressBar;
 
 import com.example.cris.studentsapp.R;
 import com.example.cris.studentsapp.base.BaseFragment;
+import com.example.cris.studentsapp.screen.coursedetails.view.fragment.CourseDetailsFragment;
 import com.example.cris.studentsapp.screen.courses.model.entity.CourseEntity;
 import com.example.cris.studentsapp.screen.courses.presenter.ICoursesPresenter;
 import com.example.cris.studentsapp.screen.courses.view.adapter.CoursesAdapter;
@@ -85,7 +86,11 @@ public class CoursesFragment extends BaseFragment implements
 
     @Override
     public void onCourseItemClick(int position) {
-//todo get course details
+        CourseDetailsFragment courseDetailsFragment =
+                CourseDetailsFragment.newInstance(mCoursesList.get(position).getId());
+        ((MainActivity) getActivity())
+                .changeFocusOnMenu(0, false, false);
+        addFragment(courseDetailsFragment, R.id.frame_main_content);
     }
 
     private void initView(View view) {
