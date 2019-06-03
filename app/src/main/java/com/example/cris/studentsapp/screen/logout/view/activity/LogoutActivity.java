@@ -3,6 +3,7 @@ package com.example.cris.studentsapp.screen.logout.view.activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.Button;
 
@@ -64,8 +65,11 @@ public class LogoutActivity extends BaseActivity implements
                 startActivity(loginIntent);
                 finish();
                 break;
+            case R.id.logout_background:
             case R.id.button_cancel:
                 finish();
+                break;
+            case R.id.logout_card:
                 break;
         }
     }
@@ -73,7 +77,12 @@ public class LogoutActivity extends BaseActivity implements
     private void initView() {
         Button buttonLogout = findViewById(R.id.button_logout);
         Button buttonCancel = findViewById(R.id.button_cancel);
+        View view = findViewById(R.id.logout_background);
+        CardView cardView = findViewById(R.id.logout_card);
+
         buttonLogout.setOnClickListener(this);
         buttonCancel.setOnClickListener(this);
+        view.setOnClickListener(this);
+        cardView.setOnClickListener(this);
     }
 }

@@ -261,7 +261,6 @@ public class MainActivity extends BaseActivity implements
         NavDrawerListAdapter.OnMenuItemClickListener bottomListener = new NavDrawerListAdapter.OnMenuItemClickListener() {
             @Override
             public void onDrawerItemClick(int position) {
-                mTopAdapter.onFocus(-1);
                 mBottomAdapter.onFocus(-1);
                 mBottomAdapter.notifyDataSetChanged();
                 mTopAdapter.notifyDataSetChanged();
