@@ -5,7 +5,7 @@
 
     <application
         android:name=".app.StudentsApplication"
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -16,7 +16,13 @@
         <activity
             android:name=".screen.splashscreen.SplashScreenActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.StartScreen" />
+            android:theme="@style/AppTheme.StartScreen" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".screen.welcome.view.activity.WelcomeActivity"
             android:screenOrientation="portrait"
@@ -36,11 +42,7 @@
             android:name=".screen.main.view.activity.MainActivity"
             android:theme="@style/AppTheme.Main"
             android:windowSoftInputMode="adjustUnspecified|adjustPan">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".screen.dashboarditemactivity.DashboardItemActivity"

@@ -52,4 +52,10 @@
     <string name="confirm_password">Confirm new passowrd</string>
     <string name="logout_everywhere">Logout from every device</string>
     <string name="cancel">Cancel</string>
+    <string name="an_universitar">An Universitar</string>
+    <string name="facultatea">Facultatea</string>
+    <string name="ciclu_de_studii">Ciclu de studii</string>
+    <string name="specializarea">Specializarea</string>
+    <string name="an">Anul</string>
+    <string name="grupa">Grupa</string>
 </resources>

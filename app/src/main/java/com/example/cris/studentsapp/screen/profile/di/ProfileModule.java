@@ -17,8 +17,8 @@ import dagger.Provides;
 public class ProfileModule {
 
     @Provides
-    IProfileModel providesProfileModel(ApiInterface apiInterface) {
-        return new ProfileModel(apiInterface);
+    IProfileModel providesProfileModel(Context context, ApiInterface apiInterface) {
+        return new ProfileModel(context, apiInterface);
     }
 
     @Provides

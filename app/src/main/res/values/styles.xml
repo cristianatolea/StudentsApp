@@ -105,8 +105,8 @@
 
     <style name="TextStyleDetails">
         <item name="android:textSize">@dimen/text_size_14</item>
-        <item name="android:textColor">@color/blue_lighter_dark</item>
-        <item name="android:fontFamily">@font/heebo</item>
+        <item name="android:textColor">@color/red</item>
+        <item name="android:fontFamily">@font/heebo_medium</item>
         <item name="android:background">@null</item>
     </style>
 

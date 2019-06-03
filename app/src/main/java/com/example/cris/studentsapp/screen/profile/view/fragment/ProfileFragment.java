@@ -10,10 +10,16 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.cris.studentsapp.R;
 import com.example.cris.studentsapp.base.BaseFragment;
 import com.example.cris.studentsapp.screen.main.view.activity.MainActivity;
+import com.example.cris.studentsapp.screen.profile.model.entity.UserProfileEntity;
+import com.example.cris.studentsapp.screen.profile.presenter.IProfilePresenter;
 import com.example.cris.studentsapp.screen.profile.view.delegate.IProfileViewDelegate;
+
+import javax.inject.Inject;
 
 public class ProfileFragment extends BaseFragment implements
         IProfileViewDelegate {
@@ -29,6 +35,9 @@ public class ProfileFragment extends BaseFragment implements
     private TextInputEditText mInputSpecialization;
     private TextInputEditText mInputYearOfStudy;
     private TextInputEditText mInputGroup;
+
+    @Inject
+    IProfilePresenter mPresenter;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -51,6 +60,8 @@ public class ProfileFragment extends BaseFragment implements
 
         ((MainActivity) getActivity()).setToolbarTitle(R.string.profile);
         ((MainActivity) getActivity()).changeFocusOnMenu(1, true, false);
+
+        mPresenter.getUserInformation();
     }
 
     @Override
@@ -66,6 +77,36 @@ public class ProfileFragment extends BaseFragment implements
     @Override
     public void onError(String errorMessage) {
 
+    }
+
+    @Override
+    public void onGetUserInformationSuccess(UserProfileEntity entity) {
+        mPresenter.parseUserCustomFields(entity.getCustomFields(), entity);
+    }
+
+    @Override
+    public void onGetCustomInformation(String univYear, String university, String cycleOfStudy,
+                                       String specialization, String yearOfStudy, String group,
+                                       UserProfileEntity entity) {
+        setUserInfo(entity);
+        mInputYear.setText(univYear);
+        mInputUniversity.setText(university);
+        mInputCycleOfStudy.setText(cycleOfStudy);
+        mInputSpecialization.setText(specialization);
+        mInputYearOfStudy.setText(yearOfStudy);
+        mInputGroup.setText(group);
+    }
+
+    private void setUserInfo(UserProfileEntity entity) {
+        mTextUserName.setText(entity.getFullname());
+        mInputEmail.setText(entity.getEmail());
+        mInputCountry.setText(entity.getCountry());
+        mInputCity.setText(entity.getCity());
+        Glide.with(getContext())
+                .load(entity.getProfileImageUrl())
+                .error(R.drawable.ic_user)
+                .apply(RequestOptions.circleCropTransform())
+                .into(mUserImage);
     }
 
     private void initView(View view) {

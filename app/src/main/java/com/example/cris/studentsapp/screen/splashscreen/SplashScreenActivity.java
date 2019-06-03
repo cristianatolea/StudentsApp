@@ -25,20 +25,15 @@ public class SplashScreenActivity extends AppCompatActivity {
             public void run() {
                 try {
                     sleep(2000);
-                    if (!LocalSaving.getLsIsLoggedIn(getApplicationContext())) {
+                    if (!LocalSaving.getLsIsLoggedIn(getApplicationContext())
+                            || LocalSaving.getToken(SplashScreenActivity.this).equals("")) {
                         Intent intent = new Intent(getApplicationContext(), WelcomeActivity.class);
                         finish();
                         startActivity(intent);
                     } else {
-                        if (LocalSaving.getToken(SplashScreenActivity.this).equals("")) {
-                            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                            finish();
-                            startActivity(intent);
-                        } else {
-                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                            finish();
-                            startActivity(intent);
-                        }
+                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        finish();
+                        startActivity(intent);
                     }
                 } catch (InterruptedException e) {
                     e.printStackTrace();

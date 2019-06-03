@@ -81,16 +81,18 @@ public class MainActivity extends BaseActivity implements
         if (mBundle != null) {
             mOpenNotifications = mBundle.getBoolean(Constants.KEY_OPEN_NOTIFICATIONS_SCREEN);
         }
-
-        if (!LocalSaving.getLsFirstOpen(this) || "".equals(LocalSaving.getToken(MainActivity.this))) {
-            Intent intent = new Intent(MainActivity.this, SplashScreenActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
-            finish();
-        } else {
-            setContentView(R.layout.activity_main);
-            initView();
-        }
+        setContentView(R.layout.activity_main);
+        initView();
+        mPresenter.getSiteInfo();
+//        if (!LocalSaving.getLsFirstOpen(this) || "".equals(LocalSaving.getToken(MainActivity.this))) {
+//            Intent intent = new Intent(MainActivity.this, SplashScreenActivity.class);
+//            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+//            startActivity(intent);
+//            finish();
+//        } else {
+//            setContentView(R.layout.activity_main);
+//            initView();
+//        }
 
 //        if ("".equals(LocalSaving.getToken(MainActivity.this))) {
 //            Intent intent = new Intent(MainActivity.this, SplashScreenActivity.class);
@@ -278,7 +280,7 @@ public class MainActivity extends BaseActivity implements
                 mDrawerLayout,
                 mToolbar, 0, 0) {
             public void onDrawerClosed(View view) {
-                mImageButtonDrawer.setImageDrawable(getDrawable(R.drawable.ic_nav_menu));
+                mImageButtonDrawer.setImageDrawable(getDrawable(R.drawable.ic_close));
                 super.onDrawerClosed(view);
             }
 

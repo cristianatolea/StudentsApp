@@ -16,6 +16,7 @@ import com.example.cris.studentsapp.screen.courses.model.entity.CourseEntity;
 import com.example.cris.studentsapp.screen.courses.presenter.ICoursesPresenter;
 import com.example.cris.studentsapp.screen.courses.view.adapter.CoursesAdapter;
 import com.example.cris.studentsapp.screen.courses.view.delegate.ICoursesViewDelegate;
+import com.example.cris.studentsapp.screen.main.view.activity.MainActivity;
 import com.example.cris.studentsapp.utils.AlertUtils;
 
 import java.util.ArrayList;
@@ -54,6 +55,9 @@ public class CoursesFragment extends BaseFragment implements
         mCoursesList = new ArrayList<>();
         initView(view);
         mPresenter.getCourses();
+
+        ((MainActivity) getActivity()).setToolbarTitle(R.string.courses);
+        ((MainActivity) getActivity()).changeFocusOnMenu(0, false, false);
     }
 
     @Override
@@ -75,6 +79,7 @@ public class CoursesFragment extends BaseFragment implements
     public void onGetCoursesSuccess(List<CourseEntity> list) {
         mCoursesList.clear();
         mCoursesList.addAll(list);
+        mCoursesList.remove(0);
         mAdapter.notifyDataSetChanged();
     }
 

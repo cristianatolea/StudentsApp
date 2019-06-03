@@ -5,6 +5,7 @@ import com.example.cris.studentsapp.screen.courses.model.entity.CoursesResponse;
 import com.example.cris.studentsapp.screen.login.model.entity.LoginRequestEntity;
 import com.example.cris.studentsapp.screen.login.model.entity.LoginResponseEntity;
 import com.example.cris.studentsapp.screen.main.model.entity.SiteInfoResponse;
+import com.example.cris.studentsapp.screen.profile.model.entity.UserProfileEntity;
 
 
 import java.util.List;
@@ -13,9 +14,11 @@ import io.reactivex.Observable;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 public interface ApiInterface {
 
@@ -36,4 +39,10 @@ public interface ApiInterface {
     Observable<List<CourseEntity>> getUserCourses(@Field("wstoken") String userToken,
                                                   @Field("wsfunction") String function,
                                                   @Field("userid") String userId);
+
+    @GET("webservice/rest/server.php?moodlewsrestformat=json")
+    Observable<List<UserProfileEntity>> getUserInformation(@Query("wstoken") String userToken,
+                                                     @Query("wsfunction") String function,
+                                                     @Query("field") String idString,
+                                                     @Query("values[0]") String userIdValue);
 }

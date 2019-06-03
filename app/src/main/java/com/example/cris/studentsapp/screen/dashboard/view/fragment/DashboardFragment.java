@@ -15,12 +15,14 @@ import android.widget.Toast;
 
 import com.example.cris.studentsapp.R;
 import com.example.cris.studentsapp.base.BaseFragment;
+import com.example.cris.studentsapp.screen.courses.view.fragment.CoursesFragment;
 import com.example.cris.studentsapp.screen.dashboard.model.entity.DashboardItem;
 import com.example.cris.studentsapp.screen.dashboard.presenter.IDashboardPresenter;
 import com.example.cris.studentsapp.screen.dashboard.view.adapter.DashboardAdapter;
 import com.example.cris.studentsapp.screen.dashboard.view.delegate.IDashboardViewDelegate;
 import com.example.cris.studentsapp.screen.dashboarditemactivity.DashboardItemActivity;
 import com.example.cris.studentsapp.screen.main.view.activity.MainActivity;
+import com.example.cris.studentsapp.utils.FragmentUtils;
 
 import java.util.List;
 
@@ -85,25 +87,25 @@ public class DashboardFragment extends BaseFragment implements
 
     @Override
     public void onDashboardItemClick(int position) {
-        Intent intent = new Intent(getActivity(), DashboardItemActivity.class);
+        //Intent intent = new Intent(getActivity(), DashboardItemActivity.class);
         switch (position) {
             case 0:
-                intent.putExtra(BUNDLE_FRAGMENT_NO, 0);
+                FragmentUtils.replaceFragment(getActivity(),R.id.frame_main_content, new CoursesFragment());
                 break;
             case 1:
-                intent.putExtra(BUNDLE_FRAGMENT_NO, 1);
+//                intent.putExtra(BUNDLE_FRAGMENT_NO, 1);
                 break;
             case 2:
-                intent.putExtra(BUNDLE_FRAGMENT_NO, 2);
+//                intent.putExtra(BUNDLE_FRAGMENT_NO, 2);
                 break;
             case 3:
-                intent.putExtra(BUNDLE_FRAGMENT_NO, 3);
+//                intent.putExtra(BUNDLE_FRAGMENT_NO, 3);
                 break;
             case 4:
-                intent.putExtra(BUNDLE_FRAGMENT_NO, 4);
+//                intent.putExtra(BUNDLE_FRAGMENT_NO, 4);
                 break;
         }
-        startActivity(intent);
+        //startActivity(intent);
     }
 
     private void initView(View view) {

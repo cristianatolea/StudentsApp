@@ -51,6 +51,7 @@ public class MainPresenter implements IMainPresenter {
                             }, new Consumer<Throwable>() {
                                 @Override
                                 public void accept(Throwable throwable) throws Exception {
+                                    mViewDelegate.hideProgress();
                                     mViewDelegate.onError(throwable.getMessage());
                                 }
                             })
