@@ -87,7 +87,8 @@ public class CoursesFragment extends BaseFragment implements
     @Override
     public void onCourseItemClick(int position) {
         CourseDetailsFragment courseDetailsFragment =
-                CourseDetailsFragment.newInstance(mCoursesList.get(position).getId());
+                CourseDetailsFragment.newInstance(mCoursesList.get(position).getId(),
+                        mCoursesList.get(position).getFullname());
         ((MainActivity) getActivity())
                 .changeFocusOnMenu(0, false, false);
         addFragment(courseDetailsFragment, R.id.frame_main_content);

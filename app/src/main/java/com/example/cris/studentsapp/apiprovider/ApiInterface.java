@@ -1,5 +1,7 @@
 package com.example.cris.studentsapp.apiprovider;
 
+import com.example.cris.studentsapp.screen.coursedetails.model.entity.CourseDetailsItem;
+import com.example.cris.studentsapp.screen.coursedetails.model.entity.CourseDetailsResponse;
 import com.example.cris.studentsapp.screen.courses.model.entity.CourseEntity;
 import com.example.cris.studentsapp.screen.courses.model.entity.CoursesResponse;
 import com.example.cris.studentsapp.screen.login.model.entity.LoginRequestEntity;
@@ -45,4 +47,10 @@ public interface ApiInterface {
                                                      @Query("wsfunction") String function,
                                                      @Query("field") String idString,
                                                      @Query("values[0]") String userIdValue);
+
+    @FormUrlEncoded
+    @POST("webservice/rest/server.php?moodlewsrestformat=json")
+    Observable<List<CourseDetailsItem>> getCourseDetails(@Field("wstoken") String userToken,
+                                                         @Field("wsfunction") String function,
+                                                         @Field("courseid") String courseId);
 }
