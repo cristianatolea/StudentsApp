@@ -15,15 +15,18 @@ public class DiscussionEntity {
     private String mMessage;
     @SerializedName("userfullname")
     private String mUserFullname;
+    @SerializedName("numreplies")
+    private String mNumberOfReplies;
 
     public DiscussionEntity(String discussionId, String name, String groupId,
-                            String subject, String message, String userFullname) {
+                            String subject, String message, String userFullname, String numberOfReplies) {
         mDiscussionId = discussionId;
         mName = name;
         mGroupId = groupId;
         mSubject = subject;
         mMessage = message;
         mUserFullname = userFullname;
+        mNumberOfReplies = numberOfReplies;
     }
 
     public String getDiscussionId() {
@@ -48,5 +51,9 @@ public class DiscussionEntity {
 
     public String getUserFullname() {
         return mUserFullname;
+    }
+
+    public String getNumberOfReplies() {
+        return mNumberOfReplies;
     }
 }
