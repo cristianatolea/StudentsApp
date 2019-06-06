@@ -22,8 +22,8 @@ public class DeadlinesModule {
     }
 
     @Provides
-    IDeadlinesModel provideDeadlinesModel(ApiInterface apiInterface) {
-        return new DeadlinesModel(apiInterface);
+    IDeadlinesModel provideDeadlinesModel(Context context, ApiInterface apiInterface) {
+        return new DeadlinesModel(context, apiInterface);
     }
 
     @Provides

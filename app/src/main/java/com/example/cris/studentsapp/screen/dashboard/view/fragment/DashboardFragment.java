@@ -16,6 +16,7 @@ import com.example.cris.studentsapp.screen.dashboard.model.entity.DashboardItem;
 import com.example.cris.studentsapp.screen.dashboard.presenter.IDashboardPresenter;
 import com.example.cris.studentsapp.screen.dashboard.view.adapter.DashboardAdapter;
 import com.example.cris.studentsapp.screen.dashboard.view.delegate.IDashboardViewDelegate;
+import com.example.cris.studentsapp.screen.deadlines.view.fragment.DeadlinesFragment;
 import com.example.cris.studentsapp.screen.forumspercourse.view.fragment.ForumsFragment;
 import com.example.cris.studentsapp.screen.main.view.activity.MainActivity;
 import com.example.cris.studentsapp.utils.FragmentUtils;
@@ -83,26 +84,22 @@ public class DashboardFragment extends BaseFragment implements
 
     @Override
     public void onDashboardItemClick(int position) {
-        //Intent intent = new Intent(getActivity(), DashboardItemActivity.class);
         switch (position) {
             case 0:
                 FragmentUtils.replaceFragment(getActivity(),R.id.frame_main_content, new CoursesFragment());
                 break;
             case 1:
-//                intent.putExtra(BUNDLE_FRAGMENT_NO, 1);
                 break;
             case 2:
-//                intent.putExtra(BUNDLE_FRAGMENT_NO, 2);
                 FragmentUtils.replaceFragment(getActivity(),R.id.frame_main_content, new ForumsFragment());
                 break;
             case 3:
-//                intent.putExtra(BUNDLE_FRAGMENT_NO, 3);
                 break;
             case 4:
-//                intent.putExtra(BUNDLE_FRAGMENT_NO, 4);
+                FragmentUtils.replaceFragment(getActivity(),R.id.frame_main_content, new DeadlinesFragment());
+
                 break;
         }
-        //startActivity(intent);
     }
 
     private void initView(View view) {

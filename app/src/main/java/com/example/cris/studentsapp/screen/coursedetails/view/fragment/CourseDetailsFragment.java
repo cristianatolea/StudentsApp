@@ -68,7 +68,7 @@ public class CourseDetailsFragment extends BaseFragment implements
         mCourseName = getArguments().getString(COURSE_NAME);
 
         ((MainActivity) getActivity()).setToolbarTitle(R.string.course_details);
-        ((MainActivity) getActivity()).changeFocusOnMenu(0, true, false);
+        ((MainActivity) getActivity()).changeFocusOnMenu(0, false, false);
 
         initView(view);
 
