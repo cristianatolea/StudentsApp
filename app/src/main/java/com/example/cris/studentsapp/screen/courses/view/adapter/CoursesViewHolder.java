@@ -13,22 +13,20 @@ import com.example.cris.studentsapp.screen.courses.model.entity.CourseEntity;
 public class CoursesViewHolder extends RecyclerView.ViewHolder implements
         View.OnClickListener {
 
-    private ConstraintLayout mConstraintLayout;
-    private LinearLayout mLinearDetails;
     private TextView mTextTile;
     private OnCourseClickListener mOnCourseClickListener;
 
-    public CoursesViewHolder(@NonNull View itemView, OnCourseClickListener onCourseClickListener) {
+    CoursesViewHolder(@NonNull View itemView, OnCourseClickListener onCourseClickListener) {
         super(itemView);
 
         mOnCourseClickListener = onCourseClickListener;
 
-        mConstraintLayout = itemView.findViewById(R.id.constraint_course);
-        mLinearDetails = itemView.findViewById(R.id.linear_details);
+        ConstraintLayout constraintLayout = itemView.findViewById(R.id.constraint_course);
+        LinearLayout linearDetails = itemView.findViewById(R.id.linear_details);
         mTextTile = itemView.findViewById(R.id.text_course_title);
 
-        mConstraintLayout.setOnClickListener(this);
-        mLinearDetails.setOnClickListener(this);
+        constraintLayout.setOnClickListener(this);
+        linearDetails.setOnClickListener(this);
     }
 
     void bindData(CourseEntity entity) {

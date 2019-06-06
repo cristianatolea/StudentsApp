@@ -8,6 +8,10 @@ import com.example.cris.studentsapp.screen.dashboard.di.DashboardModule;
 import com.example.cris.studentsapp.screen.dashboard.view.fragment.DashboardFragment;
 import com.example.cris.studentsapp.screen.deadlines.di.DeadlinesModule;
 import com.example.cris.studentsapp.screen.deadlines.view.fragment.DeadlinesFragment;
+import com.example.cris.studentsapp.screen.discussionslistperforum.di.DiscussionsPerForumModule;
+import com.example.cris.studentsapp.screen.discussionslistperforum.view.fragment.DiscussionsPerForumFragment;
+import com.example.cris.studentsapp.screen.forumspercourse.di.ForumsModule;
+import com.example.cris.studentsapp.screen.forumspercourse.view.fragment.ForumsFragment;
 import com.example.cris.studentsapp.screen.messages.di.MessagesModule;
 import com.example.cris.studentsapp.screen.messages.view.fragment.MessagesFragment;
 import com.example.cris.studentsapp.screen.notifications.di.NotificationsModule;
@@ -46,4 +50,10 @@ abstract class FragmentBuilder {
 
     @ContributesAndroidInjector(modules = {CourseDetailsModule.class})
     abstract CourseDetailsFragment buildCourseDetailsFragment();
+
+    @ContributesAndroidInjector(modules = {ForumsModule.class})
+    abstract ForumsFragment buildDiscussionsFragment();
+
+    @ContributesAndroidInjector(modules = {DiscussionsPerForumModule.class})
+    abstract DiscussionsPerForumFragment buildDiscussionsPerForumFragment();
 }

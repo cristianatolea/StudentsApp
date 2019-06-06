@@ -59,6 +59,25 @@ public class CourseEntity {
         this.mEndDate = mEndDate;
     }
 
+    public CourseEntity(String id, String fullname) {
+        mId = id;
+        mFullname = fullname;
+        mShortname = "";
+        mEnrolledUserCount = "";
+        mIdNumber = "";
+        mVisible = "";
+        mSummary = "";
+        mSummaryFormat = "";
+        mFormat = "";
+        mShowGrade = "";
+        mLang = "";
+        mEnableCompletion = "";
+        mCategory = "";
+        mProgress = "";
+        mStartDate = "";
+        mEndDate = "";
+    }
+
     public String getId() {
         return mId;
     }

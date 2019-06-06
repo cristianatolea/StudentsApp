@@ -1,17 +1,13 @@
 package com.example.cris.studentsapp.screen.dashboard.view.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.cris.studentsapp.R;
 import com.example.cris.studentsapp.base.BaseFragment;
@@ -20,7 +16,7 @@ import com.example.cris.studentsapp.screen.dashboard.model.entity.DashboardItem;
 import com.example.cris.studentsapp.screen.dashboard.presenter.IDashboardPresenter;
 import com.example.cris.studentsapp.screen.dashboard.view.adapter.DashboardAdapter;
 import com.example.cris.studentsapp.screen.dashboard.view.delegate.IDashboardViewDelegate;
-import com.example.cris.studentsapp.screen.dashboarditemactivity.DashboardItemActivity;
+import com.example.cris.studentsapp.screen.forumspercourse.view.fragment.ForumsFragment;
 import com.example.cris.studentsapp.screen.main.view.activity.MainActivity;
 import com.example.cris.studentsapp.utils.FragmentUtils;
 
@@ -97,6 +93,7 @@ public class DashboardFragment extends BaseFragment implements
                 break;
             case 2:
 //                intent.putExtra(BUNDLE_FRAGMENT_NO, 2);
+                FragmentUtils.replaceFragment(getActivity(),R.id.frame_main_content, new ForumsFragment());
                 break;
             case 3:
 //                intent.putExtra(BUNDLE_FRAGMENT_NO, 3);
