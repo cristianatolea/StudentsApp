@@ -61,4 +61,11 @@
     <string name="logout_question">Are you sure you want to logout?</string>
     <string name="course_details">Course Details</string>
     <string name="no_upcoming_deadlines">There are no upcoming deadlines! :)</string>
+    <string name="element_name_hint">Insert element name</string>
+    <string name="save">Save</string>
+    <string name="room_hint">Insert room name</string>
+    <string name="time_hint">Insert time</string>
+    <string name="add_element">Add element</string>
+    <string name="something_wrong">Something went wrong! Try again later :)</string>
+    <string name="events">events</string>
 </resources>

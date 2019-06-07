@@ -10,16 +10,19 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 
 import com.example.cris.studentsapp.R;
 import com.example.cris.studentsapp.base.BaseFragment;
 import com.example.cris.studentsapp.screen.main.view.activity.MainActivity;
 import com.example.cris.studentsapp.screen.settings.view.delegate.ISettingsViewDelegate;
+import com.example.cris.studentsapp.utils.AlertUtils;
 
 public class SettingsFragment extends BaseFragment implements
         ISettingsViewDelegate,
         View.OnClickListener {
 
+    private ProgressBar mProgressBar;
     private TextInputEditText mInputCurrentPassword;
     private TextInputEditText mInputNewPassword;
     private TextInputEditText mInputConfirmPassword;
@@ -47,17 +50,17 @@ public class SettingsFragment extends BaseFragment implements
 
     @Override
     public void showProgress() {
-
+        mProgressBar.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hideProgress() {
-
+        mProgressBar.setVisibility(View.GONE);
     }
 
     @Override
     public void onError(String errorMessage) {
-
+        AlertUtils.alert(getContext(), R.string.alert_title, errorMessage);
     }
 
     @Override
@@ -73,6 +76,7 @@ public class SettingsFragment extends BaseFragment implements
     }
 
     private void initView(View view) {
+        mProgressBar = getActivity().findViewById(R.id.progress_bar);
         mInputCurrentPassword = view.findViewById(R.id.input_current_password);
         mInputNewPassword = view.findViewById(R.id.input_new_password);
         mInputConfirmPassword = view.findViewById(R.id.input_confirm_password);

@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -18,12 +19,14 @@ import com.example.cris.studentsapp.screen.main.view.activity.MainActivity;
 import com.example.cris.studentsapp.screen.profile.model.entity.UserProfileEntity;
 import com.example.cris.studentsapp.screen.profile.presenter.IProfilePresenter;
 import com.example.cris.studentsapp.screen.profile.view.delegate.IProfileViewDelegate;
+import com.example.cris.studentsapp.utils.AlertUtils;
 
 import javax.inject.Inject;
 
 public class ProfileFragment extends BaseFragment implements
         IProfileViewDelegate {
 
+    private ProgressBar mProgressBar;
     private ImageView mUserImage;
     private TextView mTextUserName;
     private TextInputEditText mInputEmail;
@@ -66,17 +69,17 @@ public class ProfileFragment extends BaseFragment implements
 
     @Override
     public void showProgress() {
-
+        mProgressBar.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hideProgress() {
-
+        mProgressBar.setVisibility(View.GONE);
     }
 
     @Override
     public void onError(String errorMessage) {
-
+        AlertUtils.alert(getContext(), R.string.alert_title, errorMessage);
     }
 
     @Override
@@ -110,6 +113,7 @@ public class ProfileFragment extends BaseFragment implements
     }
 
     private void initView(View view) {
+        mProgressBar = getActivity().findViewById(R.id.progress_bar);
         mUserImage = view.findViewById(R.id.image_user_icon);
         mTextUserName = view.findViewById(R.id.text_user_name);
         mInputEmail = view.findViewById(R.id.input_email);
