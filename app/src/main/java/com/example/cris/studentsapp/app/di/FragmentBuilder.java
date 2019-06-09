@@ -18,6 +18,8 @@ import com.example.cris.studentsapp.screen.messages.di.MessagesModule;
 import com.example.cris.studentsapp.screen.messages.view.fragment.MessagesFragment;
 import com.example.cris.studentsapp.screen.notifications.di.NotificationsModule;
 import com.example.cris.studentsapp.screen.notifications.view.fragment.NotificationsFragment;
+import com.example.cris.studentsapp.screen.postsperdiscussion.di.PostsPerDiscussionModule;
+import com.example.cris.studentsapp.screen.postsperdiscussion.view.fragment.PostsPerDiscussionFragment;
 import com.example.cris.studentsapp.screen.profile.di.ProfileModule;
 import com.example.cris.studentsapp.screen.profile.view.fragment.ProfileFragment;
 import com.example.cris.studentsapp.screen.schedule.di.ScheduleModule;
@@ -60,6 +62,9 @@ abstract class FragmentBuilder {
 
     @ContributesAndroidInjector(modules = {DiscussionsPerForumModule.class})
     abstract DiscussionsPerForumFragment buildDiscussionsPerForumFragment();
+
+    @ContributesAndroidInjector(modules = {PostsPerDiscussionModule.class})
+    abstract PostsPerDiscussionFragment buildPostsPerDiscussionFragment();
 
     @ContributesAndroidInjector(modules = {ScheduleModule.class})
     abstract ScheduleFragment buildScheduleFragment();

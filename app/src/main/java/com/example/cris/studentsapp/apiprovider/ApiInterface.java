@@ -7,6 +7,7 @@ import com.example.cris.studentsapp.screen.discussionslistperforum.model.entity.
 import com.example.cris.studentsapp.screen.forumspercourse.model.entity.ForumEntity;
 import com.example.cris.studentsapp.screen.login.model.entity.LoginResponseEntity;
 import com.example.cris.studentsapp.screen.main.model.entity.SiteInfoResponse;
+import com.example.cris.studentsapp.screen.postsperdiscussion.model.entity.PostsResponse;
 import com.example.cris.studentsapp.screen.profile.model.entity.UserProfileEntity;
 
 
@@ -39,11 +40,12 @@ public interface ApiInterface {
                                                   @Field("wsfunction") String function,
                                                   @Field("userid") String userId);
 
-    @GET("webservice/rest/server.php?moodlewsrestformat=json")
-    Observable<List<UserProfileEntity>> getUserInformation(@Query("wstoken") String userToken,
-                                                           @Query("wsfunction") String function,
-                                                           @Query("field") String idString,
-                                                           @Query("values[0]") String userIdValue);
+    @FormUrlEncoded
+    @POST("webservice/rest/server.php?moodlewsrestformat=json")
+    Observable<List<UserProfileEntity>> getUserInformation(@Field("wstoken") String userToken,
+                                                           @Field("wsfunction") String function,
+                                                           @Field("field") String idString,
+                                                           @Field("values[0]") String userIdValue);
 
     @FormUrlEncoded
     @POST("webservice/rest/server.php?moodlewsrestformat=json")
@@ -51,17 +53,26 @@ public interface ApiInterface {
                                                          @Field("wsfunction") String function,
                                                          @Field("courseid") String courseId);
 
-    @GET("webservice/rest/server.php?moodlewsrestformat=json")
-    Observable<List<ForumEntity>> getForumsPerCourse(@Query("wstoken") String userToken,
-                                                     @Query("wsfunction") String function,
-                                                     @Query("courseids[0]") String courseId);
+    @FormUrlEncoded
+    @POST("webservice/rest/server.php?moodlewsrestformat=json")
+    Observable<List<ForumEntity>> getForumsPerCourse(@Field("wstoken") String userToken,
+                                                     @Field("wsfunction") String function,
+                                                     @Field("courseids[0]") String courseId);
 
-    @GET("webservice/rest/server.php?moodlewsrestformat=json")
-    Observable<DiscussionsPerForumResponse> getForumsDiscussions(@Query("wstoken") String userToken,
-                                                                 @Query("wsfunction") String function,
-                                                                 @Query("forumid") String forumId);
+    @FormUrlEncoded
+    @POST("webservice/rest/server.php?moodlewsrestformat=json")
+    Observable<DiscussionsPerForumResponse> getForumsDiscussions(@Field("wstoken") String userToken,
+                                                                 @Field("wsfunction") String function,
+                                                                 @Field("forumid") String forumId);
 
-    @GET("webservice/rest/server.php?moodlewsrestformat=json")
-    Observable<EventsResponse> getUpcomingDeadlines(@Query("wstoken") String userToken,
-                                                    @Query("wsfunction") String function);
+    @FormUrlEncoded
+    @POST("webservice/rest/server.php?moodlewsrestformat=json")
+    Observable<PostsResponse> getDiscussionsPosts(@Field("wstoken") String userToken,
+                                                  @Field("wsfunction") String function,
+                                                  @Field("discussionid") String discussionId);
+
+    @FormUrlEncoded
+    @POST("webservice/rest/server.php?moodlewsrestformat=json")
+    Observable<EventsResponse> getUpcomingDeadlines(@Field("wstoken") String userToken,
+                                                    @Field("wsfunction") String function);
 }

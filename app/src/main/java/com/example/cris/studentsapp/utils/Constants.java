@@ -13,5 +13,7 @@ public class Constants {
     public static final String COURSE_NAME = "course name";
     public static final String FORUM_ID = "forum id";
     public static final String FORUM_NAME = "forum name";
+    public static final String DISCUSSION_NAME = "discussion name";
+    public static final String DISCUSSION_ID = "discussion id";
     public static final String DAY_POSITION = "day position";
 }

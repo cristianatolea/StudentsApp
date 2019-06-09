@@ -21,6 +21,7 @@ import com.example.cris.studentsapp.screen.discussionslistperforum.view.adapter.
 import com.example.cris.studentsapp.screen.discussionslistperforum.view.delegate.IDiscussionsPerForumViewDelegate;
 import com.example.cris.studentsapp.screen.forumspercourse.view.adapter.SimpleDividerItemDecoration;
 import com.example.cris.studentsapp.screen.main.view.activity.MainActivity;
+import com.example.cris.studentsapp.screen.postsperdiscussion.view.fragment.PostsPerDiscussionFragment;
 import com.example.cris.studentsapp.utils.AlertUtils;
 
 import java.util.ArrayList;
@@ -109,7 +110,13 @@ public class DiscussionsPerForumFragment extends BaseFragment implements
 
     @Override
     public void onItemDetailsClick(int position) {
-        Toast.makeText(getContext(), mDiscussionsList.get(position).getDiscussionId(), Toast.LENGTH_LONG).show();
+        PostsPerDiscussionFragment postsPerDiscussionFragment =
+                PostsPerDiscussionFragment.newInstance(mDiscussionsList.get(position).getDiscussionId(),
+                        mDiscussionsList.get(position).getName(),
+                        mCourseName);
+        ((MainActivity) getActivity())
+                .changeFocusOnMenu(0, false, false);
+        addFragment(postsPerDiscussionFragment, R.id.frame_main_content);
     }
 
     public static DiscussionsPerForumFragment newInstance(String id, String name, String courseName) {
