@@ -97,7 +97,7 @@ public class CourseDetailsFragment extends BaseFragment implements
         if (courseDetailsResponse.size() > 0) {
             mGeneralCourseItem = courseDetailsResponse.get(0);
             mCourseDetailsItems.clear();
-            courseDetailsResponse.remove(0);
+//            courseDetailsResponse.remove(0);
             mCourseDetailsItems.addAll(courseDetailsResponse);
             mCourseAdapter.notifyDataSetChanged();
         } else {
