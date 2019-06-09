@@ -4,11 +4,13 @@ import com.google.gson.annotations.SerializedName;
 
 public class DiscussionEntity {
     @SerializedName("id")
-    private String mDiscussionId;
+    private String mId;
     @SerializedName("name")
     private String mName;
     @SerializedName("groupid")
     private String mGroupId;
+    @SerializedName("discussion")
+    private String mDiscussionId;
     @SerializedName("subject")
     private String mSubject;
     @SerializedName("message")
@@ -18,19 +20,20 @@ public class DiscussionEntity {
     @SerializedName("numreplies")
     private String mNumberOfReplies;
 
-    public DiscussionEntity(String discussionId, String name, String groupId,
+    public DiscussionEntity(String id, String name, String groupId, String discussionId,
                             String subject, String message, String userFullname, String numberOfReplies) {
-        mDiscussionId = discussionId;
+        mId = id;
         mName = name;
         mGroupId = groupId;
+        mDiscussionId = discussionId;
         mSubject = subject;
         mMessage = message;
         mUserFullname = userFullname;
         mNumberOfReplies = numberOfReplies;
     }
 
-    public String getDiscussionId() {
-        return mDiscussionId;
+    public String getId() {
+        return mId;
     }
 
     public String getName() {
@@ -39,6 +42,10 @@ public class DiscussionEntity {
 
     public String getGroupId() {
         return mGroupId;
+    }
+
+    public String getDiscussionId() {
+        return mDiscussionId;
     }
 
     public String getSubject() {

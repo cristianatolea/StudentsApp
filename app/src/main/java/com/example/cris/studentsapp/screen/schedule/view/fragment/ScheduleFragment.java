@@ -17,7 +17,7 @@ import com.example.cris.studentsapp.screen.dayschedule.view.fragment.DaySchedule
 import com.example.cris.studentsapp.screen.main.view.activity.MainActivity;
 import com.example.cris.studentsapp.screen.schedule.model.entity.WeekDayEntity;
 import com.example.cris.studentsapp.screen.schedule.presenter.ISchedulePresenter;
-import com.example.cris.studentsapp.screen.schedule.view.adapter.weekdays.WeekDayAdapter;
+import com.example.cris.studentsapp.screen.schedule.view.adapter.WeekDayAdapter;
 import com.example.cris.studentsapp.screen.schedule.view.delegate.IScheduleViewDelegate;
 import com.example.cris.studentsapp.utils.AlertUtils;
 

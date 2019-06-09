@@ -73,7 +73,21 @@
         <item name="android:textColorHint">@color/blue_lighter</item>
     </style>
 
+    <style name="TextScheduleSpinnerStyle">
+        <item name="android:textSize">@dimen/text_size_14</item>
+        <item name="android:fontFamily">@font/heebo</item>
+        <item name="android:textColorHint">@color/blue_lighter</item>
+    </style>
+
+
     <style name="TextStyle14BlueDarker">
+        <item name="android:textSize">@dimen/text_size_14</item>
+        <item name="android:textColor">@color/blue_lighter_dark</item>
+        <item name="android:fontFamily">@font/heebo</item>
+        <item name="android:background">@null</item>
+    </style>
+
+    <style name="TextStyle14BlueLight">
         <item name="android:textSize">@dimen/text_size_14</item>
         <item name="android:textColor">@color/blue_lighter_dark</item>
         <item name="android:fontFamily">@font/heebo</item>

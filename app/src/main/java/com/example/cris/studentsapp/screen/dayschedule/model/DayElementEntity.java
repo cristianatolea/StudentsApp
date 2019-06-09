@@ -64,4 +64,12 @@ public class DayElementEntity {
     public void setRecurrence(String mRecurrence) {
         this.mRecurrence = mRecurrence;
     }
+
+    public boolean checkIfEmptyFields(){
+        if (!("".equals(this.mElementName) || "".equals(this.mElementRoom) || "".equals(this.mElementType)
+        || "".equals(this.mTime) || "".equals(this.mRecurrence))) {
+            return true;
+        }
+        return false;
+    }
 }

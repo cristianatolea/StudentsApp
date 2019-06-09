@@ -23,7 +23,7 @@ public class CourseDetailsItem {
     @SerializedName("uservisible")
     private String mUserVisible;
     @SerializedName("modules")
-    List<CourseDetailModule> mModules;
+    private List<CourseDetailModule> mModules;
 
     public CourseDetailsItem(String id, String name, String visible, String summary,
                              String summaryFormat, String section, String hiddenByNumSections,

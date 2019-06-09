@@ -8,9 +8,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.cris.studentsapp.R;
+import com.example.cris.studentsapp.screen.coursedetails.di.CourseDetailsModule;
 import com.example.cris.studentsapp.screen.coursedetails.model.entity.CourseDetailModule;
 import com.example.cris.studentsapp.screen.coursedetails.model.entity.CourseDetailsContent;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CourseItemFileAdapter extends RecyclerView.Adapter<CourseItemFileViewHolder> implements
@@ -18,6 +20,7 @@ public class CourseItemFileAdapter extends RecyclerView.Adapter<CourseItemFileVi
 
     private Context mContext;
     private List<CourseDetailModule> mModules;
+    private List<CourseDetailsContent> mContents;
     private OnItemFileClickListener mOnItemFileClickListener;
 
     public CourseItemFileAdapter(Context context,
@@ -25,6 +28,7 @@ public class CourseItemFileAdapter extends RecyclerView.Adapter<CourseItemFileVi
                                  OnItemFileClickListener onItemFileClickListener) {
         mContext = context;
         mModules = contents;
+        mContents = getAllContents();
         mOnItemFileClickListener = onItemFileClickListener;
     }
 
@@ -37,13 +41,13 @@ public class CourseItemFileAdapter extends RecyclerView.Adapter<CourseItemFileVi
 
     @Override
     public void onBindViewHolder(@NonNull CourseItemFileViewHolder courseItemFilesViewHolder, int i) {
-        CourseDetailModule content = mModules.get(i);
+        CourseDetailsContent content = mContents.get(i);
         courseItemFilesViewHolder.bindData(content);
     }
 
     @Override
     public int getItemCount() {
-        return mModules.size();
+        return mContents.size();
     }
 
     @Override
@@ -53,5 +57,13 @@ public class CourseItemFileAdapter extends RecyclerView.Adapter<CourseItemFileVi
 
     public interface OnItemFileClickListener {
         void onItemFileClick(int position);
+    }
+
+    public List<CourseDetailsContent> getAllContents() {
+        mContents = new ArrayList<>();
+        for (CourseDetailModule module : mModules) {
+            mContents.addAll(module.getContents());
+        }
+        return mContents;
     }
 }

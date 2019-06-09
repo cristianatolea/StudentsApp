@@ -31,6 +31,22 @@ public class CourseDetailsContent {
     @SerializedName("license")
     private String mLicense;
 
+    public CourseDetailsContent() {
+        mContentType = "";
+        mFilename = "";
+        mFilePath = "";
+        mFileSize = "";
+        mFileUrl = "";
+        mTimeCreated = "";
+        mTimeModified = "";
+        mSortOrder = "";
+        mMimeType = "";
+        mIsExternalFile = "";
+        mOwnerId = "";
+        mAuthor = "";
+        mLicense = "";
+    }
+
     public CourseDetailsContent(String contentType, String filename, String filePath, String fileSize,
                                 String fileUrl, String timeCreated, String timeModified, String sortOrder,
                                 String mimeType, String isExternalFile, String ownerId, String author,

@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,7 +30,8 @@ import static com.example.cris.studentsapp.utils.Constants.COURSE_ID;
 import static com.example.cris.studentsapp.utils.Constants.COURSE_NAME;
 
 public class CourseDetailsFragment extends BaseFragment implements
-        ICourseDetailsViewDelegate {
+        ICourseDetailsViewDelegate,
+        CourseDetailsAdapter.OnItemFileClickListener {
 
     private TextView mTextName;
     private RecyclerView mRvCourseItems;
@@ -92,10 +94,15 @@ public class CourseDetailsFragment extends BaseFragment implements
 
     @Override
     public void onGetCourseDetailsSuccess(List<CourseDetailsItem> courseDetailsResponse) {
-        mGeneralCourseItem = courseDetailsResponse.get(0);
-        mCourseDetailsItems.clear();
-        mCourseDetailsItems.addAll(1, courseDetailsResponse);
-        mCourseAdapter.notifyDataSetChanged();
+        if (courseDetailsResponse.size() > 0) {
+            mGeneralCourseItem = courseDetailsResponse.get(0);
+            mCourseDetailsItems.clear();
+            courseDetailsResponse.remove(0);
+            mCourseDetailsItems.addAll(courseDetailsResponse);
+            mCourseAdapter.notifyDataSetChanged();
+        } else {
+            Log.d("on success", "size <= 0");
+        }
     }
 
     public static CourseDetailsFragment newInstance(String id, String name) {
@@ -113,10 +120,15 @@ public class CourseDetailsFragment extends BaseFragment implements
         mTextName = view.findViewById(R.id.text_course_name);
         mRvCourseItems = view.findViewById(R.id.rv_course_items);
 
-        mCourseAdapter = new CourseDetailsAdapter(getContext(), mCourseDetailsItems);
+        mCourseAdapter = new CourseDetailsAdapter(getContext(), mCourseDetailsItems, this);
         mRvCourseItems.setLayoutManager(new LinearLayoutManager(getContext()));
         mRvCourseItems.setAdapter(mCourseAdapter);
 
         mTextName.setText(mCourseName);
+    }
+
+    @Override
+    public void onItemFileClick(int position, int coursePosition) {
+
     }
 }

@@ -2,6 +2,7 @@ package com.example.cris.studentsapp.screen.coursedetails.model.entity;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CourseDetailModule {
@@ -30,6 +31,21 @@ public class CourseDetailModule {
     private String mIndent;
     @SerializedName("contents")
     private List<CourseDetailsContent> mContents;
+
+    public CourseDetailModule() {
+        mModuleId = "";
+        mUrl = "";
+        mModuleName = "";
+        mInstance = "";
+        mVisible = "";
+        mUserVisible = "";
+        mVisibleOnCoursePage = "";
+        mModuleIcon = "";
+        mModShortName = "";
+        mModPlural = "";
+        mIndent = "";
+        mContents = new ArrayList<>();
+    }
 
     public CourseDetailModule(String moduleId, String url, String moduleName, String instance,
                               String visible, String userVisible, String visibleOnCoursePage,
@@ -95,5 +111,53 @@ public class CourseDetailModule {
 
     public List<CourseDetailsContent> getContents() {
         return mContents;
+    }
+
+    public void setModuleId(String mModuleId) {
+        this.mModuleId = mModuleId;
+    }
+
+    public void setUrl(String mUrl) {
+        this.mUrl = mUrl;
+    }
+
+    public void setModuleName(String mModuleName) {
+        this.mModuleName = mModuleName;
+    }
+
+    public void setInstance(String mInstance) {
+        this.mInstance = mInstance;
+    }
+
+    public void setVisible(String mVisible) {
+        this.mVisible = mVisible;
+    }
+
+    public void setUserVisible(String mUserVisible) {
+        this.mUserVisible = mUserVisible;
+    }
+
+    public void setVisibleOnCoursePage(String mVisibleOnCoursePage) {
+        this.mVisibleOnCoursePage = mVisibleOnCoursePage;
+    }
+
+    public void setModuleIcon(String mModuleIcon) {
+        this.mModuleIcon = mModuleIcon;
+    }
+
+    public void setModShortName(String mModShortName) {
+        this.mModShortName = mModShortName;
+    }
+
+    public void setModPlural(String mModPlural) {
+        this.mModPlural = mModPlural;
+    }
+
+    public void setIndent(String mIndent) {
+        this.mIndent = mIndent;
+    }
+
+    public void setContents(List<CourseDetailsContent> mContents) {
+        this.mContents = mContents;
     }
 }

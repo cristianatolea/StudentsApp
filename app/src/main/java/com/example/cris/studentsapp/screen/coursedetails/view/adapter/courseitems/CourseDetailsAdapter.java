@@ -12,21 +12,23 @@ import com.example.cris.studentsapp.screen.coursedetails.model.entity.CourseDeta
 
 import java.util.List;
 
-public class CourseDetailsAdapter extends RecyclerView.Adapter<CourseDetailsViewHolder> {
+public class CourseDetailsAdapter extends RecyclerView.Adapter<CourseDetailsViewHolder> implements CourseDetailsViewHolder.OnFileClickListener {
 
     private Context mContext;
     private List<CourseDetailsItem> mCourseItems;
+    private OnItemFileClickListener mOnItemFileClickListener;
 
-    public CourseDetailsAdapter(Context context, List<CourseDetailsItem> courseItems) {
+    public CourseDetailsAdapter(Context context, List<CourseDetailsItem> courseItems, OnItemFileClickListener onItemFileClickListener) {
         mContext = context;
         mCourseItems = courseItems;
+        mOnItemFileClickListener = onItemFileClickListener;
     }
 
     @NonNull
     @Override
     public CourseDetailsViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(mContext).inflate(R.layout.item_course_details, viewGroup, false);
-        return new CourseDetailsViewHolder(view, mContext);
+        return new CourseDetailsViewHolder(view, mContext, this);
     }
 
     @Override
@@ -38,5 +40,14 @@ public class CourseDetailsAdapter extends RecyclerView.Adapter<CourseDetailsView
     @Override
     public int getItemCount() {
         return mCourseItems.size();
+    }
+
+    @Override
+    public void onFileClick(int coursePosition, int position) {
+        mOnItemFileClickListener.onItemFileClick(coursePosition, position);
+    }
+
+    public interface OnItemFileClickListener {
+        void onItemFileClick(int position, int coursePosition);
     }
 }

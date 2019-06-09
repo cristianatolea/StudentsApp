@@ -1,4 +1,4 @@
-package com.example.cris.studentsapp.screen.schedule.view.adapter.weekdays;
+package com.example.cris.studentsapp.screen.schedule.view.adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;

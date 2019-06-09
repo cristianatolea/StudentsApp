@@ -68,4 +68,5 @@
     <string name="add_element">Add element</string>
     <string name="something_wrong">Something went wrong! Try again later :)</string>
     <string name="events">events</string>
+    <string name="no_files">There are no files attached to this week.</string>
 </resources>

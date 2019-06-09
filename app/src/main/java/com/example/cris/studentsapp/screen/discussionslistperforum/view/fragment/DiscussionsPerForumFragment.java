@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.cris.studentsapp.R;
 import com.example.cris.studentsapp.base.BaseFragment;
@@ -108,7 +109,7 @@ public class DiscussionsPerForumFragment extends BaseFragment implements
 
     @Override
     public void onItemDetailsClick(int position) {
-
+        Toast.makeText(getContext(), mDiscussionsList.get(position).getDiscussionId(), Toast.LENGTH_LONG).show();
     }
 
     public static DiscussionsPerForumFragment newInstance(String id, String name, String courseName) {

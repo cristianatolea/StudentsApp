@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import com.example.cris.studentsapp.R;
 import com.example.cris.studentsapp.screen.coursedetails.model.entity.CourseDetailModule;
+import com.example.cris.studentsapp.screen.coursedetails.model.entity.CourseDetailsContent;
 
 public class CourseItemFileViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
@@ -32,9 +33,9 @@ public class CourseItemFileViewHolder extends RecyclerView.ViewHolder implements
         }
     }
 
-    public void bindData(CourseDetailModule module) {
+    public void bindData(CourseDetailsContent module) {
         if (module != null) {
-            mTextFileName.setText(module.getModuleName());
+            mTextFileName.setText(module.getFilename());
         }
 
     }
