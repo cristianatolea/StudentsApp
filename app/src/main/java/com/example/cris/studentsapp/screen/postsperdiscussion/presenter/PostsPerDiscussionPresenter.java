@@ -4,10 +4,12 @@ import android.content.Context;
 
 import com.example.cris.studentsapp.R;
 import com.example.cris.studentsapp.screen.postsperdiscussion.model.IPostsPerDiscussionModel;
+import com.example.cris.studentsapp.screen.postsperdiscussion.model.entity.PostEntity;
 import com.example.cris.studentsapp.screen.postsperdiscussion.model.entity.PostsResponse;
 import com.example.cris.studentsapp.screen.postsperdiscussion.view.delegate.IPostsPerDiscussionViewDelegate;
 import com.example.cris.studentsapp.utils.InternetUtils;
 
+import java.util.Collections;
 import java.util.List;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -44,8 +46,10 @@ public class PostsPerDiscussionPresenter implements IPostsPerDiscussionPresenter
                                 public void accept(PostsResponse postsResponse) throws Exception {
                                     mViewDelegate.hideProgress();
                                     if (postsResponse != null) {
-                                        if (!postsResponse.getPosts().isEmpty())
+                                        if (!postsResponse.getPosts().isEmpty()) {
+                                            Collections.reverse(postsResponse.getPosts());
                                             mViewDelegate.onGetPostsSuccess(postsResponse.getPosts());
+                                        }
                                     } else {
                                         mViewDelegate.onError(mContext.getString(R.string.alert_error_occured));
                                     }

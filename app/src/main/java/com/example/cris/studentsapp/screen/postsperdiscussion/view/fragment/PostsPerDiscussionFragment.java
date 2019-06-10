@@ -3,16 +3,20 @@ package com.example.cris.studentsapp.screen.postsperdiscussion.view.fragment;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.example.cris.studentsapp.R;
 import com.example.cris.studentsapp.base.BaseFragment;
 import com.example.cris.studentsapp.screen.main.view.activity.MainActivity;
 import com.example.cris.studentsapp.screen.postsperdiscussion.model.entity.PostEntity;
 import com.example.cris.studentsapp.screen.postsperdiscussion.presenter.IPostsPerDiscussionPresenter;
+import com.example.cris.studentsapp.screen.postsperdiscussion.view.adapter.PostAdapter;
 import com.example.cris.studentsapp.screen.postsperdiscussion.view.delegate.IPostsPerDiscussionViewDelegate;
 import com.example.cris.studentsapp.utils.AlertUtils;
 
@@ -28,11 +32,14 @@ import static com.example.cris.studentsapp.utils.Constants.DISCUSSION_NAME;
 public class PostsPerDiscussionFragment extends BaseFragment implements IPostsPerDiscussionViewDelegate {
 
     private ProgressBar mProgressBar;
+    private TextView mTextCourseName;
+    private TextView mTextDiscussionTitle;
 
     private String mDiscussionId = "";
     private String mDiscussionName = "";
     private String mCourseName = "";
     private List<PostEntity> mPostsList;
+    private PostAdapter mPostsAdapter;
 
     @Inject
     IPostsPerDiscussionPresenter mPresenter;
@@ -88,7 +95,7 @@ public class PostsPerDiscussionFragment extends BaseFragment implements IPostsPe
     public void onGetPostsSuccess(List<PostEntity> list) {
         mPostsList.clear();
         mPostsList.addAll(list);
-        //adapter
+        mPostsAdapter.notifyDataSetChanged();
 
     }
 
@@ -106,5 +113,15 @@ public class PostsPerDiscussionFragment extends BaseFragment implements IPostsPe
 
     private void initView(View view) {
         mProgressBar = getActivity().findViewById(R.id.progress_bar);
+        mTextCourseName = view.findViewById(R.id.text_course_name);
+        mTextDiscussionTitle = view.findViewById(R.id.text_discussion_title);
+        RecyclerView rvPosts = view.findViewById(R.id.rv_posts);
+
+        rvPosts.setLayoutManager(new LinearLayoutManager(getContext()));
+        mPostsAdapter = new PostAdapter(getContext(), mPostsList);
+        rvPosts.setAdapter(mPostsAdapter);
+
+        mTextCourseName.setText(mCourseName);
+        mTextDiscussionTitle.setText(mDiscussionName);
     }
 }
