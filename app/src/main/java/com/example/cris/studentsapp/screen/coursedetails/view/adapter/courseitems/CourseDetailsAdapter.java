@@ -48,6 +48,6 @@ public class CourseDetailsAdapter extends RecyclerView.Adapter<CourseDetailsView
     }
 
     public interface OnItemFileClickListener {
-        void onItemFileClick(int position, int coursePosition);
+        void onItemFileClick(int coursePosition, int position);
     }
 }

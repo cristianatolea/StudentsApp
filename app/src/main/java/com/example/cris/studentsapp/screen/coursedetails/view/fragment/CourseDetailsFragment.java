@@ -11,9 +11,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.cris.studentsapp.R;
 import com.example.cris.studentsapp.base.BaseFragment;
+import com.example.cris.studentsapp.screen.coursedetails.di.CourseDetailsModule;
+import com.example.cris.studentsapp.screen.coursedetails.model.entity.CourseDetailModule;
+import com.example.cris.studentsapp.screen.coursedetails.model.entity.CourseDetailsContent;
 import com.example.cris.studentsapp.screen.coursedetails.model.entity.CourseDetailsItem;
 import com.example.cris.studentsapp.screen.coursedetails.presenter.ICourseDetailsPresenter;
 import com.example.cris.studentsapp.screen.coursedetails.view.adapter.courseitems.CourseDetailsAdapter;
@@ -105,6 +109,15 @@ public class CourseDetailsFragment extends BaseFragment implements
         }
     }
 
+    @Override
+    public void onItemFileClick(int coursePosition, int position) {
+        List<CourseDetailsContent> contents = new ArrayList<>();
+        for (CourseDetailModule module : mCourseDetailsItems.get(coursePosition).getModules())
+            contents.addAll(module.getContents());
+
+        Toast.makeText(getContext(), contents.get(position).getFilename(), Toast.LENGTH_LONG).show();
+    }
+
     public static CourseDetailsFragment newInstance(String id, String name) {
         Bundle args = new Bundle();
         args.putString(COURSE_ID, id);
@@ -125,10 +138,5 @@ public class CourseDetailsFragment extends BaseFragment implements
         mRvCourseItems.setAdapter(mCourseAdapter);
 
         mTextName.setText(mCourseName);
-    }
-
-    @Override
-    public void onItemFileClick(int position, int coursePosition) {
-
     }
 }
