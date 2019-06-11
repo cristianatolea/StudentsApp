@@ -36,9 +36,6 @@ abstract class FragmentBuilder {
     @ContributesAndroidInjector(modules = {DashboardModule.class})
     abstract DashboardFragment buildDashboardFragment();
 
-    @ContributesAndroidInjector(modules = {MessagesModule.class})
-    abstract MessagesFragment buildMessagesFragment();
-
     @ContributesAndroidInjector(modules = {NotificationsModule.class})
     abstract NotificationsFragment buildNotificationsFragment();
 

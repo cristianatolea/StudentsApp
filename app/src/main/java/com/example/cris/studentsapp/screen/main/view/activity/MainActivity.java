@@ -2,6 +2,7 @@ package com.example.cris.studentsapp.screen.main.view.activity;
 
 import android.animation.ObjectAnimator;
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.AppBarLayout;
 import android.support.v4.app.Fragment;
@@ -10,8 +11,6 @@ import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.View;
@@ -30,22 +29,17 @@ import com.example.cris.studentsapp.screen.main.model.entity.DrawerItem;
 import com.example.cris.studentsapp.screen.main.presenter.IMainPresenter;
 import com.example.cris.studentsapp.screen.main.view.adapter.NavDrawerListAdapter;
 import com.example.cris.studentsapp.screen.main.view.delegate.IMainViewDelegate;
-import com.example.cris.studentsapp.screen.messages.view.fragment.MessagesFragment;
 import com.example.cris.studentsapp.screen.notifications.view.fragment.NotificationsFragment;
 import com.example.cris.studentsapp.screen.profile.view.fragment.ProfileFragment;
 import com.example.cris.studentsapp.screen.settings.view.fragment.SettingsFragment;
-import com.example.cris.studentsapp.screen.splashscreen.SplashScreenActivity;
 import com.example.cris.studentsapp.utils.Constants;
 import com.example.cris.studentsapp.utils.DrawerToggleAnimatorHelper;
-import com.example.cris.studentsapp.utils.LocalSaving;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 import javax.inject.Inject;
-
-import dagger.Provides;
 
 import static com.example.cris.studentsapp.utils.UIHelper.hideKeyboard;
 
@@ -123,6 +117,7 @@ public class MainActivity extends BaseActivity implements
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.image_button_drawer:
+                mDrawerLayout.closeDrawer(Gravity.START, true);
                 break;
         }
     }
@@ -194,13 +189,6 @@ public class MainActivity extends BaseActivity implements
                 }
                 setToolbarTitle(R.string.notifications);
                 break;
-            case 4:
-                if (!(lastFragment() instanceof MessagesFragment)) {
-                    addFragment(new MessagesFragment(), R.id.frame_main_content);
-                    hideKeyboard(MainActivity.this, mDrawerLayout);
-                }
-                setToolbarTitle(R.string.messenger);
-                break;
         }
         mDrawerLayout.closeDrawer(Gravity.START, true);
     }
@@ -239,9 +227,6 @@ public class MainActivity extends BaseActivity implements
         mTopDrawerItems.add(new DrawerItem(getString(R.string.notifications),
                 R.drawable.ic_notifications_blue,
                 R.drawable.ic_notifications));
-        mTopDrawerItems.add(new DrawerItem(getString(R.string.messenger),
-                R.drawable.ic_message_blue,
-                R.drawable.ic_message));
         mBottomDrawerItems.add(new DrawerItem((getString(R.string.logout)),
                 R.drawable.ic_logout_blue,
                 R.drawable.ic_logout));
@@ -279,7 +264,7 @@ public class MainActivity extends BaseActivity implements
                 mDrawerLayout,
                 mToolbar, 0, 0) {
             public void onDrawerClosed(View view) {
-                mImageButtonDrawer.setImageDrawable(getDrawable(R.drawable.ic_close));
+                mImageButtonDrawer.setImageDrawable(getDrawable(R.drawable.ic_nav_menu));
                 super.onDrawerClosed(view);
             }
 
@@ -289,7 +274,7 @@ public class MainActivity extends BaseActivity implements
                 objectAnimator.setDuration(1000);
                 objectAnimator.setStartDelay(0);
                 objectAnimator.start();
-                //mImageButtonDrawer.setImageResource(R.drawable.ic_close_grey);
+                mImageButtonDrawer.setImageResource(R.drawable.ic_close);
                 hideKeyboard(MainActivity.this, mDrawerLayout);
             }
         };
