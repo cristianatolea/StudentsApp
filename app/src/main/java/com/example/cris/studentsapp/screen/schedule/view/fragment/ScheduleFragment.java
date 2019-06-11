@@ -20,6 +20,7 @@ import com.example.cris.studentsapp.screen.schedule.presenter.ISchedulePresenter
 import com.example.cris.studentsapp.screen.schedule.view.adapter.WeekDayAdapter;
 import com.example.cris.studentsapp.screen.schedule.view.delegate.IScheduleViewDelegate;
 import com.example.cris.studentsapp.utils.AlertUtils;
+import com.example.cris.studentsapp.utils.LocalSaving;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,8 +33,9 @@ public class ScheduleFragment extends BaseFragment implements
 
     private ProgressBar mProgressBar;
     private TextView mTextError;
+    private RecyclerView mRvWeekDays;
 
-    public static List<WeekDayEntity> mWeekDays;
+    //    public static List<WeekDayEntity> mWeekDays;
     private WeekDayAdapter mDaysAdapter;
 
     @Inject
@@ -57,9 +59,19 @@ public class ScheduleFragment extends BaseFragment implements
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        mWeekDays = new ArrayList<>();
+//        mWeekDays = new ArrayList<>();
 
-        mPresenter.prepareDays();
+        if (LocalSaving.getEventsList(getContext()) == null
+                || LocalSaving.getEventsList(getContext()).isEmpty())
+            mPresenter.prepareDays();
+
+        if (LocalSaving.getTypeList(getContext()) == null
+                || LocalSaving.getTypeList(getContext()).isEmpty())
+            mPresenter.createTypeList();
+
+        if (LocalSaving.getRecurrenceList(getContext()) == null
+                || LocalSaving.getRecurrenceList(getContext()).isEmpty())
+            mPresenter.createRecurrenceList();
 
         ((MainActivity) getActivity()).setToolbarTitle(R.string.schedule);
         ((MainActivity) getActivity()).changeFocusOnMenu(0, false, false);
@@ -84,10 +96,7 @@ public class ScheduleFragment extends BaseFragment implements
 
     @Override
     public void onGetNamedDaysSuccess(List<WeekDayEntity> list) {
-        mWeekDays.clear();
-        mWeekDays.addAll(list);
         mTextError.setVisibility(View.GONE);
-        mDaysAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -106,11 +115,14 @@ public class ScheduleFragment extends BaseFragment implements
     private void initView(View view) {
         mProgressBar = getActivity().findViewById(R.id.progress_bar);
         mTextError = view.findViewById(R.id.text_error);
-        RecyclerView rvWeekDays = view.findViewById(R.id.rv_week_days);
+        mRvWeekDays = view.findViewById(R.id.rv_week_days);
 
-        rvWeekDays.setLayoutManager(new LinearLayoutManager(getContext()));
-        mDaysAdapter = new WeekDayAdapter(getContext(), mWeekDays, this);
-        rvWeekDays.setAdapter(mDaysAdapter);
+        mRvWeekDays.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        mDaysAdapter = new WeekDayAdapter(getContext(),
+                LocalSaving.getEventsList(getContext()),
+                this);
+        mRvWeekDays.setAdapter(mDaysAdapter);
 
         mTextError.setVisibility(View.GONE);
     }

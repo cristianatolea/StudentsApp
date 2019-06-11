@@ -18,13 +18,15 @@ import com.example.cris.studentsapp.screen.dayschedule.model.DayElementEntity;
 import com.example.cris.studentsapp.screen.dayschedule.view.adapter.DayElementAdapter;
 import com.example.cris.studentsapp.screen.dayschedule.view.delegate.IDayScheduleViewDelegate;
 import com.example.cris.studentsapp.screen.main.view.activity.MainActivity;
+import com.example.cris.studentsapp.screen.schedule.model.entity.WeekDayEntity;
 import com.example.cris.studentsapp.utils.AlertUtils;
+import com.example.cris.studentsapp.utils.LocalSaving;
 
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.example.cris.studentsapp.screen.schedule.view.fragment.ScheduleFragment.mWeekDays;
+//import static com.example.cris.studentsapp.screen.schedule.view.fragment.ScheduleFragment.mWeekDays;
 import static com.example.cris.studentsapp.utils.Constants.DAY_POSITION;
 
 public class DayScheduleFragment extends BaseFragment implements
@@ -36,6 +38,7 @@ public class DayScheduleFragment extends BaseFragment implements
     private TextView mTextNameDay;
 
     private List<DayElementEntity> mElementsList;
+    private List<WeekDayEntity> mEventsList;
     private DayElementAdapter mDayElementsAdapter;
     private int mDayPos;
 
@@ -57,7 +60,8 @@ public class DayScheduleFragment extends BaseFragment implements
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        mElementsList = new ArrayList<>();
+        mElementsList = LocalSaving.getEventsList(getContext()).get(mDayPos).getDayElements();
+        mEventsList = LocalSaving.getEventsList(getContext());
 
         mDayPos = getArguments().getInt(DAY_POSITION);
 
@@ -83,11 +87,18 @@ public class DayScheduleFragment extends BaseFragment implements
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        mEventsList.get(mDayPos).setDayElements(mElementsList);
+        LocalSaving.setEventsList(getContext(), mEventsList);
+    }
+
+    @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.linear_add_element:
                 DayElementEntity elementEntity = new DayElementEntity();
-                mWeekDays.get(mDayPos).getDayElements().add(elementEntity);
+                mElementsList.add(elementEntity);
                 mDayElementsAdapter.notifyDataSetChanged();
                 break;
         }
@@ -95,34 +106,34 @@ public class DayScheduleFragment extends BaseFragment implements
 
     @Override
     public void onNameAdded(int position, String name) {
-        mWeekDays.get(mDayPos).getDayElements().get(position).setElementName(name);
+        mElementsList.get(position).setElementName(name);
     }
 
     @Override
     public void onRoomAdded(int position, String room) {
-        mWeekDays.get(mDayPos).getDayElements().get(position).setElementRoom(room);
+        mElementsList.get(position).setElementRoom(room);
     }
 
     @Override
-    public void onUpdateTime(int position, Time time) {
-        mWeekDays.get(mDayPos).getDayElements().get(position).setTime(time.toString());
+    public void onUpdateTime(int position, String time) {
+        mElementsList.get(position).setTime(time);
     }
 
     @Override
     public void onTypeSelected(int position, String type) {
-        mWeekDays.get(mDayPos).getDayElements().get(position).setElementType(type);
+        mElementsList.get(position).setElementType(type);
     }
 
     @Override
     public void onRecurrenceSelected(int position, String recurrence) {
-        mWeekDays.get(mDayPos).getDayElements().get(position).setRecurrence(recurrence);
+        mElementsList.get(position).setRecurrence(recurrence);
     }
 
     @Override
     public void onSaveClicked(int position) {
-        if (mWeekDays.get(mDayPos).getDayElements().get(position).checkIfEmptyFields()) {
-            AlertUtils.alert(getContext(), R.string.alert_title, "empty fields");
-        }
+        mEventsList.get(mDayPos).setDayElements(mElementsList);
+        LocalSaving.setEventsList(getContext(), mEventsList);
+        //todo set alarm
     }
 
     public static DayScheduleFragment newInstance(int position) {
@@ -139,11 +150,13 @@ public class DayScheduleFragment extends BaseFragment implements
         RecyclerView rvElements = view.findViewById(R.id.rv_weekday_elements);
         LinearLayout linearAddElements = view.findViewById(R.id.linear_add_element);
 
-        mDayElementsAdapter = new DayElementAdapter(getContext(), mWeekDays.get(mDayPos).getDayElements(), this);
+        mDayElementsAdapter = new DayElementAdapter(getContext(),
+                mElementsList,
+                this);
         rvElements.setLayoutManager(new LinearLayoutManager(getContext()));
         rvElements.setAdapter(mDayElementsAdapter);
 
-        mTextNameDay.setText(mWeekDays.get(mDayPos).getWeekDayName());
+        mTextNameDay.setText(mEventsList.get(mDayPos).getWeekDayName());
 
         linearAddElements.setOnClickListener(this);
     }

@@ -5,6 +5,7 @@ import android.content.Context;
 import com.example.cris.studentsapp.screen.dayschedule.model.DayElementEntity;
 import com.example.cris.studentsapp.screen.schedule.model.entity.WeekDayEntity;
 import com.example.cris.studentsapp.screen.schedule.view.delegate.IScheduleViewDelegate;
+import com.example.cris.studentsapp.utils.LocalSaving;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,7 +59,80 @@ public class SchedulePresenter implements ISchedulePresenter {
                             @Override
                             public void accept(List<WeekDayEntity> weekDayEntities) throws Exception {
                                 if (weekDayEntities != null && !weekDayEntities.isEmpty()) {
+                                    LocalSaving.setEventsList(mContext, weekDayEntities);
                                     mViewDelegate.onGetNamedDaysSuccess(weekDayEntities);
+                                } else {
+                                    mViewDelegate.onGetNamedDaysFailed();
+                                }
+                            }
+                        }, new Consumer<Throwable>() {
+                            @Override
+                            public void accept(Throwable throwable) throws Exception {
+                                mViewDelegate.onError(throwable.getMessage());
+                            }
+                        })
+        );
+    }
+
+    @Override
+    public void createTypeList() {
+        mCompositeDisposable.add(
+                Observable.create(new ObservableOnSubscribe<List<String>>() {
+                    @Override
+                    public void subscribe(ObservableEmitter<List<String>> emitter) throws Exception {
+                        List<String> typeList = new ArrayList<>();
+                        typeList.add("Select type of event");
+                        typeList.add("Course");
+                        typeList.add("Lab");
+                        typeList.add("Seminary");
+
+                        emitter.onNext(typeList);
+                        emitter.onComplete();
+                    }
+                })
+                        .subscribeOn(Schedulers.computation())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(new Consumer<List<String>>() {
+                            @Override
+                            public void accept(List<String> typeList) throws Exception {
+                                if (typeList != null && !typeList.isEmpty()) {
+                                    LocalSaving.setTypeList(mContext, typeList);
+                                } else {
+                                    mViewDelegate.onGetNamedDaysFailed();
+                                }
+                            }
+                        }, new Consumer<Throwable>() {
+                            @Override
+                            public void accept(Throwable throwable) throws Exception {
+                                mViewDelegate.onError(throwable.getMessage());
+                            }
+                        })
+        );
+    }
+
+    @Override
+    public void createRecurrenceList() {
+        mCompositeDisposable.add(
+                Observable.create(new ObservableOnSubscribe<List<String>>() {
+                    @Override
+                    public void subscribe(ObservableEmitter<List<String>> emitter) throws Exception {
+                        List<String> recurrenceList = new ArrayList<>();
+                        recurrenceList.add("Set recurrence");
+                        recurrenceList.add("Weekly");
+                        recurrenceList.add("Odd");
+                        recurrenceList.add("Even");
+
+                        emitter.onNext(recurrenceList);
+                        emitter.onComplete();
+                    }
+                })
+                        .subscribeOn(Schedulers.computation())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(new Consumer<List<String>>() {
+                            @Override
+                            public void accept(List<String> recurrenceList) throws Exception {
+                                if (recurrenceList != null && !recurrenceList.isEmpty()) {
+                                    LocalSaving.setRecurrenceList(mContext, recurrenceList);
                                 } else {
                                     mViewDelegate.onGetNamedDaysFailed();
                                 }

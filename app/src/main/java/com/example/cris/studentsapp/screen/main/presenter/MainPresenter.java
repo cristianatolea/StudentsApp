@@ -44,6 +44,7 @@ public class MainPresenter implements IMainPresenter {
                                     mViewDelegate.hideProgress();
                                     if (siteInfoResponse != null) {
                                         LocalSaving.setUserId(mContext, siteInfoResponse.getUserId());
+                                        LocalSaving.setUsername(mContext, siteInfoResponse.getUserName());
                                     } else {
                                         mViewDelegate.onError(mContext.getString(R.string.alert_error_occured));
                                     }

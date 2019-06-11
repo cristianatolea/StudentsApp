@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import com.example.cris.studentsapp.R;
 import com.example.cris.studentsapp.screen.dayschedule.model.DayElementEntity;
 
-import java.sql.Time;
 import java.util.List;
 
 public class DayElementAdapter extends RecyclerView.Adapter<DayElementViewHolder> implements
@@ -57,7 +56,7 @@ public class DayElementAdapter extends RecyclerView.Adapter<DayElementViewHolder
     }
 
     @Override
-    public void onUpdateTime(int position, Time time) {
+    public void onUpdateTime(int position, String time) {
         mOnItemDayElementUpdated.onUpdateTime(position, time);
     }
 
@@ -81,7 +80,7 @@ public class DayElementAdapter extends RecyclerView.Adapter<DayElementViewHolder
 
         void onRoomAdded(int position, String room);
 
-        void onUpdateTime(int position, Time time);
+        void onUpdateTime(int position, String time);
 
         void onTypeSelected(int position, String type);
 

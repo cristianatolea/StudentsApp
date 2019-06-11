@@ -1,5 +1,6 @@
 package com.example.cris.studentsapp.screen.dayschedule.view.adapter;
 
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -7,17 +8,19 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TimePicker;
 
 import com.example.cris.studentsapp.R;
 import com.example.cris.studentsapp.screen.dayschedule.model.DayElementEntity;
 import com.example.cris.studentsapp.screen.dayschedule.view.adapter.spinner.ScheduleSpinnerAdapter;
+import com.example.cris.studentsapp.utils.AlertUtils;
+import com.example.cris.studentsapp.utils.LocalSaving;
 
-import java.sql.Time;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class DayElementViewHolder extends RecyclerView.ViewHolder implements
@@ -25,6 +28,8 @@ public class DayElementViewHolder extends RecyclerView.ViewHolder implements
 
     private EditText mEditName, mEditRoom, mEditTime;
     private Spinner mSpinnerType, mSpinnerRecurrence;
+    private Button mButtonSave;
+    private Button mButtonCancel;
     private Context mContext;
     private TextWatcher mNameWatcher, mRoomWatcher;
 
@@ -44,27 +49,23 @@ public class DayElementViewHolder extends RecyclerView.ViewHolder implements
         mEditTime = itemView.findViewById(R.id.edit_text_time);
         mSpinnerType = itemView.findViewById(R.id.spinner_element_type);
         mSpinnerRecurrence = itemView.findViewById(R.id.spinner_recurrence);
-        Button buttonSave = itemView.findViewById(R.id.button_save_element);
-        Button buttonCancel = itemView.findViewById(R.id.button_cancel);
+        mButtonSave = itemView.findViewById(R.id.button_save_element);
+        mButtonCancel = itemView.findViewById(R.id.button_cancel);
 
-        final List<String> typeList = new ArrayList<>();
-        typeList.add("Select type of event");
-        typeList.add("Course");
-        typeList.add("Lab");
-        typeList.add("Seminary");
-        final List<String> recurrenceList = new ArrayList<>();
-        recurrenceList.add("Weekly");
-        recurrenceList.add("Odd");
-        recurrenceList.add("Even");
 
-        mTypeAdapter = new ScheduleSpinnerAdapter(mContext, R.layout.item_schedule_spinner, typeList);
-        mRecurrenceAdapter = new ScheduleSpinnerAdapter(mContext, R.layout.item_schedule_spinner, recurrenceList);
+        mTypeAdapter = new ScheduleSpinnerAdapter(mContext,
+                R.layout.item_schedule_spinner,
+                LocalSaving.getTypeList(mContext));
+        mRecurrenceAdapter = new ScheduleSpinnerAdapter(mContext,
+                R.layout.item_schedule_spinner,
+                LocalSaving.getRecurrenceList(mContext));
 
         mSpinnerRecurrence.setAdapter(mRecurrenceAdapter);
         mSpinnerType.setAdapter(mTypeAdapter);
 
-        buttonSave.setOnClickListener(this);
-        buttonCancel.setOnClickListener(this);
+        mButtonSave.setOnClickListener(this);
+        mButtonCancel.setOnClickListener(this);
+        mEditTime.setOnClickListener(this);
 
         mNameWatcher = new TextWatcher() {
             @Override
@@ -107,7 +108,7 @@ public class DayElementViewHolder extends RecyclerView.ViewHolder implements
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (position != 0)
                     mOnDayElementUpdated.onTypeSelected(getAdapterPosition(),
-                            typeList.get(position));
+                            LocalSaving.getTypeList(mContext).get(position));
             }
 
             @Override
@@ -120,7 +121,7 @@ public class DayElementViewHolder extends RecyclerView.ViewHolder implements
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 mOnDayElementUpdated.onRecurrenceSelected(getAdapterPosition(),
-                        recurrenceList.get(position));
+                        LocalSaving.getRecurrenceList(mContext).get(position));
             }
 
             @Override
@@ -134,9 +135,23 @@ public class DayElementViewHolder extends RecyclerView.ViewHolder implements
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button_save_element:
-                mOnDayElementUpdated.onSaveClicked(getAdapterPosition());
+                if (!checkEmptyFields()) {
+                    mEditName.setFocusable(false);
+                    mEditRoom.setFocusable(false);
+                    mEditTime.setFocusable(false);
+                    mSpinnerRecurrence.setFocusable(false);
+                    mSpinnerType.setFocusable(false);
+                    mButtonCancel.setVisibility(View.GONE);
+                    mButtonSave.setVisibility(View.GONE);
+                    mOnDayElementUpdated.onSaveClicked(getAdapterPosition());
+                } else {
+                    AlertUtils.alert(mContext, R.string.alert_title, "empty fields");
+                }
                 break;
             case R.id.button_cancel:
+                break;
+            case R.id.edit_text_time:
+                getTimePicker();
                 break;
         }
     }
@@ -148,6 +163,88 @@ public class DayElementViewHolder extends RecyclerView.ViewHolder implements
         } else {
             mEditName.setFocusable(true);
         }
+
+        if (!"".equals(elementEntity.getElementRoom())) {
+            mEditRoom.setText(elementEntity.getElementRoom());
+            mEditRoom.setFocusable(false);
+        } else {
+            mEditRoom.setFocusable(true);
+        }
+
+        if (!"".equals(elementEntity.getTime())) {
+            mEditTime.setText(elementEntity.getTime());
+            mEditTime.setFocusable(false);
+        } else {
+            mEditTime.setFocusable(true);
+        }
+
+        if (getTypePosition(elementEntity.getElementType()) != -1) {
+            mSpinnerType.setSelection(getTypePosition(elementEntity.getElementType()));
+        } else {
+            mSpinnerType.setSelection(0);
+        }
+
+        if (getRecurrencePosition(elementEntity.getRecurrence()) != -1) {
+            mSpinnerRecurrence.setSelection(getRecurrencePosition(elementEntity.getRecurrence()));
+        } else {
+            mSpinnerRecurrence.setSelection(0);
+        }
+
+        mButtonSave.setVisibility(View.GONE);
+        mButtonCancel.setVisibility(View.GONE);
+
+        mSpinnerType.setEnabled(false);
+        mSpinnerRecurrence.setEnabled(false);
+
+        mEditName.addTextChangedListener(mNameWatcher);
+        mEditRoom.addTextChangedListener(mRoomWatcher);
+    }
+
+    private int getTypePosition(String type) {
+        for (int i = 0; i < LocalSaving.getTypeList(mContext).size(); i++) {
+            if (type.equals(LocalSaving.getTypeList(mContext).get(i)))
+                return i;
+        }
+        return -1;
+    }
+
+    private int getRecurrencePosition(String type) {
+        for (int i = 0; i < LocalSaving.getRecurrenceList(mContext).size(); i++) {
+            if (type.equals(LocalSaving.getRecurrenceList(mContext).get(i)))
+                return i;
+        }
+        return -1;
+    }
+
+    private void getTimePicker() {
+        final Calendar cldr = Calendar.getInstance();
+        int hour = cldr.get(Calendar.HOUR_OF_DAY);
+        int minutes = cldr.get(Calendar.MINUTE);
+        final TimePickerDialog.OnTimeSetListener time = new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                final Calendar calendar = Calendar.getInstance();
+                calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
+                calendar.set(Calendar.MINUTE, minute);
+                updateLabel(hourOfDay, minute);
+                String time = String.valueOf(hourOfDay).concat(" : ").concat(String.valueOf(minute));
+                mOnDayElementUpdated.onUpdateTime(getAdapterPosition(), time);
+            }
+        };
+        new TimePickerDialog(mContext, time, hour, minutes, true).show();
+    }
+
+    private void updateLabel(int hour, int minute) {
+        mEditTime.setText(String.valueOf(hour).concat(" : ").concat(String.valueOf(minute)));
+    }
+
+    private boolean checkEmptyFields() {
+        if ("".equals(mEditRoom.getText()) || "".equals(mEditName.getText()) || "".equals(mEditTime.getText())
+                || "Select type of event".equals(mSpinnerType.getSelectedItem().toString())
+                || "Set recurrence".equals(mSpinnerRecurrence.getSelectedItem().toString())) {
+            return true;
+        }
+        return false;
     }
 
     interface OnDayElementUpdated {
@@ -155,7 +252,7 @@ public class DayElementViewHolder extends RecyclerView.ViewHolder implements
 
         void onRoomAdded(int position, String room);
 
-        void onUpdateTime(int position, Time time);
+        void onUpdateTime(int position, String time);
 
         void onTypeSelected(int position, String type);
 

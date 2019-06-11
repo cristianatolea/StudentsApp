@@ -66,8 +66,8 @@ public class DayElementEntity {
     }
 
     public boolean checkIfEmptyFields(){
-        if (!("".equals(this.mElementName) || "".equals(this.mElementRoom) || "".equals(this.mElementType)
-        || "".equals(this.mTime) || "".equals(this.mRecurrence))) {
+        if ("".equals(this.mElementName) || "".equals(this.mElementRoom) || "".equals(this.mElementType)
+        || "".equals(this.mTime) || "".equals(this.mRecurrence)) {
             return true;
         }
         return false;

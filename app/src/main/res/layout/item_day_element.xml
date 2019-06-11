@@ -61,6 +61,7 @@
             android:layout_marginStart="@dimen/margin_10"
             android:layout_marginTop="9dp"
             android:layout_marginEnd="@dimen/margin_8"
+            android:focusable="false"
             android:hint="@string/time_hint"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/edit_text_room"
