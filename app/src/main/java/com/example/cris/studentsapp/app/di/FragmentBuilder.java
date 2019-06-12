@@ -14,8 +14,8 @@ import com.example.cris.studentsapp.screen.discussionslistperforum.di.Discussion
 import com.example.cris.studentsapp.screen.discussionslistperforum.view.fragment.DiscussionsPerForumFragment;
 import com.example.cris.studentsapp.screen.forumspercourse.di.ForumsModule;
 import com.example.cris.studentsapp.screen.forumspercourse.view.fragment.ForumsFragment;
-import com.example.cris.studentsapp.screen.messages.di.MessagesModule;
-import com.example.cris.studentsapp.screen.messages.view.fragment.MessagesFragment;
+import com.example.cris.studentsapp.screen.help.di.HelpModule;
+import com.example.cris.studentsapp.screen.help.view.fragment.HelpFragment;
 import com.example.cris.studentsapp.screen.notifications.di.NotificationsModule;
 import com.example.cris.studentsapp.screen.notifications.view.fragment.NotificationsFragment;
 import com.example.cris.studentsapp.screen.postsperdiscussion.di.PostsPerDiscussionModule;
@@ -68,4 +68,7 @@ abstract class FragmentBuilder {
 
     @ContributesAndroidInjector(modules = {DayScheduleModule.class})
     abstract DayScheduleFragment buildDaySchedyleFragment();
+
+    @ContributesAndroidInjector(modules = {HelpModule.class})
+    abstract HelpFragment buildHelpFragment();
 }

@@ -24,6 +24,7 @@ import android.widget.Toast;
 import com.example.cris.studentsapp.R;
 import com.example.cris.studentsapp.base.BaseActivity;
 import com.example.cris.studentsapp.screen.dashboard.view.fragment.DashboardFragment;
+import com.example.cris.studentsapp.screen.help.view.fragment.HelpFragment;
 import com.example.cris.studentsapp.screen.logout.view.activity.LogoutActivity;
 import com.example.cris.studentsapp.screen.main.model.entity.DrawerItem;
 import com.example.cris.studentsapp.screen.main.presenter.IMainPresenter;
@@ -189,6 +190,13 @@ public class MainActivity extends BaseActivity implements
                 }
                 setToolbarTitle(R.string.notifications);
                 break;
+            case 4:
+                if (!(lastFragment() instanceof HelpFragment)) {
+                    addFragment(new HelpFragment(), R.id.frame_main_content);
+                    hideKeyboard(MainActivity.this, mDrawerLayout);
+                }
+                setToolbarTitle(R.string.help);
+                break;
         }
         mDrawerLayout.closeDrawer(Gravity.START, true);
     }
@@ -227,6 +235,9 @@ public class MainActivity extends BaseActivity implements
         mTopDrawerItems.add(new DrawerItem(getString(R.string.notifications),
                 R.drawable.ic_notifications_blue,
                 R.drawable.ic_notifications));
+        mTopDrawerItems.add(new DrawerItem(getString(R.string.help),
+                R.drawable.ic_help_blue,
+                R.drawable.ic_help));
         mBottomDrawerItems.add(new DrawerItem((getString(R.string.logout)),
                 R.drawable.ic_logout_blue,
                 R.drawable.ic_logout));
