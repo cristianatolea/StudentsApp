@@ -6,10 +6,7 @@ import com.example.cris.studentsapp.R;
 import com.example.cris.studentsapp.screen.deadlines.model.IDeadlinesModel;
 import com.example.cris.studentsapp.screen.deadlines.model.entity.EventsResponse;
 import com.example.cris.studentsapp.screen.deadlines.view.delegate.IDeadlinesViewDelegate;
-import com.example.cris.studentsapp.screen.forumspercourse.model.entity.ForumEntity;
 import com.example.cris.studentsapp.utils.InternetUtils;
-
-import java.util.List;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;

@@ -10,19 +10,14 @@ import com.example.cris.studentsapp.screen.main.model.entity.SiteInfoResponse;
 import com.example.cris.studentsapp.screen.postsperdiscussion.model.entity.PostsResponse;
 import com.example.cris.studentsapp.screen.profile.model.entity.UserProfileEntity;
 
-
 import java.util.List;
 
 import io.reactivex.Observable;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
-import retrofit2.http.GET;
 import retrofit2.http.POST;
-import retrofit2.http.Query;
 
 public interface ApiInterface {
-
-    //form data calls -> multipart
 
     @FormUrlEncoded
     @POST("login/token.php?service=moodle_mobile_app")
@@ -75,4 +70,5 @@ public interface ApiInterface {
     @POST("webservice/rest/server.php?moodlewsrestformat=json")
     Observable<EventsResponse> getUpcomingDeadlines(@Field("wstoken") String userToken,
                                                     @Field("wsfunction") String function);
+
 }
