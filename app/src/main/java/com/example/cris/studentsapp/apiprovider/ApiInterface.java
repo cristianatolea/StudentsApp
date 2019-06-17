@@ -7,6 +7,7 @@ import com.example.cris.studentsapp.screen.discussionslistperforum.model.entity.
 import com.example.cris.studentsapp.screen.forumspercourse.model.entity.ForumEntity;
 import com.example.cris.studentsapp.screen.login.model.entity.LoginResponseEntity;
 import com.example.cris.studentsapp.screen.main.model.entity.SiteInfoResponse;
+import com.example.cris.studentsapp.screen.postsperdiscussion.model.entity.NewPostResponse;
 import com.example.cris.studentsapp.screen.postsperdiscussion.model.entity.PostsResponse;
 import com.example.cris.studentsapp.screen.profile.model.entity.UserProfileEntity;
 
@@ -65,6 +66,14 @@ public interface ApiInterface {
     Observable<PostsResponse> getDiscussionsPosts(@Field("wstoken") String userToken,
                                                   @Field("wsfunction") String function,
                                                   @Field("discussionid") String discussionId);
+
+    @FormUrlEncoded
+    @POST("webservice/rest/server.php?moodlewsrestformat=json")
+    Observable<NewPostResponse> addNewPost(@Field("wstoken") String userToken,
+                                           @Field("wsfunction") String function,
+                                           @Field("postid") String postId,
+                                           @Field("subject") String subject,
+                                           @Field("message") String message);
 
     @FormUrlEncoded
     @POST("webservice/rest/server.php?moodlewsrestformat=json")

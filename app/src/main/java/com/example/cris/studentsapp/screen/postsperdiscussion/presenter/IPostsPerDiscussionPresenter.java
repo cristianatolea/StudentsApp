@@ -7,4 +7,6 @@ import java.util.List;
 public interface IPostsPerDiscussionPresenter {
 
     void getPosts(String discussionId);
+
+    void addPost(String postId, String subject, String message);
 }

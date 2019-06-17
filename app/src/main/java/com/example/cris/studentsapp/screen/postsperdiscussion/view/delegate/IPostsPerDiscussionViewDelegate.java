@@ -8,4 +8,6 @@ import java.util.List;
 public interface IPostsPerDiscussionViewDelegate extends IBaseViewDelegate {
 
     void onGetPostsSuccess(List<PostEntity> list);
+
+    void onPostAddedSuccessfully();
 }

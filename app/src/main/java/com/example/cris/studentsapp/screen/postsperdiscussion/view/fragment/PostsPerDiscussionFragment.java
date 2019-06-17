@@ -123,6 +123,11 @@ public class PostsPerDiscussionFragment extends BaseFragment implements
     }
 
     @Override
+    public void onPostAddedSuccessfully() {
+        
+    }
+
+    @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.linear_add_post:
@@ -132,7 +137,10 @@ public class PostsPerDiscussionFragment extends BaseFragment implements
                 hideKeyboard(getActivity());
                 mEditNewPost.clearFocus();
                 if (!("").equals(mNewPost)) {
-                    //mPresenter.addComment(mOrderId, mNewComment);
+//                    mPresenter.addPost(
+//                            mPostsList.get(0).getPostId(),
+//                            mPostsList.get(0).getSubject(),
+//                            mNewPost);
                     mNewPost = "";
                 }
                 break;
@@ -205,7 +213,10 @@ public class PostsPerDiscussionFragment extends BaseFragment implements
                         hideKeyboard(Objects.requireNonNull(getActivity()));
                         mEditNewPost.clearFocus();
                         if (!("").equals(mNewPost)) {
-                            //mPresenter.addComment(mOrderId, mNewComment);
+//                            mPresenter.addPost(
+//                                    mPostsList.get(0).getPostId(),
+//                                    mPostsList.get(0).getSubject(),
+//                                    mNewPost);
                             mNewPost = "";
                         }
                         return true;

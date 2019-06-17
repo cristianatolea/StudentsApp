@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.example.cris.studentsapp.R;
 import com.example.cris.studentsapp.screen.postsperdiscussion.model.IPostsPerDiscussionModel;
+import com.example.cris.studentsapp.screen.postsperdiscussion.model.entity.NewPostResponse;
 import com.example.cris.studentsapp.screen.postsperdiscussion.model.entity.PostEntity;
 import com.example.cris.studentsapp.screen.postsperdiscussion.model.entity.PostsResponse;
 import com.example.cris.studentsapp.screen.postsperdiscussion.view.delegate.IPostsPerDiscussionViewDelegate;
@@ -50,6 +51,37 @@ public class PostsPerDiscussionPresenter implements IPostsPerDiscussionPresenter
                                             Collections.reverse(postsResponse.getPosts());
                                             mViewDelegate.onGetPostsSuccess(postsResponse.getPosts());
                                         }
+                                    } else {
+                                        mViewDelegate.onError(mContext.getString(R.string.alert_error_occured));
+                                    }
+                                }
+                            }, new Consumer<Throwable>() {
+                                @Override
+                                public void accept(Throwable throwable) throws Exception {
+                                    mViewDelegate.hideProgress();
+                                    mViewDelegate.onError(throwable.getMessage());
+                                }
+                            })
+            );
+        } else {
+            mViewDelegate.onNoInternetConnection();
+        }
+    }
+
+    @Override
+    public void addPost(String postId, String subject, String message) {
+        if (InternetUtils.hasActiveInternetConnection(mContext)) {
+            mViewDelegate.showProgress();
+            mCompositeDisposable.add(
+                    mModel.addNewPost(postId,subject,message)
+                            .subscribeOn(Schedulers.io())
+                            .observeOn(AndroidSchedulers.mainThread())
+                            .subscribe(new Consumer<NewPostResponse>() {
+                                @Override
+                                public void accept(NewPostResponse postsResponse) throws Exception {
+                                    mViewDelegate.hideProgress();
+                                    if (postsResponse != null) {
+                                        mViewDelegate.onPostAddedSuccessfully();
                                     } else {
                                         mViewDelegate.onError(mContext.getString(R.string.alert_error_occured));
                                     }
