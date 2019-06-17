@@ -9,9 +9,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.cris.studentsapp.R;
 import com.example.cris.studentsapp.base.BaseFragment;
@@ -36,11 +36,13 @@ import static com.example.cris.studentsapp.utils.Constants.STIRI;
 
 public class DiscussionsPerForumFragment extends BaseFragment implements
         IDiscussionsPerForumViewDelegate,
-        DiscussionAdapter.OnItemDetailsClick {
+        DiscussionAdapter.OnItemDetailsClick,
+        View.OnClickListener {
 
     private ProgressBar mProgressBar;
     private CardView mCardDiscussions;
     private TextView mTextNoResults;
+    private LinearLayout mLineaAddDiscussion;
 
     private String mForumName = "";
     private String mCourseName = "";
@@ -79,6 +81,7 @@ public class DiscussionsPerForumFragment extends BaseFragment implements
 
         initView(view);
 
+        mPresenter.checkPermissionToAddDiscussion(mForumId);
         mPresenter.getForumsDiscussions(mForumId);
 
         ((MainActivity) getActivity()).setToolbarTitle(R.string.discussions);
@@ -115,6 +118,16 @@ public class DiscussionsPerForumFragment extends BaseFragment implements
     }
 
     @Override
+    public void onGetPermissionGrantedToAddDiscussion() {
+        mLineaAddDiscussion.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void onGetPermissionDeniedToAddDiscussion() {
+        mLineaAddDiscussion.setVisibility(View.GONE);
+    }
+
+    @Override
     public void onItemDetailsClick(int position) {
         PostsPerDiscussionFragment postsPerDiscussionFragment =
                 PostsPerDiscussionFragment.newInstance(mDiscussionsList.get(position).getDiscussionId(),
@@ -124,6 +137,15 @@ public class DiscussionsPerForumFragment extends BaseFragment implements
         ((MainActivity) getActivity())
                 .changeFocusOnMenu(0, false, false);
         addFragment(postsPerDiscussionFragment, R.id.frame_main_content);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.linear_add:
+
+                break;
+        }
     }
 
     public static DiscussionsPerForumFragment newInstance(String id,
@@ -141,6 +163,8 @@ public class DiscussionsPerForumFragment extends BaseFragment implements
     }
 
     private void initView(View view) {
+        mLineaAddDiscussion = getActivity().findViewById(R.id.linear_add);
+
         mProgressBar = getActivity().findViewById(R.id.progress_bar);
         TextView textForumName = view.findViewById(R.id.text_forum_name);
         TextView textCourseName = view.findViewById(R.id.text_course_name);
@@ -159,5 +183,7 @@ public class DiscussionsPerForumFragment extends BaseFragment implements
         textCourseName.setText(mCourseName);
         mCardDiscussions.setVisibility(View.GONE);
         mTextNoResults.setVisibility(View.GONE);
+
+        mLineaAddDiscussion.setOnClickListener(this);
     }
 }

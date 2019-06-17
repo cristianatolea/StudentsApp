@@ -8,4 +8,8 @@ import java.util.List;
 public interface IDiscussionsPerForumViewDelegate extends IBaseViewDelegate {
 
     void onGetDiscussionsSuccess(List<DiscussionEntity> list);
+
+    void onGetPermissionGrantedToAddDiscussion();
+
+    void onGetPermissionDeniedToAddDiscussion();
 }

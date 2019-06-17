@@ -124,7 +124,7 @@ public class PostsPerDiscussionFragment extends BaseFragment implements
 
     @Override
     public void onPostAddedSuccessfully() {
-        
+
     }
 
     @Override
@@ -176,6 +176,9 @@ public class PostsPerDiscussionFragment extends BaseFragment implements
     }
 
     private void initView(View view) {
+        LinearLayout lineaAddDiscussion = getActivity().findViewById(R.id.linear_add);
+        lineaAddDiscussion.setVisibility(View.GONE);
+
         mProgressBar = getActivity().findViewById(R.id.progress_bar);
         mTextCourseName = view.findViewById(R.id.text_course_name);
         mTextDiscussionTitle = view.findViewById(R.id.text_discussion_title);

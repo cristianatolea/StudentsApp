@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -88,6 +89,9 @@ public class DeadlinesFragment extends BaseFragment implements IDeadlinesViewDel
     }
 
     private void initView(View view) {
+        LinearLayout lineaAddDiscussion = getActivity().findViewById(R.id.linear_add);
+        lineaAddDiscussion.setVisibility(View.GONE);
+
         mProgressBar = getActivity().findViewById(R.id.progress_bar);
         mTextNoResults = view.findViewById(R.id.text_no_result);
 

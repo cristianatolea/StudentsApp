@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -113,6 +114,9 @@ public class ScheduleFragment extends BaseFragment implements
     }
 
     private void initView(View view) {
+        LinearLayout lineaAddDiscussion = getActivity().findViewById(R.id.linear_add);
+        lineaAddDiscussion.setVisibility(View.GONE);
+
         mProgressBar = getActivity().findViewById(R.id.progress_bar);
         mTextError = view.findViewById(R.id.text_error);
         mRvWeekDays = view.findViewById(R.id.rv_week_days);

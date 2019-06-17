@@ -76,6 +76,9 @@ public class SettingsFragment extends BaseFragment implements
     }
 
     private void initView(View view) {
+        LinearLayout lineaAddDiscussion = getActivity().findViewById(R.id.linear_add);
+        lineaAddDiscussion.setVisibility(View.GONE);
+
         mProgressBar = getActivity().findViewById(R.id.progress_bar);
         mInputCurrentPassword = view.findViewById(R.id.input_current_password);
         mInputNewPassword = view.findViewById(R.id.input_new_password);

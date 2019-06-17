@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.example.cris.studentsapp.R;
 import com.example.cris.studentsapp.base.BaseFragment;
@@ -51,6 +52,9 @@ public class NotificationsFragment extends BaseFragment implements
     }
 
     private void initView(View view) {
+        LinearLayout lineaAddDiscussion = getActivity().findViewById(R.id.linear_add);
+        lineaAddDiscussion.setVisibility(View.GONE);
+
 
     }
 }

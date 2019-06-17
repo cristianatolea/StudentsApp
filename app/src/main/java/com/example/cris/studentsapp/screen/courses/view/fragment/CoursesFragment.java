@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -103,6 +104,9 @@ public class CoursesFragment extends BaseFragment implements
     }
 
     private void initView(View view) {
+        LinearLayout lineaAddDiscussion = getActivity().findViewById(R.id.linear_add);
+        lineaAddDiscussion.setVisibility(View.GONE);
+
         RecyclerView rvCourses = view.findViewById(R.id.rv_courses);
         mAdapter = new CoursesAdapter(getContext(), mCoursesList, this);
         mProgressBar = getActivity().findViewById(R.id.progress_bar);

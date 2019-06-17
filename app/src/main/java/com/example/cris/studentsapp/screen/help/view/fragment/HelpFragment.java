@@ -9,6 +9,7 @@ import android.support.constraint.ConstraintLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -105,6 +106,9 @@ public class HelpFragment extends BaseFragment implements
     }
 
     private void initView(View view) {
+        LinearLayout lineaAddDiscussion = getActivity().findViewById(R.id.linear_add);
+        lineaAddDiscussion.setVisibility(View.GONE);
+
         mProgressBar = getActivity().findViewById(R.id.progress_bar);
         ConstraintLayout constraintSchedules = view.findViewById(R.id.constraint_schedules);
         TextView textUpbLink = view.findViewById(R.id.text_upb_link);

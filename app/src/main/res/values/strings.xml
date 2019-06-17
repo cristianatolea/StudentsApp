@@ -84,4 +84,5 @@
     <string name="no_discussions">Nu exista discutii pentru acest forum.</string>
     <string name="no_posts">Nu exista postari pentru aceasta discutie.</string>
     <string name="post_hint">Adaugati un raspuns</string>
+    <string name="add_discussion">Adauga discutie</string>
 </resources>

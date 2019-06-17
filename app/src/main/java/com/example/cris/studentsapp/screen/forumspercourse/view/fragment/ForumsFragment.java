@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -143,6 +144,9 @@ public class ForumsFragment extends BaseFragment implements
     }
 
     private void initView(View view) {
+        LinearLayout lineaAddDiscussion = getActivity().findViewById(R.id.linear_add);
+        lineaAddDiscussion.setVisibility(View.GONE);
+
         mCoursesSpinner = view.findViewById(R.id.spinner_discussions_courses);
         RecyclerView rvCourseForums = view.findViewById(R.id.rv_course_forums);
         mProgressBar = getActivity().findViewById(R.id.progress_bar);

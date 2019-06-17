@@ -3,6 +3,7 @@ package com.example.cris.studentsapp.apiprovider;
 import com.example.cris.studentsapp.screen.coursedetails.model.entity.CourseDetailsItem;
 import com.example.cris.studentsapp.screen.courses.model.entity.CourseEntity;
 import com.example.cris.studentsapp.screen.deadlines.model.entity.EventsResponse;
+import com.example.cris.studentsapp.screen.discussionslistperforum.model.entity.CanAddDiscussionResponse;
 import com.example.cris.studentsapp.screen.discussionslistperforum.model.entity.DiscussionsPerForumResponse;
 import com.example.cris.studentsapp.screen.forumspercourse.model.entity.ForumEntity;
 import com.example.cris.studentsapp.screen.login.model.entity.LoginResponseEntity;
@@ -74,6 +75,12 @@ public interface ApiInterface {
                                            @Field("postid") String postId,
                                            @Field("subject") String subject,
                                            @Field("message") String message);
+
+    @FormUrlEncoded
+    @POST("webservice/rest/server.php?moodlewsrestformat=json")
+    Observable<CanAddDiscussionResponse> canAddDiscussion(@Field("wstoken") String userToken,
+                                                          @Field("wsfunction") String function,
+                                                          @Field("forumid") String forumId);
 
     @FormUrlEncoded
     @POST("webservice/rest/server.php?moodlewsrestformat=json")

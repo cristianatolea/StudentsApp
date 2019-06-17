@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -129,6 +130,8 @@ public class CourseDetailsFragment extends BaseFragment implements
 
     private void initView(View view) {
         mProgressBar = getActivity().findViewById(R.id.progress_bar);
+        LinearLayout lineaAddDiscussion = getActivity().findViewById(R.id.linear_add);
+        lineaAddDiscussion.setVisibility(View.GONE);
 
         mTextName = view.findViewById(R.id.text_course_name);
         mRvCourseItems = view.findViewById(R.id.rv_course_items);

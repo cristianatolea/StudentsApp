@@ -145,6 +145,9 @@ public class DayScheduleFragment extends BaseFragment implements
     }
 
     private void initView(View view) {
+        LinearLayout lineaAddDiscussion = getActivity().findViewById(R.id.linear_add);
+        lineaAddDiscussion.setVisibility(View.GONE);
+
         mProgressBar = getActivity().findViewById(R.id.progress_bar);
         mTextNameDay = view.findViewById(R.id.text_day_name);
         RecyclerView rvElements = view.findViewById(R.id.rv_weekday_elements);

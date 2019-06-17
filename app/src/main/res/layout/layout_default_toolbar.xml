@@ -26,7 +26,7 @@
             android:layout_gravity="center_vertical"
             android:layout_marginStart="@dimen/margin_8"
             android:gravity="center"
-            android:text="fjfdgyrgvbrftbhgfbgfgfbvrgftbhbgfbgftrbfgrbvfg"
+            android:text="hgfcygvhghj"
             android:textAlignment="textStart"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/linear_toolbar_buttons"
@@ -45,32 +45,32 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <!--<LinearLayout-->
-                <!--android:id="@+id/linear_add"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="match_parent"-->
-                <!--android:layout_marginStart="8dp"-->
-                <!--android:layout_marginTop="8dp"-->
-                <!--android:layout_marginBottom="8dp"-->
-                <!--android:visibility="gone">-->
+            <LinearLayout
+                android:id="@+id/linear_add"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:visibility="gone">
 
-                <!--<ImageView-->
-                    <!--android:id="@+id/image_add"-->
-                    <!--android:layout_width="16dp"-->
-                    <!--android:layout_height="16dp"-->
-                    <!--android:layout_gravity="center_vertical"-->
-                    <!--android:layout_marginStart="@dimen/margin_5"-->
-                    <!--android:layout_marginEnd="@dimen/margin_5"-->
-                    <!--android:src="@drawable/ic_add_orders"-->
-                    <!--tools:ignore="VectorDrawableCompat" />-->
+                <ImageView
+                    android:id="@+id/image_add"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:src="@drawable/ic_add"
+                    tools:ignore="VectorDrawableCompat" />
 
-                <!--<TextView-->
-                    <!--style="@style/TextStyleRedButtonText"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_gravity="center_vertical"-->
-                    <!--android:text="@string/add_order" />-->
-            <!--</LinearLayout>-->
+                <TextView
+                    style="@style/TextStyleDetails"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/add_discussion" />
+            </LinearLayout>
 
             <!--<LinearLayout-->
                 <!--android:id="@+id/linear_filter"-->
