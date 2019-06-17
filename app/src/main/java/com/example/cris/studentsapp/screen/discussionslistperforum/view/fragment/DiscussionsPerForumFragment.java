@@ -144,9 +144,15 @@ public class DiscussionsPerForumFragment extends BaseFragment implements
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.linear_add:
+                AddDiscussionFragment addDiscussionFragment =
+                        AddDiscussionFragment.newInstance(
+                                mForumId,
+                                mForumName,
+                                mCourseName,
+                                mIsNewsType);
                 ((MainActivity) getActivity())
                         .changeFocusOnMenu(0, false, false);
-                addFragment(new AddDiscussionFragment(), R.id.frame_main_content);
+                addFragment(addDiscussionFragment, R.id.frame_main_content);
                 break;
         }
     }

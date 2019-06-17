@@ -1,5 +1,6 @@
 package com.example.cris.studentsapp.apiprovider;
 
+import com.example.cris.studentsapp.screen.adddiscussion.model.entity.AddNewDiscussionResponse;
 import com.example.cris.studentsapp.screen.coursedetails.model.entity.CourseDetailsItem;
 import com.example.cris.studentsapp.screen.courses.model.entity.CourseEntity;
 import com.example.cris.studentsapp.screen.deadlines.model.entity.EventsResponse;
@@ -81,6 +82,14 @@ public interface ApiInterface {
     Observable<CanAddDiscussionResponse> canAddDiscussion(@Field("wstoken") String userToken,
                                                           @Field("wsfunction") String function,
                                                           @Field("forumid") String forumId);
+
+    @FormUrlEncoded
+    @POST("webservice/rest/server.php?moodlewsrestformat=json")
+    Observable<AddNewDiscussionResponse> addNewDiscussion(@Field("wstoken") String userToken,
+                                                          @Field("wsfunction") String function,
+                                                          @Field("forumid") String forumId,
+                                                          @Field("subject") String subject,
+                                                          @Field("message") String message);
 
     @FormUrlEncoded
     @POST("webservice/rest/server.php?moodlewsrestformat=json")
