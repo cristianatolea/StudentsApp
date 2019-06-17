@@ -176,21 +176,21 @@ public class MainActivity extends BaseActivity implements
                 }
                 setToolbarTitle(R.string.profile);
                 break;
+//            case 2:
+//                if (!(lastFragment() instanceof SettingsFragment)) {
+//                    addFragment(new SettingsFragment(), R.id.frame_main_content);
+//                    hideKeyboard(MainActivity.this, mDrawerLayout);
+//                }
+//                setToolbarTitle(R.string.settings);
+//                break;
             case 2:
-                if (!(lastFragment() instanceof SettingsFragment)) {
-                    addFragment(new SettingsFragment(), R.id.frame_main_content);
-                    hideKeyboard(MainActivity.this, mDrawerLayout);
-                }
-                setToolbarTitle(R.string.settings);
-                break;
-            case 3:
                 if (!(lastFragment() instanceof NotificationsFragment)) {
                     addFragment(new NotificationsFragment(), R.id.frame_main_content);
                     hideKeyboard(MainActivity.this, mDrawerLayout);
                 }
                 setToolbarTitle(R.string.notifications);
                 break;
-            case 4:
+            case 3:
                 if (!(lastFragment() instanceof HelpFragment)) {
                     addFragment(new HelpFragment(), R.id.frame_main_content);
                     hideKeyboard(MainActivity.this, mDrawerLayout);
@@ -229,9 +229,9 @@ public class MainActivity extends BaseActivity implements
         mTopDrawerItems.add(new DrawerItem(getString(R.string.profile),
                 R.drawable.ic_profile_blue,
                 R.drawable.ic_profile));
-        mTopDrawerItems.add(new DrawerItem(getString(R.string.settings),
-                R.drawable.ic_settings_blue,
-                R.drawable.ic_settings));
+//        mTopDrawerItems.add(new DrawerItem(getString(R.string.settings),
+//                R.drawable.ic_settings_blue,
+//                R.drawable.ic_settings));
         mTopDrawerItems.add(new DrawerItem(getString(R.string.notifications),
                 R.drawable.ic_notifications_blue,
                 R.drawable.ic_notifications));
@@ -321,6 +321,9 @@ public class MainActivity extends BaseActivity implements
     }
 
     private void initView() {
+        LinearLayout lineaAddDiscussion = findViewById(R.id.linear_add);
+        lineaAddDiscussion.setVisibility(View.GONE);
+
         AppBarLayout appBarLayout = findViewById(R.id.app_bar_layout);
         LinearLayout linearDrawerButton = findViewById(R.id.linear_button);
         mProgressBar = findViewById(R.id.progress_bar);

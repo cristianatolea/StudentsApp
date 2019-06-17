@@ -33,7 +33,7 @@ public class NotificationsFragment extends BaseFragment implements
         initView(view);
 
         ((MainActivity) getActivity()).setToolbarTitle(R.string.notifications);
-        ((MainActivity) getActivity()).changeFocusOnMenu(3, true, false);
+        ((MainActivity) getActivity()).changeFocusOnMenu(2, true, false);
     }
 
     @Override

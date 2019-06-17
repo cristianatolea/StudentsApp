@@ -1,5 +1,8 @@
 package com.example.cris.studentsapp.app.di;
 
+import com.example.cris.studentsapp.screen.adddiscussion.di.AddDiscussionModule;
+import com.example.cris.studentsapp.screen.adddiscussion.model.AddDiscussionModel;
+import com.example.cris.studentsapp.screen.adddiscussion.view.fragment.AddDiscussionFragment;
 import com.example.cris.studentsapp.screen.coursedetails.di.CourseDetailsModule;
 import com.example.cris.studentsapp.screen.coursedetails.view.fragment.CourseDetailsFragment;
 import com.example.cris.studentsapp.screen.courses.di.CoursesModule;
@@ -60,6 +63,9 @@ abstract class FragmentBuilder {
     @ContributesAndroidInjector(modules = {DiscussionsPerForumModule.class})
     abstract DiscussionsPerForumFragment buildDiscussionsPerForumFragment();
 
+    @ContributesAndroidInjector(modules = {AddDiscussionModule.class})
+    abstract AddDiscussionFragment buildAddDiscussionFragment();
+
     @ContributesAndroidInjector(modules = {PostsPerDiscussionModule.class})
     abstract PostsPerDiscussionFragment buildPostsPerDiscussionFragment();
 
@@ -71,4 +77,6 @@ abstract class FragmentBuilder {
 
     @ContributesAndroidInjector(modules = {HelpModule.class})
     abstract HelpFragment buildHelpFragment();
+
+
 }

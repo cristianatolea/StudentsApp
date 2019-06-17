@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.example.cris.studentsapp.R;
 import com.example.cris.studentsapp.base.BaseFragment;
+import com.example.cris.studentsapp.screen.adddiscussion.view.fragment.AddDiscussionFragment;
 import com.example.cris.studentsapp.screen.discussionslistperforum.model.entity.DiscussionEntity;
 import com.example.cris.studentsapp.screen.discussionslistperforum.presenter.IDiscussionsPerForumPresenter;
 import com.example.cris.studentsapp.screen.discussionslistperforum.view.adapter.DiscussionAdapter;
@@ -143,7 +144,9 @@ public class DiscussionsPerForumFragment extends BaseFragment implements
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.linear_add:
-
+                ((MainActivity) getActivity())
+                        .changeFocusOnMenu(0, false, false);
+                addFragment(new AddDiscussionFragment(), R.id.frame_main_content);
                 break;
         }
     }

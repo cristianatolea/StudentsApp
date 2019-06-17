@@ -53,7 +53,7 @@ public class HelpFragment extends BaseFragment implements
         initView(view);
 
         ((MainActivity) getActivity()).setToolbarTitle(R.string.help);
-        ((MainActivity) getActivity()).changeFocusOnMenu(4, true, false);
+        ((MainActivity) getActivity()).changeFocusOnMenu(3, true, false);
     }
 
     @Override
