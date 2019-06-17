@@ -28,6 +28,7 @@ import com.example.cris.studentsapp.screen.main.view.activity.MainActivity;
 import com.example.cris.studentsapp.utils.AlertUtils;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -96,7 +97,7 @@ public class ForumsFragment extends BaseFragment implements
     public void onError(String errorMessage) {
         AlertUtils.alert(getContext(), R.string.alert_title, errorMessage);
     }
-    
+
 
     @Override
     public void onGetCoursesListSuccess(List<CourseEntity> list) {
@@ -124,13 +125,21 @@ public class ForumsFragment extends BaseFragment implements
 
     @Override
     public void onItemDetailsClick(int position) {
+        boolean isNewsType = findString(mForumsList.get(position).getForumName());
+
         DiscussionsPerForumFragment discussionsPerForumFragment =
                 DiscussionsPerForumFragment.newInstance(mForumsList.get(position).getForumId(),
                         mForumsList.get(position).getForumName(),
-                        mSelectedCourseName);
+                        mSelectedCourseName,
+                        isNewsType);
         ((MainActivity) getActivity())
                 .changeFocusOnMenu(0, false, false);
         addFragment(discussionsPerForumFragment, R.id.frame_main_content);
+    }
+
+    private boolean findString(String string) {
+        String keyword = "ştiri";
+        return Arrays.asList(string.split(" ")).contains(keyword);
     }
 
     private void initView(View view) {

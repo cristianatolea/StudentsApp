@@ -11,6 +11,7 @@ public class Constants {
     public static final String URL_PORTAL = "http://portal.office.com";
     public static final String COURSE_ID = "course id";
     public static final String COURSE_NAME = "course name";
+    public static final String STIRI = "boolean stiri";
     public static final String FORUM_ID = "forum id";
     public static final String FORUM_NAME = "forum name";
     public static final String DISCUSSION_NAME = "discussion name";

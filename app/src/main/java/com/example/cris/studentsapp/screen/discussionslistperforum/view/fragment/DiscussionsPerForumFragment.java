@@ -32,6 +32,7 @@ import javax.inject.Inject;
 import static com.example.cris.studentsapp.utils.Constants.COURSE_NAME;
 import static com.example.cris.studentsapp.utils.Constants.FORUM_ID;
 import static com.example.cris.studentsapp.utils.Constants.FORUM_NAME;
+import static com.example.cris.studentsapp.utils.Constants.STIRI;
 
 public class DiscussionsPerForumFragment extends BaseFragment implements
         IDiscussionsPerForumViewDelegate,
@@ -44,6 +45,7 @@ public class DiscussionsPerForumFragment extends BaseFragment implements
     private String mForumName = "";
     private String mCourseName = "";
     private String mForumId = "";
+    private boolean mIsNewsType;
     private DiscussionAdapter mDiscussionAdapter;
     private List<DiscussionEntity> mDiscussionsList;
 
@@ -73,6 +75,7 @@ public class DiscussionsPerForumFragment extends BaseFragment implements
         mForumId = getArguments().getString(FORUM_ID);
         mForumName = getArguments().getString(FORUM_NAME);
         mCourseName = getArguments().getString(COURSE_NAME);
+        mIsNewsType = getArguments().getBoolean(STIRI);
 
         initView(view);
 
@@ -102,7 +105,7 @@ public class DiscussionsPerForumFragment extends BaseFragment implements
         mDiscussionsList.clear();
         mDiscussionsList.addAll(list);
         mDiscussionAdapter.notifyDataSetChanged();
-        if (mDiscussionsList != null) {
+        if (mDiscussionsList != null && !mDiscussionsList.isEmpty()) {
             mCardDiscussions.setVisibility(View.VISIBLE);
             mTextNoResults.setVisibility(View.GONE);
         } else {
@@ -116,17 +119,22 @@ public class DiscussionsPerForumFragment extends BaseFragment implements
         PostsPerDiscussionFragment postsPerDiscussionFragment =
                 PostsPerDiscussionFragment.newInstance(mDiscussionsList.get(position).getDiscussionId(),
                         mDiscussionsList.get(position).getName(),
-                        mCourseName);
+                        mCourseName,
+                        mIsNewsType);
         ((MainActivity) getActivity())
                 .changeFocusOnMenu(0, false, false);
         addFragment(postsPerDiscussionFragment, R.id.frame_main_content);
     }
 
-    public static DiscussionsPerForumFragment newInstance(String id, String name, String courseName) {
+    public static DiscussionsPerForumFragment newInstance(String id,
+                                                          String name,
+                                                          String courseName,
+                                                          boolean news) {
         Bundle args = new Bundle();
         args.putString(FORUM_ID, id);
         args.putString(FORUM_NAME, name);
         args.putString(COURSE_NAME, courseName);
+        args.putBoolean(STIRI, news);
         DiscussionsPerForumFragment fragment = new DiscussionsPerForumFragment();
         fragment.setArguments(args);
         return fragment;

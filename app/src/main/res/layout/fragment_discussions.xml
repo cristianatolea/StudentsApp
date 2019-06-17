@@ -42,7 +42,6 @@
             android:layout_marginEnd="@dimen/margin_16"
             android:text="@string/no_discussions"
             android:textAlignment="center"
-            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/text_forum_name" />
