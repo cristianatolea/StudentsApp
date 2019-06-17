@@ -16,4 +16,13 @@ public class Constants {
     public static final String DISCUSSION_NAME = "discussion name";
     public static final String DISCUSSION_ID = "discussion id";
     public static final String DAY_POSITION = "day position";
+
+    public static final String SCHEDULE_LINK = "https://acs.pub.ro/educatie/orare/";
+    public static final String UPB_LINK = "https://upb.ro/";
+    public static final String UPB_FACEBOOK = "https://www.facebook.com/UPB1818/";
+    public static final String ACS_LINK = "https://acs.pub.ro";
+    public static final String ACS_FACEBOOK = "https://www.facebook.com/automatica.calculatoare";
+    public static final String LSAC_FACEBOOK = "https://www.facebook.com/LsacBucuresti/";
+    public static final String STUDENTI_LINK = "https://studenti.pub.ro";
+
 }
