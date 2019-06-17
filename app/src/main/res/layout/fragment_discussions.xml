@@ -32,6 +32,21 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/text_course_name" />
 
+        <TextView
+            android:id="@+id/text_no_discussions"
+            style="@style/TextStyle16BlueDarkerBold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_16"
+            android:layout_marginTop="@dimen/margin_16"
+            android:layout_marginEnd="@dimen/margin_16"
+            android:text="@string/no_discussions"
+            android:textAlignment="center"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_forum_name" />
+
         <android.support.v7.widget.CardView
             android:id="@+id/card_forum_discussions"
             android:layout_width="match_parent"
@@ -43,10 +58,10 @@
             android:background="@drawable/shape_white_gradient_background"
             android:elevation="5dp"
             app:cardCornerRadius="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/text_forum_name">
+            app:layout_constraintTop_toBottomOf="@id/text_no_discussions">
 
             <LinearLayout
                 android:layout_width="match_parent"

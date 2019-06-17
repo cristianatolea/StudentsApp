@@ -44,10 +44,10 @@ public class CoursesPresenter implements ICoursesPresenter {
                                 @Override
                                 public void accept(List<CourseEntity> list) throws Exception {
                                     mViewDelegate.hideProgress();
-                                    if (list != null) {
+                                    if (list != null && !list.isEmpty()) {
                                         mViewDelegate.onGetCoursesSuccess(list);
                                     } else {
-                                        mViewDelegate.onError(mContext.getString(R.string.alert_error_occured));
+                                        mViewDelegate.onGetNoCourses();
                                     }
                                 }
                             }, new Consumer<Throwable>() {

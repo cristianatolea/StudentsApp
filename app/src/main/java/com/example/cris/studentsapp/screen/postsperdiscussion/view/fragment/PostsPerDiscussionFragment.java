@@ -29,11 +29,14 @@ import static com.example.cris.studentsapp.utils.Constants.COURSE_NAME;
 import static com.example.cris.studentsapp.utils.Constants.DISCUSSION_ID;
 import static com.example.cris.studentsapp.utils.Constants.DISCUSSION_NAME;
 
-public class PostsPerDiscussionFragment extends BaseFragment implements IPostsPerDiscussionViewDelegate {
+public class PostsPerDiscussionFragment extends BaseFragment implements
+        IPostsPerDiscussionViewDelegate {
 
     private ProgressBar mProgressBar;
     private TextView mTextCourseName;
     private TextView mTextDiscussionTitle;
+    private TextView mTextNoResults;
+    private RecyclerView mRvPosts;
 
     private String mDiscussionId = "";
     private String mDiscussionName = "";
@@ -96,7 +99,13 @@ public class PostsPerDiscussionFragment extends BaseFragment implements IPostsPe
         mPostsList.clear();
         mPostsList.addAll(list);
         mPostsAdapter.notifyDataSetChanged();
-
+        if (mPostsList != null) {
+            mRvPosts.setVisibility(View.VISIBLE);
+            mTextNoResults.setVisibility(View.GONE);
+        } else {
+            mRvPosts.setVisibility(View.GONE);
+            mTextNoResults.setVisibility(View.VISIBLE);
+        }
     }
 
     public static PostsPerDiscussionFragment newInstance(String discussionId,
@@ -115,13 +124,15 @@ public class PostsPerDiscussionFragment extends BaseFragment implements IPostsPe
         mProgressBar = getActivity().findViewById(R.id.progress_bar);
         mTextCourseName = view.findViewById(R.id.text_course_name);
         mTextDiscussionTitle = view.findViewById(R.id.text_discussion_title);
-        RecyclerView rvPosts = view.findViewById(R.id.rv_posts);
+        mTextNoResults = view.findViewById(R.id.text_no_posts);
+        mRvPosts = view.findViewById(R.id.rv_posts);
 
-        rvPosts.setLayoutManager(new LinearLayoutManager(getContext()));
+        mRvPosts.setLayoutManager(new LinearLayoutManager(getContext()));
         mPostsAdapter = new PostAdapter(getContext(), mPostsList);
-        rvPosts.setAdapter(mPostsAdapter);
+        mRvPosts.setAdapter(mPostsAdapter);
 
         mTextCourseName.setText(mCourseName);
         mTextDiscussionTitle.setText(mDiscussionName);
+        mTextNoResults.setVisibility(View.GONE);
     }
 }

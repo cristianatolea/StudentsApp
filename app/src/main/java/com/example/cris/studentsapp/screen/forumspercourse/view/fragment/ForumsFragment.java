@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.example.cris.studentsapp.R;
 import com.example.cris.studentsapp.base.BaseFragment;
@@ -39,12 +39,15 @@ public class ForumsFragment extends BaseFragment implements
 
     private CardView mCardForums;
     private ProgressBar mProgressBar;
+    private TextView mTextNoForums;
+    private Spinner mCoursesSpinner;
 
     private CourseSpinnerAdapter mSpinnerAdapter;
     private CourseForumAdapter mForumAdapter;
     private List<CourseEntity> mCoursesList;
     private List<ForumEntity> mForumsList;
     private String mSelectedCourseName = "";
+    private int mSelectedPosition;
 
     @Inject
     IForumsPresenter mPresenter;
@@ -69,6 +72,7 @@ public class ForumsFragment extends BaseFragment implements
 
         mCoursesList = new ArrayList<>();
         mForumsList = new ArrayList<>();
+        mSelectedPosition = 0;
 
         initView(view);
 
@@ -92,6 +96,7 @@ public class ForumsFragment extends BaseFragment implements
     public void onError(String errorMessage) {
         AlertUtils.alert(getContext(), R.string.alert_title, errorMessage);
     }
+    
 
     @Override
     public void onGetCoursesListSuccess(List<CourseEntity> list) {
@@ -110,8 +115,10 @@ public class ForumsFragment extends BaseFragment implements
         mForumAdapter.notifyDataSetChanged();
         if (mForumsList != null) {
             mCardForums.setVisibility(View.VISIBLE);
+            mTextNoForums.setVisibility(View.GONE);
         } else {
             mCardForums.setVisibility(View.GONE);
+            mTextNoForums.setVisibility(View.VISIBLE);
         }
     }
 
@@ -127,18 +134,20 @@ public class ForumsFragment extends BaseFragment implements
     }
 
     private void initView(View view) {
-        Spinner coursesSpinner = view.findViewById(R.id.spinner_discussions_courses);
+        mCoursesSpinner = view.findViewById(R.id.spinner_discussions_courses);
         RecyclerView rvCourseForums = view.findViewById(R.id.rv_course_forums);
         mProgressBar = getActivity().findViewById(R.id.progress_bar);
         mCardForums = view.findViewById(R.id.card_course_forums);
+        mTextNoForums = view.findViewById(R.id.text_no_forums);
 
         mCardForums.setVisibility(View.GONE);
 
         mSpinnerAdapter = new CourseSpinnerAdapter(getContext(), R.layout.item_course_spinner, mCoursesList);
-        coursesSpinner.setAdapter(mSpinnerAdapter);
-        coursesSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        mCoursesSpinner.setAdapter(mSpinnerAdapter);
+        mCoursesSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                mSelectedPosition = position;
                 if (position != 0) {
                     mSelectedCourseName = mCoursesList.get(position).getFullname();
                     mPresenter.getForumsPerCourse(mCoursesList.get(position).getId());
@@ -163,5 +172,6 @@ public class ForumsFragment extends BaseFragment implements
         mForumAdapter = new CourseForumAdapter(getContext(), mForumsList, this);
         rvCourseForums.setAdapter(mForumAdapter);
 
+        mTextNoForums.setVisibility(View.GONE);
     }
 }

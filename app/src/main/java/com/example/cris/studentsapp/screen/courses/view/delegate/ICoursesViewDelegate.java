@@ -8,4 +8,6 @@ import java.util.List;
 public interface ICoursesViewDelegate extends IBaseViewDelegate {
 
     void onGetCoursesSuccess(List<CourseEntity> list);
+
+    void onGetNoCourses();
 }

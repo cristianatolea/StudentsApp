@@ -79,4 +79,8 @@
     <string name="facebook_acs">Pagina de Facebook ACS</string>
     <string name="facebook_lsac">Pagina de Facebook LSAC</string>
     <string name="studenti_link">Site studenti</string>
+    <string name="no_courses">Nu sunt cursuri in desfasurare :)</string>
+    <string name="no_forums">Nu exista formuri pentru acest curs.</string>
+    <string name="no_discussions">Nu exista discutii pentru acest forum.</string>
+    <string name="no_posts">Nu exista postari pentru aceasta discutie.</string>
 </resources>

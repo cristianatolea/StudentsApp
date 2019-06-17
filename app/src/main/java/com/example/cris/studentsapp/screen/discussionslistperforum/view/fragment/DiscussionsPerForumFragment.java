@@ -39,6 +39,7 @@ public class DiscussionsPerForumFragment extends BaseFragment implements
 
     private ProgressBar mProgressBar;
     private CardView mCardDiscussions;
+    private TextView mTextNoResults;
 
     private String mForumName = "";
     private String mCourseName = "";
@@ -103,8 +104,10 @@ public class DiscussionsPerForumFragment extends BaseFragment implements
         mDiscussionAdapter.notifyDataSetChanged();
         if (mDiscussionsList != null) {
             mCardDiscussions.setVisibility(View.VISIBLE);
+            mTextNoResults.setVisibility(View.GONE);
         } else {
             mCardDiscussions.setVisibility(View.GONE);
+            mTextNoResults.setVisibility(View.VISIBLE);
         }
     }
 
@@ -135,6 +138,7 @@ public class DiscussionsPerForumFragment extends BaseFragment implements
         TextView textCourseName = view.findViewById(R.id.text_course_name);
         mCardDiscussions = view.findViewById(R.id.card_forum_discussions);
         RecyclerView rvDiscussions = view.findViewById(R.id.rv_forum_discussions);
+        mTextNoResults = view.findViewById(R.id.text_no_discussions);
 
         SimpleDividerItemDecoration dividerItemDecoration =
                 new SimpleDividerItemDecoration(rvDiscussions.getContext());
@@ -146,5 +150,6 @@ public class DiscussionsPerForumFragment extends BaseFragment implements
         textForumName.setText(mForumName);
         textCourseName.setText(mCourseName);
         mCardDiscussions.setVisibility(View.GONE);
+        mTextNoResults.setVisibility(View.GONE);
     }
 }

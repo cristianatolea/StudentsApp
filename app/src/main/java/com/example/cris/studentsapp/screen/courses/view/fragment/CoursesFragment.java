@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.example.cris.studentsapp.R;
 import com.example.cris.studentsapp.base.BaseFragment;
@@ -32,6 +33,7 @@ public class CoursesFragment extends BaseFragment implements
     private CoursesAdapter mAdapter;
     private List<CourseEntity> mCoursesList;
     private ProgressBar mProgressBar;
+    private TextView mTextNoResults;
 
     @Inject
     ICoursesPresenter mPresenter;
@@ -82,6 +84,12 @@ public class CoursesFragment extends BaseFragment implements
         mCoursesList.addAll(list);
         mCoursesList.remove(0);
         mAdapter.notifyDataSetChanged();
+        mTextNoResults.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void onGetNoCourses() {
+        mTextNoResults.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -98,8 +106,11 @@ public class CoursesFragment extends BaseFragment implements
         RecyclerView rvCourses = view.findViewById(R.id.rv_courses);
         mAdapter = new CoursesAdapter(getContext(), mCoursesList, this);
         mProgressBar = getActivity().findViewById(R.id.progress_bar);
+        mTextNoResults = view.findViewById(R.id.text_no_courses);
 
         rvCourses.setLayoutManager(new LinearLayoutManager(getContext()));
         rvCourses.setAdapter(mAdapter);
+
+        mTextNoResults.setVisibility(View.GONE);
     }
 }
