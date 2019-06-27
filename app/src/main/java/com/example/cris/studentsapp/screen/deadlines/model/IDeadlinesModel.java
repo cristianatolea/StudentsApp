@@ -6,5 +6,5 @@ import io.reactivex.Observable;
 
 public interface IDeadlinesModel {
 
-    Observable<EventsResponse> getUpcomingDeadlines();
+    Observable<EventsResponse> getUpcomingDeadlines(String fromTime);
 }

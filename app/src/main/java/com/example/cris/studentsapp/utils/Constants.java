@@ -26,4 +26,6 @@ public class Constants {
     public static final String LSAC_FACEBOOK = "https://www.facebook.com/LsacBucuresti/";
     public static final String STUDENTI_LINK = "https://studenti.pub.ro";
 
+    public static final String CACHE_PATH = "http://schemas.android.com/apk/res/android";
+
 }

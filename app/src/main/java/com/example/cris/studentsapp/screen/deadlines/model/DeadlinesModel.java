@@ -19,9 +19,10 @@ public class DeadlinesModel implements IDeadlinesModel {
     }
 
     @Override
-    public Observable<EventsResponse> getUpcomingDeadlines() {
+    public Observable<EventsResponse> getUpcomingDeadlines(String fromTime) {
         return mApiInterface.getUpcomingDeadlines(
                 LocalSaving.getToken(mContext),
-                "core_calendar_get_calendar_upcoming_view");
+                "core_calendar_get_action_events_by_timesort",
+                fromTime);
     }
 }

@@ -94,16 +94,13 @@ public class DashboardFragment extends BaseFragment implements
                 FragmentUtils.replaceFragment(getActivity(), R.id.frame_main_content, new CoursesFragment());
                 break;
             case 1:
-                break;
-            case 2:
                 FragmentUtils.replaceFragment(getActivity(), R.id.frame_main_content, new ForumsFragment());
                 break;
-            case 3:
+            case 2:
                 FragmentUtils.replaceFragment(getActivity(), R.id.frame_main_content, new ScheduleFragment());
                 break;
-            case 4:
+            case 3:
                 FragmentUtils.replaceFragment(getActivity(), R.id.frame_main_content, new DeadlinesFragment());
-
                 break;
         }
     }

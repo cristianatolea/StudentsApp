@@ -80,7 +80,7 @@ public class ForumsFragment extends BaseFragment implements
 
         mPresenter.getCoursesList();
 
-        ((MainActivity) getActivity()).setToolbarTitle(R.string.discussions);
+        ((MainActivity) getActivity()).setToolbarTitle(R.string.forums);
         ((MainActivity) getActivity()).changeFocusOnMenu(0, false, false);
     }
 

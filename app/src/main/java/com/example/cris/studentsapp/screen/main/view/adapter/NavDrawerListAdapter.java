@@ -90,7 +90,6 @@ public class NavDrawerListAdapter extends ArrayAdapter<DrawerItem> {
             for (int i = 0; i < getCount(); i++) {
                 getItem(i).setOnFocus(false);
             }
-
     }
 
     /**

@@ -25,6 +25,7 @@ import com.example.cris.studentsapp.screen.coursedetails.view.adapter.courseitem
 import com.example.cris.studentsapp.screen.coursedetails.view.delegate.ICourseDetailsViewDelegate;
 import com.example.cris.studentsapp.screen.main.view.activity.MainActivity;
 import com.example.cris.studentsapp.utils.AlertUtils;
+import com.example.cris.studentsapp.utils.DownloadManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -111,12 +112,24 @@ public class CourseDetailsFragment extends BaseFragment implements
     }
 
     @Override
-    public void onItemFileClick(int coursePosition, int position) {
-        List<CourseDetailsContent> contents = new ArrayList<>();
+    public void onItemFileClick(int coursePosition, final int position) {
+        final List<CourseDetailsContent> contents = new ArrayList<>();
         for (CourseDetailModule module : mCourseDetailsItems.get(coursePosition).getModules())
             contents.addAll(module.getContents());
 
-        Toast.makeText(getContext(), contents.get(position).getFilename(), Toast.LENGTH_LONG).show();
+        DownloadManager downloadManager = new DownloadManager(contents.get(position), "");
+        downloadManager.setOnUpdateListener(new DownloadManager.onUpdateListener() {
+            @Override
+            public void onUpdate(int code, String message) {
+                if (code == DownloadManager.ON_COMPLETED) {
+                    Toast.makeText(getContext(), contents.get(position).getFilename(), Toast.LENGTH_LONG).show();
+                }
+                if (DownloadManager.ON_PROGRASS == code) {
+                }
+            }
+        });
+        downloadManager.execute();
+
     }
 
     public static CourseDetailsFragment newInstance(String id, String name) {

@@ -58,7 +58,7 @@
     <string name="specializarea">Specializarea</string>
     <string name="an">Anul</string>
     <string name="grupa">Grupa</string>
-    <string name="logout_question">Sunteti sigur ca vrei sa te deloghezi?</string>
+    <string name="logout_question">Sunteti sigur ca vreti sa va delogati?</string>
     <string name="course_details">Detailii Curs</string>
     <string name="no_upcoming_deadlines">Nu sunt deadline-uri in viitorul apropiat! :)</string>
     <string name="element_name_hint">Inserati numele elementului</string>
@@ -89,4 +89,5 @@
     <string name="message">Mesaj</string>
     <string name="send">Trimiteti</string>
     <string name="empty_fiels">Completati toate campurile</string>
+    <string name="forums">Forumuri</string>
 </resources>

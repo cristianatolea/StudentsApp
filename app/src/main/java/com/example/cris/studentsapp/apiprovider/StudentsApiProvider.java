@@ -4,8 +4,6 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
-import com.example.cris.studentsapp.apiprovider.interceptors.HeaderTokenInterceptor;
-import com.example.cris.studentsapp.apiprovider.interceptors.RefreshTokenAuthentication;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 

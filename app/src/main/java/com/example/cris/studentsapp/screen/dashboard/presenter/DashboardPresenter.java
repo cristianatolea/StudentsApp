@@ -39,11 +39,7 @@ public class DashboardPresenter implements IDashboardPresenter {
                 R.drawable.ic_courses);
         mDashboardItems.add(item);
 
-        item = new DashboardItem(mContext.getString(R.string.news),
-                R.drawable.ic_news);
-        mDashboardItems.add(item);
-
-        item = new DashboardItem(mContext.getString(R.string.discussions),
+        item = new DashboardItem(mContext.getString(R.string.forums),
                 R.drawable.ic_discussions);
         mDashboardItems.add(item);
 

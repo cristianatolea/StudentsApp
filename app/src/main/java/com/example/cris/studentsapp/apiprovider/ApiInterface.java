@@ -94,6 +94,7 @@ public interface ApiInterface {
     @FormUrlEncoded
     @POST("webservice/rest/server.php?moodlewsrestformat=json")
     Observable<EventsResponse> getUpcomingDeadlines(@Field("wstoken") String userToken,
-                                                    @Field("wsfunction") String function);
+                                                    @Field("wsfunction") String function,
+                                                    @Field("timesortfrom") String fromTime);
 
 }
