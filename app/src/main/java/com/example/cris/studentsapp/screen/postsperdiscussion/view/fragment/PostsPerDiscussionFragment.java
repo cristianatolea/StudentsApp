@@ -124,7 +124,7 @@ public class PostsPerDiscussionFragment extends BaseFragment implements
 
     @Override
     public void onPostAddedSuccessfully() {
-
+        mPresenter.getPosts(mDiscussionId);
     }
 
     @Override
@@ -137,10 +137,10 @@ public class PostsPerDiscussionFragment extends BaseFragment implements
                 hideKeyboard(getActivity());
                 mEditNewPost.clearFocus();
                 if (!("").equals(mNewPost)) {
-//                    mPresenter.addPost(
-//                            mPostsList.get(0).getPostId(),
-//                            mPostsList.get(0).getSubject(),
-//                            mNewPost);
+                    mPresenter.addPost(
+                            mPostsList.get(0).getPostId(),
+                            "Re: " + mPostsList.get(0).getSubject(),
+                            mNewPost);
                     mNewPost = "";
                 }
                 break;
@@ -216,10 +216,10 @@ public class PostsPerDiscussionFragment extends BaseFragment implements
                         hideKeyboard(Objects.requireNonNull(getActivity()));
                         mEditNewPost.clearFocus();
                         if (!("").equals(mNewPost)) {
-//                            mPresenter.addPost(
-//                                    mPostsList.get(0).getPostId(),
-//                                    mPostsList.get(0).getSubject(),
-//                                    mNewPost);
+                            mPresenter.addPost(
+                                    mPostsList.get(0).getPostId(),
+                                    "Re: " + mPostsList.get(0).getSubject(),
+                                    mNewPost);
                             mNewPost = "";
                         }
                         return true;

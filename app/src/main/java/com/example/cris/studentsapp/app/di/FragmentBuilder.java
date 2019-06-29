@@ -31,6 +31,8 @@ import com.example.cris.studentsapp.screen.schedule.di.ScheduleModule;
 import com.example.cris.studentsapp.screen.schedule.view.fragment.ScheduleFragment;
 import com.example.cris.studentsapp.screen.settings.di.SettingsModule;
 import com.example.cris.studentsapp.screen.settings.view.fragment.SettingsFragment;
+import com.example.cris.studentsapp.screen.studentassignment.di.StudentAssignmentModule;
+import com.example.cris.studentsapp.screen.studentassignment.view.fragment.StudentAssignmentFragment;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
@@ -61,6 +63,9 @@ abstract class FragmentBuilder {
 
     @ContributesAndroidInjector(modules = {DeadlineAssignmentsModule.class})
     abstract DeadlineAssignmentsFragment buildDeadlineAssignmentFragment();
+
+    @ContributesAndroidInjector(modules = {StudentAssignmentModule.class})
+    abstract StudentAssignmentFragment buildStudentAssignmentFragment();
 
     @ContributesAndroidInjector(modules = {ForumsModule.class})
     abstract ForumsFragment buildDiscussionsFragment();

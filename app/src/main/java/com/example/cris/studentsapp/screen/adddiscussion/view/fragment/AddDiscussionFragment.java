@@ -117,9 +117,9 @@ public class AddDiscussionFragment extends BaseFragment implements
                     onError(getContext().getString(R.string.empty_fiels));
                 } else {
                     //todo uncomment
-//                    mPresenter.addNewDiscussion(mForumId,
-//                            mInputSubject.getText().toString(),
-//                            mInputMessage.getText().toString());
+                    mPresenter.addNewDiscussion(mForumId,
+                            mInputSubject.getText().toString(),
+                            mInputMessage.getText().toString());
                 }
                 break;
             case R.id.button_cancel:

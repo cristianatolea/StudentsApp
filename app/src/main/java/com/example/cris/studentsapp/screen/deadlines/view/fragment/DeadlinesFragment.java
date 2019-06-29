@@ -108,7 +108,8 @@ public class DeadlinesFragment extends BaseFragment implements
         DeadlineAssignmentsFragment fragment = DeadlineAssignmentsFragment
                 .newInstance(mEventsList.get(position).getCourse().getId(),
                         mEventsList.get(position).getCourse().getFullname(),
-                        mEventsList.get(position).getEventName());
+                        mEventsList.get(position).getEventName(),
+                        mEventsList.get(position).getEventId());
         addFragment(fragment, R.id.frame_main_content);
     }
 

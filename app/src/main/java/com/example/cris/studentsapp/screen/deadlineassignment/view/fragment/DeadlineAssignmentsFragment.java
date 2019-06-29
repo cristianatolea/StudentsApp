@@ -20,6 +20,7 @@ import com.example.cris.studentsapp.screen.deadlineassignment.view.adapter.Deadl
 import com.example.cris.studentsapp.screen.deadlineassignment.view.delegate.IDeadlineAssignmentsViewDelegate;
 import com.example.cris.studentsapp.screen.forumspercourse.view.adapter.SimpleDividerItemDecoration;
 import com.example.cris.studentsapp.screen.main.view.activity.MainActivity;
+import com.example.cris.studentsapp.screen.studentassignment.view.fragment.StudentAssignmentFragment;
 import com.example.cris.studentsapp.utils.AlertUtils;
 
 import java.util.ArrayList;
@@ -29,6 +30,7 @@ import javax.inject.Inject;
 
 import static com.example.cris.studentsapp.utils.Constants.COURSE_ID;
 import static com.example.cris.studentsapp.utils.Constants.COURSE_NAME;
+import static com.example.cris.studentsapp.utils.Constants.DEADLINE_ID;
 import static com.example.cris.studentsapp.utils.Constants.DEADLINE_NAME;
 
 public class DeadlineAssignmentsFragment extends BaseFragment implements
@@ -38,7 +40,7 @@ public class DeadlineAssignmentsFragment extends BaseFragment implements
     private ProgressBar mProgressBar;
     private TextView mTextCourseName, mTextDeadlineName;
 
-    private String mCourseId = "", mCourseName = "", mDeadlineName = "";
+    private String mCourseId = "", mCourseName = "", mDeadlineName = "", mDeadlineId = "";
     private List<EnrolledUserEntity> mEnrolledList;
     private DeadlineEnrolledAdapter mAdapter;
 
@@ -67,6 +69,7 @@ public class DeadlineAssignmentsFragment extends BaseFragment implements
         mCourseId = getArguments().getString(COURSE_ID);
         mCourseName = getArguments().getString(COURSE_NAME);
         mDeadlineName = getArguments().getString(DEADLINE_NAME);
+        mDeadlineId = getArguments().getString(DEADLINE_ID);
 
         initView(view);
 
@@ -105,16 +108,23 @@ public class DeadlineAssignmentsFragment extends BaseFragment implements
 
     @Override
     public void onStudentClick(int position) {
-
+        StudentAssignmentFragment fragment = StudentAssignmentFragment
+                .newInstance(mDeadlineId,
+                        mDeadlineName,
+                        mEnrolledList.get(position).getUserId(),
+                        mEnrolledList.get(position).getFullname());
+        addFragment(fragment, R.id.frame_main_content);
     }
 
     public static DeadlineAssignmentsFragment newInstance(String courseId,
                                                           String courseName,
-                                                          String deadlineName) {
+                                                          String deadlineName,
+                                                          String deadlineId) {
         Bundle args = new Bundle();
         args.putString(COURSE_ID, courseId);
         args.putString(COURSE_NAME, courseName);
         args.putString(DEADLINE_NAME, deadlineName);
+        args.putString(DEADLINE_ID, deadlineId);
         DeadlineAssignmentsFragment fragment = new DeadlineAssignmentsFragment();
         fragment.setArguments(args);
         return fragment;
