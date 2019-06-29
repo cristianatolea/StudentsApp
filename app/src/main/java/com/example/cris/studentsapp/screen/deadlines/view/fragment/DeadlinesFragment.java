@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.example.cris.studentsapp.R;
 import com.example.cris.studentsapp.base.BaseFragment;
+import com.example.cris.studentsapp.screen.deadlineassignment.view.fragment.DeadlineAssignmentsFragment;
 import com.example.cris.studentsapp.screen.deadlines.model.entity.EventEntity;
 import com.example.cris.studentsapp.screen.deadlines.presenter.IDeadlinesPresenter;
 import com.example.cris.studentsapp.screen.deadlines.view.adapter.DeadlinesAdapter;
@@ -26,7 +27,9 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-public class DeadlinesFragment extends BaseFragment implements IDeadlinesViewDelegate {
+public class DeadlinesFragment extends BaseFragment implements
+        IDeadlinesViewDelegate,
+        DeadlinesAdapter.OnDeadlineItemClickListener {
 
     private ProgressBar mProgressBar;
     private TextView mTextNoResults;
@@ -100,6 +103,15 @@ public class DeadlinesFragment extends BaseFragment implements IDeadlinesViewDel
         mTextNoResults.setVisibility(View.VISIBLE);
     }
 
+    @Override
+    public void onDeadlineItemClick(int position) {
+        DeadlineAssignmentsFragment fragment = DeadlineAssignmentsFragment
+                .newInstance(mEventsList.get(position).getCourse().getId(),
+                        mEventsList.get(position).getCourse().getFullname(),
+                        mEventsList.get(position).getEventName());
+        addFragment(fragment, R.id.frame_main_content);
+    }
+
     private void initView(View view) {
         LinearLayout lineaAddDiscussion = getActivity().findViewById(R.id.linear_add);
         lineaAddDiscussion.setVisibility(View.GONE);
@@ -111,7 +123,7 @@ public class DeadlinesFragment extends BaseFragment implements IDeadlinesViewDel
         mTextNoResults.setVisibility(View.GONE);
 
         mRvDeadlines.setLayoutManager(new LinearLayoutManager(getContext()));
-        mAdapter = new DeadlinesAdapter(mEventsList, getContext());
+        mAdapter = new DeadlinesAdapter(mEventsList, getContext(), this);
         mRvDeadlines.setAdapter(mAdapter);
     }
 }

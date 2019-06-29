@@ -11,6 +11,8 @@ import com.example.cris.studentsapp.screen.dashboard.di.DashboardModule;
 import com.example.cris.studentsapp.screen.dashboard.view.fragment.DashboardFragment;
 import com.example.cris.studentsapp.screen.dayschedule.di.DayScheduleModule;
 import com.example.cris.studentsapp.screen.dayschedule.view.fragment.DayScheduleFragment;
+import com.example.cris.studentsapp.screen.deadlineassignment.di.DeadlineAssignmentsModule;
+import com.example.cris.studentsapp.screen.deadlineassignment.view.fragment.DeadlineAssignmentsFragment;
 import com.example.cris.studentsapp.screen.deadlines.di.DeadlinesModule;
 import com.example.cris.studentsapp.screen.deadlines.view.fragment.DeadlinesFragment;
 import com.example.cris.studentsapp.screen.discussionslistperforum.di.DiscussionsPerForumModule;
@@ -56,6 +58,9 @@ abstract class FragmentBuilder {
 
     @ContributesAndroidInjector(modules = {CourseDetailsModule.class})
     abstract CourseDetailsFragment buildCourseDetailsFragment();
+
+    @ContributesAndroidInjector(modules = {DeadlineAssignmentsModule.class})
+    abstract DeadlineAssignmentsFragment buildDeadlineAssignmentFragment();
 
     @ContributesAndroidInjector(modules = {ForumsModule.class})
     abstract ForumsFragment buildDiscussionsFragment();

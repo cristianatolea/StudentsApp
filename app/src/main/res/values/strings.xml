@@ -34,7 +34,7 @@
     <string name="news">Stiri</string>
     <string name="discussions">Discutii</string>
     <string name="schedule">Orar</string>
-    <string name="deadlines">Deadline-uri</string>
+    <string name="deadlines">Termene limita</string>
     <string name="details">Detalii</string>
     <string name="email">E-mail</string>
     <string name="country">Tara</string>
@@ -90,4 +90,5 @@
     <string name="send">Trimiteti</string>
     <string name="empty_fiels">Completati toate campurile</string>
     <string name="forums">Forumuri</string>
+    <string name="assignments">Teme incarcate</string>
 </resources>

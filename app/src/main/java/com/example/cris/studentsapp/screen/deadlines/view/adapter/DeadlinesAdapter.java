@@ -12,21 +12,26 @@ import com.example.cris.studentsapp.screen.deadlines.model.entity.EventEntity;
 
 import java.util.List;
 
-public class DeadlinesAdapter extends RecyclerView.Adapter<DeadlineViewHolder> {
+public class DeadlinesAdapter extends RecyclerView.Adapter<DeadlineViewHolder> implements
+        DeadlineViewHolder.OnDeadlineClickListener {
 
     private List<EventEntity> mEvents;
     private Context mContext;
+    private OnDeadlineItemClickListener mOnDeadlineItemClickListener;
 
-    public DeadlinesAdapter(List<EventEntity> events, Context context) {
+    public DeadlinesAdapter(List<EventEntity> events,
+                            Context context,
+                            OnDeadlineItemClickListener onDeadlineItemClickListener) {
         mEvents = events;
         mContext = context;
+        mOnDeadlineItemClickListener = onDeadlineItemClickListener;
     }
 
     @NonNull
     @Override
     public DeadlineViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(mContext).inflate(R.layout.item_deadline, viewGroup, false);
-        return new DeadlineViewHolder(view);
+        return new DeadlineViewHolder(view, this);
     }
 
     @Override
@@ -38,5 +43,14 @@ public class DeadlinesAdapter extends RecyclerView.Adapter<DeadlineViewHolder> {
     @Override
     public int getItemCount() {
         return mEvents.size();
+    }
+
+    @Override
+    public void onDeadlineClick(int position) {
+        mOnDeadlineItemClickListener.onDeadlineItemClick(position);
+    }
+
+    public interface OnDeadlineItemClickListener{
+        void onDeadlineItemClick(int position);
     }
 }

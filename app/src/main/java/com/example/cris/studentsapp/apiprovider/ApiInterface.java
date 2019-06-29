@@ -3,6 +3,7 @@ package com.example.cris.studentsapp.apiprovider;
 import com.example.cris.studentsapp.screen.adddiscussion.model.entity.AddNewDiscussionResponse;
 import com.example.cris.studentsapp.screen.coursedetails.model.entity.CourseDetailsItem;
 import com.example.cris.studentsapp.screen.courses.model.entity.CourseEntity;
+import com.example.cris.studentsapp.screen.deadlineassignment.model.entity.EnrolledUserEntity;
 import com.example.cris.studentsapp.screen.deadlines.model.entity.EventsResponse;
 import com.example.cris.studentsapp.screen.discussionslistperforum.model.entity.CanAddDiscussionResponse;
 import com.example.cris.studentsapp.screen.discussionslistperforum.model.entity.DiscussionsPerForumResponse;
@@ -96,5 +97,11 @@ public interface ApiInterface {
     Observable<EventsResponse> getUpcomingDeadlines(@Field("wstoken") String userToken,
                                                     @Field("wsfunction") String function,
                                                     @Field("timesortfrom") String fromTime);
+
+    @FormUrlEncoded
+    @POST("webservice/rest/server.php?moodlewsrestformat=json")
+    Observable<List<EnrolledUserEntity>> getCourseEnrolledUsers(@Field("wstoken") String userToken,
+                                                                @Field("wsfunction") String function,
+                                                                @Field("courseid") String courseId);
 
 }

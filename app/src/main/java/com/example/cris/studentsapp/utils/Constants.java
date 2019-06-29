@@ -17,6 +17,7 @@ public class Constants {
     public static final String DISCUSSION_NAME = "discussion name";
     public static final String DISCUSSION_ID = "discussion id";
     public static final String DAY_POSITION = "day position";
+    public static final String DEADLINE_NAME = "deadline name";
 
     public static final String SCHEDULE_LINK = "https://acs.pub.ro/educatie/orare/";
     public static final String UPB_LINK = "https://upb.ro/";
