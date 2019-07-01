@@ -22,6 +22,7 @@ import com.example.cris.studentsapp.screen.forumspercourse.view.adapter.SimpleDi
 import com.example.cris.studentsapp.screen.main.view.activity.MainActivity;
 import com.example.cris.studentsapp.screen.studentassignment.view.fragment.StudentAssignmentFragment;
 import com.example.cris.studentsapp.utils.AlertUtils;
+import com.example.cris.studentsapp.utils.LocalSaving;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,6 +44,7 @@ public class DeadlineAssignmentsFragment extends BaseFragment implements
     private String mCourseId = "", mCourseName = "", mDeadlineName = "", mDeadlineId = "";
     private List<EnrolledUserEntity> mEnrolledList;
     private DeadlineEnrolledAdapter mAdapter;
+    private boolean mIsCurrentUserTeacher;
 
     @Inject
     IDeadlineAssignmentsPresenter mPresenter;
@@ -65,6 +67,7 @@ public class DeadlineAssignmentsFragment extends BaseFragment implements
         super.onViewCreated(view, savedInstanceState);
 
         mEnrolledList = new ArrayList<>();
+        mIsCurrentUserTeacher = false;
 
         mCourseId = getArguments().getString(COURSE_ID);
         mCourseName = getArguments().getString(COURSE_NAME);
@@ -95,10 +98,12 @@ public class DeadlineAssignmentsFragment extends BaseFragment implements
     }
 
     @Override
-    public void onGetEnrolledStudentsSuccess(List<EnrolledUserEntity> list) {
+    public void onGetEnrolledStudentsSuccess(List<EnrolledUserEntity> list,
+                                             boolean isCurrentUserTeacher) {
         mEnrolledList.clear();
         mEnrolledList.addAll(list);
         mAdapter.notifyDataSetChanged();
+        mIsCurrentUserTeacher = isCurrentUserTeacher;
     }
 
     @Override
@@ -108,12 +113,23 @@ public class DeadlineAssignmentsFragment extends BaseFragment implements
 
     @Override
     public void onStudentClick(int position) {
-        StudentAssignmentFragment fragment = StudentAssignmentFragment
-                .newInstance(mDeadlineId,
-                        mDeadlineName,
-                        mEnrolledList.get(position).getUserId(),
-                        mEnrolledList.get(position).getFullname());
-        addFragment(fragment, R.id.frame_main_content);
+        if (mIsCurrentUserTeacher) {
+            StudentAssignmentFragment fragment = StudentAssignmentFragment
+                    .newInstance(mDeadlineId,
+                            mDeadlineName,
+                            mEnrolledList.get(position).getUserId(),
+                            mEnrolledList.get(position).getFullname());
+            addFragment(fragment, R.id.frame_main_content);
+        } else {
+            if (mEnrolledList.get(position).getUserId().equals(LocalSaving.getUserId(getContext()))) {
+                StudentAssignmentFragment fragment = StudentAssignmentFragment
+                        .newInstance(mDeadlineId,
+                                mDeadlineName,
+                                mEnrolledList.get(position).getUserId(),
+                                mEnrolledList.get(position).getFullname());
+                addFragment(fragment, R.id.frame_main_content);
+            }
+        }
     }
 
     public static DeadlineAssignmentsFragment newInstance(String courseId,

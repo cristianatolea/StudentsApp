@@ -9,6 +9,7 @@ import com.example.cris.studentsapp.screen.deadlineassignment.model.entity.RoleE
 import com.example.cris.studentsapp.screen.deadlineassignment.view.delegate.IDeadlineAssignmentsViewDelegate;
 import com.example.cris.studentsapp.screen.deadlines.model.entity.EventsResponse;
 import com.example.cris.studentsapp.utils.InternetUtils;
+import com.example.cris.studentsapp.utils.LocalSaving;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,16 +47,9 @@ public class DeadlineAssignmentsPresenter implements IDeadlineAssignmentsPresent
                                 @Override
                                 public List<EnrolledUserEntity> apply(List<EnrolledUserEntity> list) throws Exception {
                                     List<EnrolledUserEntity> newList = new ArrayList<>();
-                                    boolean ok;
                                     for (EnrolledUserEntity user : list) {
-                                        ok = true;
-                                        for (RoleEntity role : user.getRoles()) {
-                                            if ("3".equals(role.getRoleId()) || "9".equals(role.getRoleId())) //todo assitant
-                                                ok = false;
-                                        }
-                                        if (ok) {
+                                        if (isStudent(user.getRoles()))
                                             newList.add(user);
-                                        }
                                     }
                                     return newList;
                                 }
@@ -68,7 +62,10 @@ public class DeadlineAssignmentsPresenter implements IDeadlineAssignmentsPresent
                                     mViewDelegate.hideProgress();
                                     if (enrolledEntities != null) {
                                         if (!enrolledEntities.isEmpty())
-                                            mViewDelegate.onGetEnrolledStudentsSuccess(enrolledEntities);
+
+                                            mViewDelegate.onGetEnrolledStudentsSuccess(
+                                                    enrolledEntities,
+                                                    isCurrentUserTeacher(enrolledEntities));
                                         else
                                             mViewDelegate.OnGetEnrolledFailed();
                                     } else {
@@ -86,5 +83,25 @@ public class DeadlineAssignmentsPresenter implements IDeadlineAssignmentsPresent
         } else {
             mViewDelegate.onNoInternetConnection();
         }
+    }
+
+    private boolean isStudent(List<RoleEntity> list) {
+        for (RoleEntity role : list) {
+            if ("5".equals(role.getRoleId()))
+                return true;
+        }
+        return false;
+    }
+
+    private boolean isCurrentUserTeacher(List<EnrolledUserEntity> list) {
+        for (EnrolledUserEntity entity : list) {
+            if (entity.getUserId().equals(LocalSaving.getUserId(mContext))) {
+                for (RoleEntity role : entity.getRoles()) {
+                    if ("3".equals(role.getRoleId()) || "9".equals(role.getRoleId()))
+                        return true;
+                }
+            }
+        }
+        return false;
     }
 }

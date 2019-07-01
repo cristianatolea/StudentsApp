@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface IDeadlineAssignmentsViewDelegate extends IBaseViewDelegate {
 
-    void onGetEnrolledStudentsSuccess(List<EnrolledUserEntity> list);
+    void onGetEnrolledStudentsSuccess(List<EnrolledUserEntity> list, boolean isCurrentUserTeacher);
 
     void OnGetEnrolledFailed();
 }
