@@ -44,7 +44,7 @@ public class ScheduleFragment extends BaseFragment implements
     private TextView mTextError;
     private RecyclerView mRvWeekDays;
 
-    //    public static List<WeekDayEntity> mWeekDays;
+    public static List<WeekDayEntity> mWeekDays;
     private WeekDayAdapter mDaysAdapter;
 
     @Inject
@@ -68,13 +68,12 @@ public class ScheduleFragment extends BaseFragment implements
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-//        mWeekDays = new ArrayList<>();
-
-        setAlarms();
+        mWeekDays = new ArrayList<>();
 
         if (LocalSaving.getEventsList(getContext()) == null
                 || LocalSaving.getEventsList(getContext()).isEmpty())
             mPresenter.prepareDays();
+        else mWeekDays.addAll(LocalSaving.getEventsList(getContext()));
 
         if (LocalSaving.getTypeList(getContext()) == null
                 || LocalSaving.getTypeList(getContext()).isEmpty())
@@ -108,6 +107,9 @@ public class ScheduleFragment extends BaseFragment implements
     @Override
     public void onGetNamedDaysSuccess(List<WeekDayEntity> list) {
         mTextError.setVisibility(View.GONE);
+        mWeekDays.clear();
+        mWeekDays.addAll(list);
+        mDaysAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -117,6 +119,7 @@ public class ScheduleFragment extends BaseFragment implements
 
     @Override
     public void onItemClick(int position) {
+        LocalSaving.setEventsList(getContext(), mWeekDays);
         DayScheduleFragment dayScheduleFragment = DayScheduleFragment.newInstance(position);
         ((MainActivity) getActivity())
                 .changeFocusOnMenu(0, false, false);
@@ -124,12 +127,6 @@ public class ScheduleFragment extends BaseFragment implements
     }
 
     private void setAlarms(){
-
-        for (WeekDayEntity weekDay:LocalSaving.getEventsList(getContext())){
-            for (DayElementEntity dayEvent:weekDay.getDayElements()){
-
-            }
-        }
 
         AlarmManager manager = (AlarmManager) getActivity().getSystemService(Context.ALARM_SERVICE);
         Date dat = new Date();
@@ -161,7 +158,7 @@ public class ScheduleFragment extends BaseFragment implements
         mRvWeekDays.setLayoutManager(new LinearLayoutManager(getContext()));
 
         mDaysAdapter = new WeekDayAdapter(getContext(),
-                LocalSaving.getEventsList(getContext()),
+                mWeekDays,
                 this);
         mRvWeekDays.setAdapter(mDaysAdapter);
 

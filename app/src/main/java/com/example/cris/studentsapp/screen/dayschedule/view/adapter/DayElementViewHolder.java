@@ -180,21 +180,28 @@ public class DayElementViewHolder extends RecyclerView.ViewHolder implements
 
         if (getTypePosition(elementEntity.getElementType()) != -1) {
             mSpinnerType.setSelection(getTypePosition(elementEntity.getElementType()));
+            mSpinnerType.setEnabled(false);
         } else {
             mSpinnerType.setSelection(0);
+            mSpinnerType.setEnabled(true);
         }
 
         if (getRecurrencePosition(elementEntity.getRecurrence()) != -1) {
             mSpinnerRecurrence.setSelection(getRecurrencePosition(elementEntity.getRecurrence()));
+            mSpinnerRecurrence.setEnabled(false);
         } else {
             mSpinnerRecurrence.setSelection(0);
+            mSpinnerRecurrence.setEnabled(true);
         }
 
-        mButtonSave.setVisibility(View.GONE);
-        mButtonCancel.setVisibility(View.GONE);
+        if (elementEntity.checkIfEmptyFields()){
+            mButtonSave.setVisibility(View.VISIBLE);
+            mButtonCancel.setVisibility(View.VISIBLE);
 
-        mSpinnerType.setEnabled(false);
-        mSpinnerRecurrence.setEnabled(false);
+        } else {
+            mButtonSave.setVisibility(View.GONE);
+            mButtonCancel.setVisibility(View.GONE);
+        }
 
         mEditName.addTextChangedListener(mNameWatcher);
         mEditRoom.addTextChangedListener(mRoomWatcher);

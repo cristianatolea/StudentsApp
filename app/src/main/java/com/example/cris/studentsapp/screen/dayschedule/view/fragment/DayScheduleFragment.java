@@ -60,10 +60,10 @@ public class DayScheduleFragment extends BaseFragment implements
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        mDayPos = getArguments().getInt(DAY_POSITION);
+
         mElementsList = LocalSaving.getEventsList(getContext()).get(mDayPos).getDayElements();
         mEventsList = LocalSaving.getEventsList(getContext());
-
-        mDayPos = getArguments().getInt(DAY_POSITION);
 
         ((MainActivity) getActivity()).setToolbarTitle(R.string.schedule);
         ((MainActivity) getActivity()).changeFocusOnMenu(0, false, false);
