@@ -68,10 +68,8 @@ public class CourseDetailsPresenter implements ICourseDetailsPresenter {
                                     mViewDelegate.hideProgress();
                                     if (courseDetailsResponse != null) {
                                         mViewDelegate.onGetCourseDetailsSuccess(courseDetailsResponse);
-                                        Log.d("course details", "accept success maybe");
                                     } else {
                                         mViewDelegate.onError(mContext.getString(R.string.alert_error_occured));
-                                        Log.d("course details err1", "error");
                                     }
                                 }
                             }, new Consumer<Throwable>() {
@@ -79,7 +77,6 @@ public class CourseDetailsPresenter implements ICourseDetailsPresenter {
                                 public void accept(Throwable throwable) throws Exception {
                                     mViewDelegate.hideProgress();
                                     mViewDelegate.onError(mContext.getString(R.string.alert_error_occured));
-                                    Log.d("course details err2", throwable.getMessage());
                                 }
                             })
             );

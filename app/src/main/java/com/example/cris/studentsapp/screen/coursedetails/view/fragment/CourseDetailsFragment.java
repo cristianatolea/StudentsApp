@@ -129,8 +129,8 @@ public class CourseDetailsFragment extends BaseFragment implements
             contents.addAll(module.getContents());
         mPresenter.downloadFile(contents.get(position),
                 contents.get(position).getFileUrl()
-                .concat("&token=")
-                .concat(LocalSaving.getToken(getContext())));
+                        .concat("&token=")
+                        .concat(LocalSaving.getToken(getContext())));
     }
 
     @Override
@@ -162,24 +162,6 @@ public class CourseDetailsFragment extends BaseFragment implements
         mFilePositionSelected = position;
 
         mPresenter.checkPermission(DOWNLOAD_FILE_REQUEST, coursePosition, position);
-
-//        final List<CourseDetailsContent> contents = new ArrayList<>();
-//        for (CourseDetailModule module : mCourseDetailsItems.get(coursePosition).getModules())
-//            contents.addAll(module.getContents());
-//
-//        DownloadManager downloadManager = new DownloadManager(contents.get(position), "");
-//        downloadManager.setOnUpdateListener(new DownloadManager.onUpdateListener() {
-//            @Override
-//            public void onUpdate(int code, String message) {
-//                if (code == DownloadManager.ON_COMPLETED) {
-//                    Toast.makeText(getContext(), contents.get(position).getFilename(), Toast.LENGTH_LONG).show();
-//                }
-//                if (DownloadManager.ON_PROGRASS == code) {
-//                }
-//            }
-//        });
-//        downloadManager.execute();
-
     }
 
     public static CourseDetailsFragment newInstance(String id, String name) {
@@ -209,7 +191,7 @@ public class CourseDetailsFragment extends BaseFragment implements
             public void onClick(View v) {
                 try {
                     dialog.dismiss();
-                    mPresenter.openFile( getActivity(), localFile);
+                    mPresenter.openFile(getActivity(), localFile);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
