@@ -2,7 +2,7 @@ package com.example.cris.studentsapp.screen.discussionslistperforum.model;
 
 import android.content.Context;
 
-import com.example.cris.studentsapp.apiprovider.ApiInterface;
+import com.example.cris.studentsapp.apiprovider.IApiInterface;
 import com.example.cris.studentsapp.screen.discussionslistperforum.model.entity.CanAddDiscussionResponse;
 import com.example.cris.studentsapp.screen.discussionslistperforum.model.entity.DiscussionsPerForumResponse;
 import com.example.cris.studentsapp.utils.LocalSaving;
@@ -12,16 +12,16 @@ import io.reactivex.Observable;
 public class DiscussionsPerForumModel implements IDiscussionsPerForumModel {
 
     private Context mContext;
-    private ApiInterface mApiInterface;
+    private IApiInterface mIApiInterface;
 
-    public DiscussionsPerForumModel(Context context, ApiInterface apiInterface) {
+    public DiscussionsPerForumModel(Context context, IApiInterface IApiInterface) {
         mContext = context;
-        mApiInterface = apiInterface;
+        mIApiInterface = IApiInterface;
     }
 
     @Override
     public Observable<DiscussionsPerForumResponse> getForumsDiscussions(String forumId) {
-        return mApiInterface.getForumsDiscussions(
+        return mIApiInterface.getForumsDiscussions(
                 LocalSaving.getToken(mContext),
                 "mod_forum_get_forum_discussions_paginated",
                 forumId);
@@ -29,7 +29,7 @@ public class DiscussionsPerForumModel implements IDiscussionsPerForumModel {
 
     @Override
     public Observable<CanAddDiscussionResponse> canAddDiscussion(String forumId) {
-        return mApiInterface.canAddDiscussion(
+        return mIApiInterface.canAddDiscussion(
                 LocalSaving.getToken(mContext),
                 "mod_forum_can_add_discussion",
                 forumId

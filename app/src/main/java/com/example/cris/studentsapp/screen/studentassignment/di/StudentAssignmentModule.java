@@ -2,7 +2,7 @@ package com.example.cris.studentsapp.screen.studentassignment.di;
 
 import android.content.Context;
 
-import com.example.cris.studentsapp.apiprovider.ApiInterface;
+import com.example.cris.studentsapp.apiprovider.IApiInterface;
 import com.example.cris.studentsapp.screen.studentassignment.model.IStudentAssignmentModel;
 import com.example.cris.studentsapp.screen.studentassignment.model.StudentAssignmentModel;
 import com.example.cris.studentsapp.screen.studentassignment.presenter.IStudentAssignmentPresenter;
@@ -22,8 +22,8 @@ public class StudentAssignmentModule {
     }
 
     @Provides
-    IStudentAssignmentModel provideStudentAssignmentModel(Context context, ApiInterface apiInterface) {
-        return new StudentAssignmentModel(context, apiInterface);
+    IStudentAssignmentModel provideStudentAssignmentModel(Context context, IApiInterface IApiInterface) {
+        return new StudentAssignmentModel(context, IApiInterface);
     }
 
     @Provides

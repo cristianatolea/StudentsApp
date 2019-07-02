@@ -2,7 +2,7 @@ package com.example.cris.studentsapp.screen.settings.di;
 
 import android.content.Context;
 
-import com.example.cris.studentsapp.apiprovider.ApiInterface;
+import com.example.cris.studentsapp.apiprovider.IApiInterface;
 import com.example.cris.studentsapp.screen.settings.model.ISettingsModel;
 import com.example.cris.studentsapp.screen.settings.model.SettingsModel;
 import com.example.cris.studentsapp.screen.settings.presenter.ISettingsPresenter;
@@ -17,8 +17,8 @@ import dagger.Provides;
 public class SettingsModule {
 
     @Provides
-    ISettingsModel providesSettingsModel(ApiInterface apiInterface) {
-        return new SettingsModel(apiInterface);
+    ISettingsModel providesSettingsModel(IApiInterface IApiInterface) {
+        return new SettingsModel(IApiInterface);
     }
 
     @Provides

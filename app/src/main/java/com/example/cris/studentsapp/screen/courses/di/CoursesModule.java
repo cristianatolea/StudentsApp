@@ -2,7 +2,7 @@ package com.example.cris.studentsapp.screen.courses.di;
 
 import android.content.Context;
 
-import com.example.cris.studentsapp.apiprovider.ApiInterface;
+import com.example.cris.studentsapp.apiprovider.IApiInterface;
 import com.example.cris.studentsapp.screen.courses.model.CoursesModel;
 import com.example.cris.studentsapp.screen.courses.model.ICoursesModel;
 import com.example.cris.studentsapp.screen.courses.presenter.CoursesPresenter;
@@ -22,8 +22,8 @@ public class CoursesModule {
     }
 
     @Provides
-    ICoursesModel providesCoursesModel(Context context, ApiInterface apiInterface) {
-        return new CoursesModel(context, apiInterface);
+    ICoursesModel providesCoursesModel(Context context, IApiInterface IApiInterface) {
+        return new CoursesModel(context, IApiInterface);
     }
 
     @Provides

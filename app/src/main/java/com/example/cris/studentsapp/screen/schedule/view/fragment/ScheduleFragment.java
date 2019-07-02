@@ -1,5 +1,9 @@
 package com.example.cris.studentsapp.screen.schedule.view.fragment;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -13,7 +17,9 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.cris.studentsapp.R;
+import com.example.cris.studentsapp.alarmservice.AlarmReceiver;
 import com.example.cris.studentsapp.base.BaseFragment;
+import com.example.cris.studentsapp.screen.dayschedule.model.DayElementEntity;
 import com.example.cris.studentsapp.screen.dayschedule.view.fragment.DayScheduleFragment;
 import com.example.cris.studentsapp.screen.main.view.activity.MainActivity;
 import com.example.cris.studentsapp.screen.schedule.model.entity.WeekDayEntity;
@@ -24,6 +30,8 @@ import com.example.cris.studentsapp.utils.AlertUtils;
 import com.example.cris.studentsapp.utils.LocalSaving;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -61,6 +69,8 @@ public class ScheduleFragment extends BaseFragment implements
         super.onViewCreated(view, savedInstanceState);
 
 //        mWeekDays = new ArrayList<>();
+
+        setAlarms();
 
         if (LocalSaving.getEventsList(getContext()) == null
                 || LocalSaving.getEventsList(getContext()).isEmpty())
@@ -111,6 +121,33 @@ public class ScheduleFragment extends BaseFragment implements
         ((MainActivity) getActivity())
                 .changeFocusOnMenu(0, false, false);
         addFragment(dayScheduleFragment, R.id.frame_main_content);
+    }
+
+    private void setAlarms(){
+
+        for (WeekDayEntity weekDay:LocalSaving.getEventsList(getContext())){
+            for (DayElementEntity dayEvent:weekDay.getDayElements()){
+
+            }
+        }
+
+        AlarmManager manager = (AlarmManager) getActivity().getSystemService(Context.ALARM_SERVICE);
+        Date dat = new Date();
+        Calendar cal_alarm = Calendar.getInstance();
+        Calendar cal_now = Calendar.getInstance();
+        cal_now.setTime(dat);
+        cal_alarm.setTime(dat);
+        cal_alarm.set(Calendar.HOUR_OF_DAY,14);
+        cal_alarm.set(Calendar.MINUTE,25);
+        cal_alarm.set(Calendar.SECOND,0);
+        if(cal_alarm.before(cal_now)){
+            cal_alarm.add(Calendar.DATE,1);
+        }
+
+        Intent myIntent = new Intent(getContext(), AlarmReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getContext(), 0, myIntent, 0);
+
+        manager.set(AlarmManager.RTC_WAKEUP,cal_alarm.getTimeInMillis(), pendingIntent);
     }
 
     private void initView(View view) {

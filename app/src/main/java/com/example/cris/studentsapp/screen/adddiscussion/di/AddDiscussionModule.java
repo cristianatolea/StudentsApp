@@ -2,7 +2,7 @@ package com.example.cris.studentsapp.screen.adddiscussion.di;
 
 import android.content.Context;
 
-import com.example.cris.studentsapp.apiprovider.ApiInterface;
+import com.example.cris.studentsapp.apiprovider.IApiInterface;
 import com.example.cris.studentsapp.screen.adddiscussion.model.AddDiscussionModel;
 import com.example.cris.studentsapp.screen.adddiscussion.model.IAddDiscussionModel;
 import com.example.cris.studentsapp.screen.adddiscussion.presenter.AddDiscussionPresenter;
@@ -22,8 +22,8 @@ public class AddDiscussionModule {
     }
 
     @Provides
-    IAddDiscussionModel provideAddDiscussionModel(Context context, ApiInterface apiInterface) {
-        return new AddDiscussionModel(context, apiInterface);
+    IAddDiscussionModel provideAddDiscussionModel(Context context, IApiInterface IApiInterface) {
+        return new AddDiscussionModel(context, IApiInterface);
     }
 
     @Provides

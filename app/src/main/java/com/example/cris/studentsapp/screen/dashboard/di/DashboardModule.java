@@ -2,7 +2,7 @@ package com.example.cris.studentsapp.screen.dashboard.di;
 
 import android.content.Context;
 
-import com.example.cris.studentsapp.apiprovider.ApiInterface;
+import com.example.cris.studentsapp.apiprovider.IApiInterface;
 import com.example.cris.studentsapp.screen.dashboard.model.DashboardModel;
 import com.example.cris.studentsapp.screen.dashboard.model.IDashboardModel;
 import com.example.cris.studentsapp.screen.dashboard.presenter.DashboardPresenter;
@@ -17,8 +17,8 @@ import dagger.Provides;
 public class DashboardModule {
 
     @Provides
-    IDashboardModel provideDashboardModel(ApiInterface apiInterface){
-        return new DashboardModel(apiInterface);
+    IDashboardModel provideDashboardModel(IApiInterface IApiInterface){
+        return new DashboardModel(IApiInterface);
     }
 
     @Provides

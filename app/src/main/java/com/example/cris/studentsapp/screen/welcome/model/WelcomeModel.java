@@ -1,12 +1,12 @@
 package com.example.cris.studentsapp.screen.welcome.model;
 
-import com.example.cris.studentsapp.apiprovider.ApiInterface;
+import com.example.cris.studentsapp.apiprovider.IApiInterface;
 
 public class WelcomeModel implements IWelcomeModel {
 
-    private ApiInterface mApiInterface;
+    private IApiInterface mIApiInterface;
 
-    public WelcomeModel(ApiInterface apiInterface) {
-        mApiInterface = apiInterface;
+    public WelcomeModel(IApiInterface IApiInterface) {
+        mIApiInterface = IApiInterface;
     }
 }

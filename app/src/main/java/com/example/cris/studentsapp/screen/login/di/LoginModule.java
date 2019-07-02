@@ -2,7 +2,7 @@ package com.example.cris.studentsapp.screen.login.di;
 
 import android.content.Context;
 
-import com.example.cris.studentsapp.apiprovider.ApiInterface;
+import com.example.cris.studentsapp.apiprovider.IApiInterface;
 import com.example.cris.studentsapp.screen.login.model.ILoginModel;
 import com.example.cris.studentsapp.screen.login.model.LoginModel;
 import com.example.cris.studentsapp.screen.login.presenter.ILoginPresenter;
@@ -17,8 +17,8 @@ import dagger.Provides;
 public class LoginModule {
 
     @Provides
-    ILoginModel provideLoginModel(ApiInterface apiInterface) {
-        return new LoginModel(apiInterface);
+    ILoginModel provideLoginModel(IApiInterface IApiInterface) {
+        return new LoginModel(IApiInterface);
     }
 
     @Provides

@@ -1,5 +1,7 @@
 package com.example.cris.studentsapp.screen.coursedetails.view.fragment;
 
+import android.app.Dialog;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -9,6 +11,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -20,20 +24,25 @@ import com.example.cris.studentsapp.screen.coursedetails.di.CourseDetailsModule;
 import com.example.cris.studentsapp.screen.coursedetails.model.entity.CourseDetailModule;
 import com.example.cris.studentsapp.screen.coursedetails.model.entity.CourseDetailsContent;
 import com.example.cris.studentsapp.screen.coursedetails.model.entity.CourseDetailsItem;
+import com.example.cris.studentsapp.screen.coursedetails.model.entity.LocalFile;
 import com.example.cris.studentsapp.screen.coursedetails.presenter.ICourseDetailsPresenter;
 import com.example.cris.studentsapp.screen.coursedetails.view.adapter.courseitems.CourseDetailsAdapter;
 import com.example.cris.studentsapp.screen.coursedetails.view.delegate.ICourseDetailsViewDelegate;
 import com.example.cris.studentsapp.screen.main.view.activity.MainActivity;
 import com.example.cris.studentsapp.utils.AlertUtils;
 import com.example.cris.studentsapp.utils.DownloadManager;
+import com.example.cris.studentsapp.utils.LocalSaving;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
 
+import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
+import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 import static com.example.cris.studentsapp.utils.Constants.COURSE_ID;
 import static com.example.cris.studentsapp.utils.Constants.COURSE_NAME;
+import static com.example.cris.studentsapp.utils.Constants.DOWNLOAD_FILE_REQUEST;
 
 public class CourseDetailsFragment extends BaseFragment implements
         ICourseDetailsViewDelegate,
@@ -48,6 +57,8 @@ public class CourseDetailsFragment extends BaseFragment implements
     private List<CourseDetailsItem> mCourseDetailsItems;
     private String mCourseId = "";
     private String mCourseName = "";
+    private int mCoursePositionSelected;
+    private int mFilePositionSelected;
 
     @Inject
     ICourseDetailsPresenter mPresenter;
@@ -112,23 +123,62 @@ public class CourseDetailsFragment extends BaseFragment implements
     }
 
     @Override
-    public void onItemFileClick(int coursePosition, final int position) {
+    public void onPermissionAvailable(int who, int coursePosition, int position) {
         final List<CourseDetailsContent> contents = new ArrayList<>();
         for (CourseDetailModule module : mCourseDetailsItems.get(coursePosition).getModules())
             contents.addAll(module.getContents());
+        mPresenter.downloadFile(contents.get(position),
+                contents.get(position).getFileUrl()
+                .concat("&token=")
+                .concat(LocalSaving.getToken(getContext())));
+    }
 
-        DownloadManager downloadManager = new DownloadManager(contents.get(position), "");
-        downloadManager.setOnUpdateListener(new DownloadManager.onUpdateListener() {
-            @Override
-            public void onUpdate(int code, String message) {
-                if (code == DownloadManager.ON_COMPLETED) {
-                    Toast.makeText(getContext(), contents.get(position).getFilename(), Toast.LENGTH_LONG).show();
-                }
-                if (DownloadManager.ON_PROGRASS == code) {
-                }
-            }
-        });
-        downloadManager.execute();
+    @Override
+    public void onRequestPermissions(int who, int coursePosition, int position) {
+        requestPermissions(
+                new String[]{READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE},
+                DOWNLOAD_FILE_REQUEST);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+        if (grantResults.length > 0
+                && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            this.onPermissionAvailable(DOWNLOAD_FILE_REQUEST, mCoursePositionSelected, mFilePositionSelected);
+        } else {
+            Toast.makeText(getContext(), getString(R.string.permission_denied), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void onDownloadSuccess(LocalFile localFile) {
+        alertSaveFile(localFile);
+    }
+
+    @Override
+    public void onItemFileClick(int coursePosition, final int position) {
+        mCoursePositionSelected = coursePosition;
+        mFilePositionSelected = position;
+
+        mPresenter.checkPermission(DOWNLOAD_FILE_REQUEST, coursePosition, position);
+
+//        final List<CourseDetailsContent> contents = new ArrayList<>();
+//        for (CourseDetailModule module : mCourseDetailsItems.get(coursePosition).getModules())
+//            contents.addAll(module.getContents());
+//
+//        DownloadManager downloadManager = new DownloadManager(contents.get(position), "");
+//        downloadManager.setOnUpdateListener(new DownloadManager.onUpdateListener() {
+//            @Override
+//            public void onUpdate(int code, String message) {
+//                if (code == DownloadManager.ON_COMPLETED) {
+//                    Toast.makeText(getContext(), contents.get(position).getFilename(), Toast.LENGTH_LONG).show();
+//                }
+//                if (DownloadManager.ON_PROGRASS == code) {
+//                }
+//            }
+//        });
+//        downloadManager.execute();
 
     }
 
@@ -139,6 +189,49 @@ public class CourseDetailsFragment extends BaseFragment implements
         CourseDetailsFragment fragment = new CourseDetailsFragment();
         fragment.setArguments(args);
         return fragment;
+    }
+
+    public void alertSaveFile(final LocalFile localFile) {
+        final Dialog dialog = new Dialog(getContext());
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.alert_dialog_std_two_buttons);
+
+        TextView txtTitle = dialog.findViewById(R.id.text_alert_title);
+        TextView txtContent = dialog.findViewById(R.id.text_alert_content);
+        Button btnOk = dialog.findViewById(R.id.button_ok);
+        Button btnCancel = dialog.findViewById(R.id.button_no);
+
+        txtTitle.setText(getString(R.string.alert_title));
+        txtContent.setText(getString(R.string.download_success));
+
+        btnOk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    dialog.dismiss();
+                    mPresenter.openFile( getActivity(), localFile);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    dialog.dismiss();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        try {
+            dialog.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void initView(View view) {

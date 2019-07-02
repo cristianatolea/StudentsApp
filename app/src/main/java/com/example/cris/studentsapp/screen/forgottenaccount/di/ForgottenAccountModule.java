@@ -2,7 +2,7 @@ package com.example.cris.studentsapp.screen.forgottenaccount.di;
 
 import android.content.Context;
 
-import com.example.cris.studentsapp.apiprovider.ApiInterface;
+import com.example.cris.studentsapp.apiprovider.IApiInterface;
 import com.example.cris.studentsapp.screen.forgottenaccount.model.ForgottenAccountModel;
 import com.example.cris.studentsapp.screen.forgottenaccount.model.IForgottenAccountModel;
 import com.example.cris.studentsapp.screen.forgottenaccount.presenter.ForgottenAccountPresenter;
@@ -22,8 +22,8 @@ public class ForgottenAccountModule {
     }
 
     @Provides
-    IForgottenAccountModel provideForgottenAccountModel(ApiInterface apiInterface) {
-        return new ForgottenAccountModel(apiInterface);
+    IForgottenAccountModel provideForgottenAccountModel(IApiInterface IApiInterface) {
+        return new ForgottenAccountModel(IApiInterface);
     }
 
     @Provides

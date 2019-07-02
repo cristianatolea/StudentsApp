@@ -91,4 +91,10 @@
     <string name="empty_fiels">Completati toate campurile</string>
     <string name="forums">Forumuri</string>
     <string name="assignments">Teme incarcate</string>
+    <string name="storage_error_not_available">Memorie indisponibila</string>
+    <string name="storage_file_error">Ceva nu a functionat cum trebuie in citirea fisierului.</string>
+    <string name="storage_error_low_memory">Memorie insuficienta</string>
+    <string name="download_success">Fisier descarcat. Doriti sa deschideti fisierul?</string>
+    <string name="info_chooser_open_file">Alegeti o aplicatie pentru a deschide</string>
+    <string name="permission_denied">Permisiune de descarcare refuzata.</string>
 </resources>

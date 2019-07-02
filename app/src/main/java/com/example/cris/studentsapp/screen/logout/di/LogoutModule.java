@@ -2,7 +2,7 @@ package com.example.cris.studentsapp.screen.logout.di;
 
 import android.content.Context;
 
-import com.example.cris.studentsapp.apiprovider.ApiInterface;
+import com.example.cris.studentsapp.apiprovider.IApiInterface;
 import com.example.cris.studentsapp.screen.logout.model.ILogoutModel;
 import com.example.cris.studentsapp.screen.logout.model.LogoutModel;
 import com.example.cris.studentsapp.screen.logout.presenter.ILogoutPresenter;
@@ -22,8 +22,8 @@ public class LogoutModule {
     }
 
     @Provides
-    ILogoutModel providesLogoutModel(ApiInterface apiInterface) {
-        return new LogoutModel(apiInterface);
+    ILogoutModel providesLogoutModel(IApiInterface IApiInterface) {
+        return new LogoutModel(IApiInterface);
     }
 
     @Provides

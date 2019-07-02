@@ -1,12 +1,12 @@
 package com.example.cris.studentsapp.screen.settings.model;
 
-import com.example.cris.studentsapp.apiprovider.ApiInterface;
+import com.example.cris.studentsapp.apiprovider.IApiInterface;
 
 public class SettingsModel implements ISettingsModel {
 
-    private ApiInterface mApiInterface;
+    private IApiInterface mIApiInterface;
 
-    public SettingsModel(ApiInterface apiInterface) {
-        mApiInterface = apiInterface;
+    public SettingsModel(IApiInterface IApiInterface) {
+        mIApiInterface = IApiInterface;
     }
 }

@@ -2,7 +2,7 @@ package com.example.cris.studentsapp.screen.postsperdiscussion.di;
 
 import android.content.Context;
 
-import com.example.cris.studentsapp.apiprovider.ApiInterface;
+import com.example.cris.studentsapp.apiprovider.IApiInterface;
 import com.example.cris.studentsapp.screen.postsperdiscussion.model.IPostsPerDiscussionModel;
 import com.example.cris.studentsapp.screen.postsperdiscussion.model.PostsPerDiscussionModel;
 import com.example.cris.studentsapp.screen.postsperdiscussion.presenter.IPostsPerDiscussionPresenter;
@@ -23,8 +23,8 @@ public class PostsPerDiscussionModule {
 
     @Provides
     IPostsPerDiscussionModel providePostsPerDiscussionModel(Context context,
-                                                            ApiInterface apiInterface) {
-        return new PostsPerDiscussionModel(context, apiInterface);
+                                                            IApiInterface IApiInterface) {
+        return new PostsPerDiscussionModel(context, IApiInterface);
     }
 
     @Provides

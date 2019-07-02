@@ -2,7 +2,7 @@ package com.example.cris.studentsapp.screen.profile.di;
 
 import android.content.Context;
 
-import com.example.cris.studentsapp.apiprovider.ApiInterface;
+import com.example.cris.studentsapp.apiprovider.IApiInterface;
 import com.example.cris.studentsapp.screen.profile.model.IProfileModel;
 import com.example.cris.studentsapp.screen.profile.model.ProfileModel;
 import com.example.cris.studentsapp.screen.profile.presenter.IProfilePresenter;
@@ -17,8 +17,8 @@ import dagger.Provides;
 public class ProfileModule {
 
     @Provides
-    IProfileModel providesProfileModel(Context context, ApiInterface apiInterface) {
-        return new ProfileModel(context, apiInterface);
+    IProfileModel providesProfileModel(Context context, IApiInterface IApiInterface) {
+        return new ProfileModel(context, IApiInterface);
     }
 
     @Provides

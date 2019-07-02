@@ -2,7 +2,7 @@ package com.example.cris.studentsapp.screen.forumspercourse.di;
 
 import android.content.Context;
 
-import com.example.cris.studentsapp.apiprovider.ApiInterface;
+import com.example.cris.studentsapp.apiprovider.IApiInterface;
 import com.example.cris.studentsapp.screen.courses.model.CoursesModel;
 import com.example.cris.studentsapp.screen.courses.model.ICoursesModel;
 import com.example.cris.studentsapp.screen.forumspercourse.model.ForumsModel;
@@ -24,13 +24,13 @@ public class ForumsModule {
     }
 
     @Provides
-    IForumsModel provideDiscussionsModel(Context context, ApiInterface apiInterface) {
-        return new ForumsModel(context, apiInterface);
+    IForumsModel provideDiscussionsModel(Context context, IApiInterface IApiInterface) {
+        return new ForumsModel(context, IApiInterface);
     }
 
     @Provides
-    ICoursesModel provideCoursesModel(Context context, ApiInterface apiInterface) {
-        return new CoursesModel(context, apiInterface);
+    ICoursesModel provideCoursesModel(Context context, IApiInterface IApiInterface) {
+        return new CoursesModel(context, IApiInterface);
     }
 
     @Provides

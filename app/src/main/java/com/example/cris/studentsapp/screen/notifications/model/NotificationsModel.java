@@ -1,12 +1,12 @@
 package com.example.cris.studentsapp.screen.notifications.model;
 
-import com.example.cris.studentsapp.apiprovider.ApiInterface;
+import com.example.cris.studentsapp.apiprovider.IApiInterface;
 
 public class NotificationsModel implements INotificationsModel {
 
-    private ApiInterface mApiInterface;
+    private IApiInterface mIApiInterface;
 
-    public NotificationsModel(ApiInterface apiInterface) {
-        mApiInterface = apiInterface;
+    public NotificationsModel(IApiInterface IApiInterface) {
+        mIApiInterface = IApiInterface;
     }
 }

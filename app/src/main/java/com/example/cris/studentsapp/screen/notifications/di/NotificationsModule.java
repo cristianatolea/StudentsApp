@@ -2,7 +2,7 @@ package com.example.cris.studentsapp.screen.notifications.di;
 
 import android.content.Context;
 
-import com.example.cris.studentsapp.apiprovider.ApiInterface;
+import com.example.cris.studentsapp.apiprovider.IApiInterface;
 import com.example.cris.studentsapp.screen.notifications.model.INotificationsModel;
 import com.example.cris.studentsapp.screen.notifications.model.NotificationsModel;
 import com.example.cris.studentsapp.screen.notifications.presenter.INotificationsPresenter;
@@ -17,8 +17,8 @@ import dagger.Provides;
 public class NotificationsModule {
 
     @Provides
-    INotificationsModel providesNotificationsModel(ApiInterface apiInterface) {
-        return new NotificationsModel(apiInterface);
+    INotificationsModel providesNotificationsModel(IApiInterface IApiInterface) {
+        return new NotificationsModel(IApiInterface);
     }
 
     @Provides

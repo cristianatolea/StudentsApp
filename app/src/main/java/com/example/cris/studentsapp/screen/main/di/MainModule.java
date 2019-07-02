@@ -2,7 +2,7 @@ package com.example.cris.studentsapp.screen.main.di;
 
 import android.content.Context;
 
-import com.example.cris.studentsapp.apiprovider.ApiInterface;
+import com.example.cris.studentsapp.apiprovider.IApiInterface;
 import com.example.cris.studentsapp.screen.main.model.IMainModel;
 import com.example.cris.studentsapp.screen.main.model.MainModel;
 import com.example.cris.studentsapp.screen.main.presenter.IMainPresenter;
@@ -17,8 +17,8 @@ import dagger.Provides;
 public class MainModule {
 
     @Provides
-    IMainModel provideMainModel(Context context, ApiInterface apiInterface) {
-        return new MainModel(context, apiInterface);
+    IMainModel provideMainModel(Context context, IApiInterface IApiInterface) {
+        return new MainModel(context, IApiInterface);
     }
 
     @Provides

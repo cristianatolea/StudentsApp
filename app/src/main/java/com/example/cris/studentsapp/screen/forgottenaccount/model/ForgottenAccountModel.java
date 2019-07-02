@@ -1,12 +1,12 @@
 package com.example.cris.studentsapp.screen.forgottenaccount.model;
 
-import com.example.cris.studentsapp.apiprovider.ApiInterface;
+import com.example.cris.studentsapp.apiprovider.IApiInterface;
 
 public class ForgottenAccountModel implements IForgottenAccountModel {
 
-    private ApiInterface mApiInterface;
+    private IApiInterface mIApiInterface;
 
-    public ForgottenAccountModel(ApiInterface apiInterface) {
-        mApiInterface = apiInterface;
+    public ForgottenAccountModel(IApiInterface IApiInterface) {
+        mIApiInterface = IApiInterface;
     }
 }

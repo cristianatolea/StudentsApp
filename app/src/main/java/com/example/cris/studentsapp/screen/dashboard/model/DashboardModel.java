@@ -1,12 +1,12 @@
 package com.example.cris.studentsapp.screen.dashboard.model;
 
-import com.example.cris.studentsapp.apiprovider.ApiInterface;
+import com.example.cris.studentsapp.apiprovider.IApiInterface;
 
 public class DashboardModel implements IDashboardModel{
 
-    private ApiInterface mApiInterface;
+    private IApiInterface mIApiInterface;
 
-    public DashboardModel(ApiInterface apiInterface) {
-        mApiInterface = apiInterface;
+    public DashboardModel(IApiInterface IApiInterface) {
+        mIApiInterface = IApiInterface;
     }
 }

@@ -2,7 +2,7 @@ package com.example.cris.studentsapp.screen.deadlineassignment.di;
 
 import android.content.Context;
 
-import com.example.cris.studentsapp.apiprovider.ApiInterface;
+import com.example.cris.studentsapp.apiprovider.IApiInterface;
 import com.example.cris.studentsapp.screen.deadlineassignment.model.DeadlineAssignmentsModel;
 import com.example.cris.studentsapp.screen.deadlineassignment.model.IDeadlineAssignmentsModel;
 import com.example.cris.studentsapp.screen.deadlineassignment.presenter.DeadlineAssignmentsPresenter;
@@ -22,8 +22,8 @@ public class DeadlineAssignmentsModule {
     }
 
     @Provides
-    IDeadlineAssignmentsModel provideDeadlineAssignmentsModel(Context context, ApiInterface apiInterface) {
-        return new DeadlineAssignmentsModel(context, apiInterface);
+    IDeadlineAssignmentsModel provideDeadlineAssignmentsModel(Context context, IApiInterface IApiInterface) {
+        return new DeadlineAssignmentsModel(context, IApiInterface);
     }
 
     @Provides

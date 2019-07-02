@@ -2,9 +2,11 @@ package com.example.cris.studentsapp.screen.coursedetails.di;
 
 import android.content.Context;
 
-import com.example.cris.studentsapp.apiprovider.ApiInterface;
+import com.example.cris.studentsapp.apiprovider.IApiInterface;
 import com.example.cris.studentsapp.screen.coursedetails.model.CourseDetailsModel;
 import com.example.cris.studentsapp.screen.coursedetails.model.ICourseDetailsModel;
+import com.example.cris.studentsapp.screen.coursedetails.model.storage.ILocalFileStorage;
+import com.example.cris.studentsapp.screen.coursedetails.model.storage.LocalFileStorage;
 import com.example.cris.studentsapp.screen.coursedetails.presenter.CourseDetailsPresenter;
 import com.example.cris.studentsapp.screen.coursedetails.presenter.ICourseDetailsPresenter;
 import com.example.cris.studentsapp.screen.coursedetails.view.delegate.ICourseDetailsViewDelegate;
@@ -22,14 +24,20 @@ public class CourseDetailsModule {
     }
 
     @Provides
-    ICourseDetailsModel provideCourseDetailsModel(Context context, ApiInterface apiInterface) {
-        return new CourseDetailsModel(context, apiInterface);
+    ICourseDetailsModel provideCourseDetailsModel(Context context, IApiInterface IApiInterface) {
+        return new CourseDetailsModel(context, IApiInterface);
+    }
+
+    @Provides
+    ILocalFileStorage provideLocalStorage(Context context) {
+        return new LocalFileStorage(context);
     }
 
     @Provides
     ICourseDetailsPresenter provideCourseDetailsPresenter(Context context,
                                                           ICourseDetailsModel model,
-                                                          ICourseDetailsViewDelegate viewDelegate) {
-        return new CourseDetailsPresenter(context, model, viewDelegate);
+                                                          ICourseDetailsViewDelegate viewDelegate,
+                                                          ILocalFileStorage localFileStorage) {
+        return new CourseDetailsPresenter(context, model, viewDelegate, localFileStorage);
     }
 }

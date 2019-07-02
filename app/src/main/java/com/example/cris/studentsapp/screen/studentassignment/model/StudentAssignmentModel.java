@@ -2,15 +2,15 @@ package com.example.cris.studentsapp.screen.studentassignment.model;
 
 import android.content.Context;
 
-import com.example.cris.studentsapp.apiprovider.ApiInterface;
+import com.example.cris.studentsapp.apiprovider.IApiInterface;
 
 public class StudentAssignmentModel implements IStudentAssignmentModel {
 
     private Context mContext;
-    private ApiInterface mApiInterface;
+    private IApiInterface mIApiInterface;
 
-    public StudentAssignmentModel(Context context, ApiInterface apiInterface) {
+    public StudentAssignmentModel(Context context, IApiInterface IApiInterface) {
         mContext = context;
-        mApiInterface = apiInterface;
+        mIApiInterface = IApiInterface;
     }
 }

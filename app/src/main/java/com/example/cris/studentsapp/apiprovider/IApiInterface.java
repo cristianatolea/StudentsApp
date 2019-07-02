@@ -17,11 +17,14 @@ import com.example.cris.studentsapp.screen.profile.model.entity.UserProfileEntit
 import java.util.List;
 
 import io.reactivex.Observable;
+import okhttp3.ResponseBody;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Url;
 
-public interface ApiInterface {
+public interface IApiInterface {
 
     @FormUrlEncoded
     @POST("login/token.php?service=moodle_mobile_app")
@@ -51,6 +54,9 @@ public interface ApiInterface {
     Observable<List<CourseDetailsItem>> getCourseDetails(@Field("wstoken") String userToken,
                                                          @Field("wsfunction") String function,
                                                          @Field("courseid") String courseId);
+
+    @GET
+    Observable<ResponseBody> downloadFile(@Url String fileUrl);
 
     @FormUrlEncoded
     @POST("webservice/rest/server.php?moodlewsrestformat=json")

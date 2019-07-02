@@ -3,6 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.cris.studentsapp">
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".app.StudentsApplication"
         android:allowBackup="false"
@@ -13,10 +20,12 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
+        <receiver android:name=".alarmservice.AlarmReceiver" />
+
         <activity
             android:name=".screen.splashscreen.SplashScreenActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.StartScreen" >
+            android:theme="@style/AppTheme.StartScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -48,8 +57,19 @@
             android:name=".screen.dashboarditemactivity.DashboardItemActivity"
             android:theme="@style/AppTheme.Main"
             android:windowSoftInputMode="adjustUnspecified|adjustPan" />
-        <activity android:name=".screen.logout.view.activity.LogoutActivity"
-            android:theme="@style/Theme.Transparent"/>
+        <activity
+            android:name=".screen.logout.view.activity.LogoutActivity"
+            android:theme="@style/Theme.Transparent" />
+
+        <provider
+            android:name=".screen.coursedetails.helper.MessageFileProvider"
+            android:authorities="${applicationId}.screen.coursedetails.helper.MessageFileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_provider_paths" />
+        </provider>
     </application>
 
 </manifest>

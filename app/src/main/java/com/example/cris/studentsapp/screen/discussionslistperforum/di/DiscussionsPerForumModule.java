@@ -2,7 +2,7 @@ package com.example.cris.studentsapp.screen.discussionslistperforum.di;
 
 import android.content.Context;
 
-import com.example.cris.studentsapp.apiprovider.ApiInterface;
+import com.example.cris.studentsapp.apiprovider.IApiInterface;
 import com.example.cris.studentsapp.screen.discussionslistperforum.model.DiscussionsPerForumModel;
 import com.example.cris.studentsapp.screen.discussionslistperforum.model.IDiscussionsPerForumModel;
 import com.example.cris.studentsapp.screen.discussionslistperforum.presenter.DiscussionsPerForumPresenter;
@@ -22,8 +22,8 @@ public class DiscussionsPerForumModule {
     }
 
     @Provides
-    IDiscussionsPerForumModel provideDiscussionsPerForumModel(Context context, ApiInterface apiInterface) {
-        return new DiscussionsPerForumModel(context, apiInterface);
+    IDiscussionsPerForumModel provideDiscussionsPerForumModel(Context context, IApiInterface IApiInterface) {
+        return new DiscussionsPerForumModel(context, IApiInterface);
     }
 
     @Provides
