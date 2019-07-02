@@ -79,24 +79,7 @@ public class MainActivity extends BaseActivity implements
         setContentView(R.layout.activity_main);
         initView();
         mPresenter.getSiteInfo();
-//        if (!LocalSaving.getLsFirstOpen(this) || "".equals(LocalSaving.getToken(MainActivity.this))) {
-//            Intent intent = new Intent(MainActivity.this, SplashScreenActivity.class);
-//            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-//            startActivity(intent);
-//            finish();
-//        } else {
-//            setContentView(R.layout.activity_main);
-//            initView();
-//        }
 
-//        if ("".equals(LocalSaving.getToken(MainActivity.this))) {
-//            Intent intent = new Intent(MainActivity.this, SplashScreenActivity.class);
-//            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-//            startActivity(intent);
-//            finish();
-//        } else {
-//            setContentView(R.layout.activity_main);
-//        }
     }
 
     @Override
@@ -183,14 +166,14 @@ public class MainActivity extends BaseActivity implements
 //                }
 //                setToolbarTitle(R.string.settings);
 //                break;
+//            case 2:
+//                if (!(lastFragment() instanceof NotificationsFragment)) {
+//                    addFragment(new NotificationsFragment(), R.id.frame_main_content);
+//                    hideKeyboard(MainActivity.this, mDrawerLayout);
+//                }
+//                setToolbarTitle(R.string.notifications);
+//                break;
             case 2:
-                if (!(lastFragment() instanceof NotificationsFragment)) {
-                    addFragment(new NotificationsFragment(), R.id.frame_main_content);
-                    hideKeyboard(MainActivity.this, mDrawerLayout);
-                }
-                setToolbarTitle(R.string.notifications);
-                break;
-            case 3:
                 if (!(lastFragment() instanceof HelpFragment)) {
                     addFragment(new HelpFragment(), R.id.frame_main_content);
                     hideKeyboard(MainActivity.this, mDrawerLayout);
@@ -232,9 +215,9 @@ public class MainActivity extends BaseActivity implements
 //        mTopDrawerItems.add(new DrawerItem(getString(R.string.settings),
 //                R.drawable.ic_settings_blue,
 //                R.drawable.ic_settings));
-        mTopDrawerItems.add(new DrawerItem(getString(R.string.notifications),
-                R.drawable.ic_notifications_blue,
-                R.drawable.ic_notifications));
+//        mTopDrawerItems.add(new DrawerItem(getString(R.string.notifications),
+//                R.drawable.ic_notifications_blue,
+//                R.drawable.ic_notifications));
         mTopDrawerItems.add(new DrawerItem(getString(R.string.help),
                 R.drawable.ic_help_blue,
                 R.drawable.ic_help));

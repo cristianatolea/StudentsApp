@@ -70,16 +70,6 @@ public class LoginActivity extends BaseActivity implements
 
     @Override
     public void onLoginSuccess(LoginResponseEntity entity) {
-//        new Thread() {
-//            public void run() {
-//                try {
-//                    FirebaseInstanceId.getInstance().deleteInstanceId();
-//                } catch (IOException v) {
-//                    System.out.println(v);
-//                }
-//            }
-//        }.start();
-
         mButtonLogin.setEnabled(true);
         mEditTextPassword.setEnabled(true);
         mEditTextUsername.setEnabled(true);
@@ -130,42 +120,5 @@ public class LoginActivity extends BaseActivity implements
 
         mTextForgottenPassword.setOnClickListener(this);
         mButtonLogin.setOnClickListener(this);
-
-        mEditTextUsername.setText("admin");
-        mEditTextPassword.setText("Q1w2e3r4t5.");
-
-//        mEditTextUsername.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-//
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence s, int start, int before, int count) {
-//                mUsername = s.toString();
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable s) {
-//
-//            }
-//        });
-//
-//        mEditTextPassword.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-//
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence s, int start, int before, int count) {
-//                mPassword = s.toString();
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable s) {
-//
-//            }
-//        });
     }
 }

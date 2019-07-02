@@ -59,4 +59,9 @@ public class AddDiscussionPresenter implements IAddDiscussionPresenter {
             mViewDelegate.onNoInternetConnection();
         }
     }
+
+    @Override
+    public void dispose() {
+        mCompositeDisposable.dispose();
+    }
 }
